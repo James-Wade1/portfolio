@@ -110,7 +110,7 @@
         <img src="assets/images/AboutMe.jpg" alt="James Wade in research setting" class="w-96 h-64 rounded-lg mb-6 md:mb-0 md:mr-8 object-cover">
         <div>
           <p class="text-lg leading-relaxed mb-4">
-            I’m a dedicated engineer pursuing a PhD in Mechanical Engineering with a focus on robotics and computer science. My research interests lie at the intersection of optimization, control systems, and autonomous systems, where I aim to develop innovative solutions for real-world challenges. With a B.S. in Mechanical Engineering, I’ve gained hands-on experience in robotics labs and industry projects while still maintaining a 4.0 GPA, fueling my passion for advancing technology through rigorous analysis and creative problem-solving.
+            I’m a dedicated engineer applying for PhD programs in Mechanical Engineering with a focus on robotics, computer science, and controls. My research interests lie at the intersection of optimization, control systems, and autonomous systems, where I aim to develop innovative solutions for real-world challenges. With a B.S. in Mechanical Engineering, I’ve gained hands-on experience in robotics labs and industry projects while still maintaining a 4.0 GPA, fueling my passion for advancing technology through rigorous analysis and creative problem-solving.
           </p>
           <p class="text-lg leading-relaxed">
             Outside the lab, I enjoy tinkering with personal projects, exploring advancements in AI, and sharing knowledge through technical writing. My goal is to contribute to cutting-edge research that pushes the boundaries of autonomous systems.
@@ -127,28 +127,58 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Project 1 -->
         <div class="project-card bg-white rounded-lg shadow-md overflow-hidden fade-in">
-          <img src="https://via.placeholder.com/400x200" alt="Robot Localization Project" class="w-full h-48 object-cover">
+          <img src="assets/images/truss.jpg" alt="NASA Lunar Robot Project" class="w-full h-48 object-cover">
           <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2">Robot Localization with Least-Squares Optimization</h3>
-            <p class="text-gray-600 mb-4">Developed an algorithm to improve robot localization accuracy using least-squares methods.</p>
+            <h3 class="text-xl font-semibold mb-2">NASA BIG Idea Lunar Soft Robotic Truss</h3>
+            <p class="text-gray-600 mb-4">Designing a fault-tolerant trajectory tracking algorithm to maintain performance despite motor actuation failures.</p>
             <button onclick="showModal('project1')" class="text-blue-500 hover:text-blue-700 font-semibold">Learn More</button>
           </div>
         </div>
         <!-- Project 2 -->
         <div class="project-card bg-white rounded-lg shadow-md overflow-hidden fade-in">
-          <img src="https://via.placeholder.com/400x200" alt="Autonomous Navigation Project" class="w-full h-48 object-cover">
+          <img src="assets/images/sandia-logo.png" alt="Sandian Intern" class="w-full h-48 object-cover">
           <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2">Autonomous Navigation System</h3>
-            <p class="text-gray-600 mb-4">Designed a navigation system for drones using ROS and sensor fusion.</p>
+            <h3 class="text-xl font-semibold mb-2">Sandia Autonomy and AI Intern</h3>
+            <p class="text-gray-600 mb-4">An incoming Summer 2025 to the prestigious Autonomy NM group.</p>
             <button onclick="showModal('project2')" class="text-blue-500 hover:text-blue-700 font-semibold">Learn More</button>
           </div>
         </div>
         <!-- Project 3 -->
         <div class="project-card bg-white rounded-lg shadow-md overflow-hidden fade-in">
-          <img src="https://via.placeholder.com/400x200" alt="Control System Project" class="w-full h-48 object-cover">
+          <img src="assets/images/LLNL.jpg" alt="LLNL Intern" class="w-full h-48 object-cover">
           <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2">Adaptive Control for Robotic Arms</h3>
-            <p class="text-gray-600 mb-4">Implemented an adaptive control algorithm for precise robotic manipulation.</p>
+            <h3 class="text-xl font-semibold mb-2">STM32-based Remote Controller </h3>
+            <p class="text-gray-600 mb-4">Designed a RC controller for managing a fleet of robotic rafts, involving integrated UI/UX design, embedded system design, and mechanical design.</p>
+            <button onclick="showModal('project3')" class="text-blue-500 hover:text-blue-700 font-semibold">Learn More</button>
+          </div>
+        </div>
+        <!-- Project 4 -->
+        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden fade-in">
+          <img src="assets/images/MarkandMe.jpg" alt="Mark Rover Project" class="w-full h-48 object-cover">
+          <!-- <img src="assets/images/NerfGuns.jpg" alt="Control System Project" class="w-full h-48 object-cover"> -->
+          <!-- <img src="assets/images/CMRTeam.jpg" alt="Control System Project" class="w-full h-48 object-cover"> -->
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">World's Smallest Nerf Gun</h3>
+            <p class="text-gray-600 mb-4">Worked with YouTuber Mark Rober to create <a class="text-blue-500 hover:text-blue-700" href="https://www.youtube.com/watch?v=9c2NqlUWZfo&vl=en">The World's Smallest Nerf Gun</a> (>70M views).</p>
+            <button onclick="showModal('project3')" class="text-blue-500 hover:text-blue-700 font-semibold">Learn More</button>
+          </div>
+        </div>
+        <!-- Project 5 -->
+        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden fade-in">
+          <img src="assets/images/rocket.jpg" alt="BYU Rocketry" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">BYU's Experimental High-Power Rocketry Team </h3>
+            <p class="text-gray-600 mb-4">Designed the Payload for the first-ever Hybrid Motor Rocket at BYU, as part of BYU Rocketry.</p>
+            <button onclick="showModal('project3')" class="text-blue-500 hover:text-blue-700 font-semibold">Learn More</button>
+          </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden fade-in">
+          <img src="assets/images/MiniMarsRover.jpg" alt="Mini Mars Rover" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Mini Mars Rover Line-Follower Competition</h3>
+            <p class="text-gray-600 mb-4">Led my team to a 4th place finish among 25 teams, using only bare metal programming, a PIC24 microcontroller, PD control, and lots of ingenuinty.</p>
             <button onclick="showModal('project3')" class="text-blue-500 hover:text-blue-700 font-semibold">Learn More</button>
           </div>
         </div>
@@ -176,7 +206,7 @@
             <p class="text-lg"><strong>Wade, J., & Lee, B.</strong> (2022). "Adaptive Control Strategies for Robotic Systems." <em>Journal of Robotics</em>. <a href="#" class="text-blue-500 hover:text-blue-700">[DOI]</a></p>
           </div> -->
           <div>
-            <p class="text-lg">D. Sanchez, <strong>J. Wade</strong>, et al., “Applications of 3D printed microfluidics in robotics,” Ph.D. dissertation, Dept. Mech. Eng., Brigham Young University, Provo, UT, 2024. <a href="https://www.proquest.com/docview/3143979266" class="text-blue-500 hover:text-blue-700">[Online]</a>. Contributed to Ch. 5: “Advancing the Applications of 3D Printed Microfluidics: Utilizing Quantum Dots to Measure Internal Temperature.”</p>
+            <p class="text-lg">D. Sanchez, <strong>J. Wade</strong>, et al., (2024) "Development of Temperature Measurement and Control of 3D Printed Microfluidic Devices Towards Biomolecular Analysis," Ph.D. dissertation, Dept. Mech. Eng., Brigham Young University, Provo, UT, 2024. <a href="https://www.proquest.com/docview/3143979266" class="text-blue-500 hover:text-blue-700">[Online]</a>. Contributed to Ch. 5: "Advancing the Applications of 3D Printed Microfluidics: Utilizing Quantum Dots to Measure Internal Temperature."</p>
           </div>
         </div>
       </div>
@@ -194,7 +224,7 @@
           <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold text-center">ROS</span>
           <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold text-center">MATLAB</span>
           <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold text-center">SolidWorks</span>
-          <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold text-center">Pytorch</span>
+          <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold text-center">PyTorch</span>
           <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold text-center">Optimization</span>
           <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold text-center">Control Systems</span>
         </div>
@@ -212,8 +242,9 @@
             <h3 class="text-xl font-semibold">B.S. in Mechanical Engineering, Minor in Computer Science</h3>
             <p class="text-lg">Brigham Young University, 2026</p>
             <p class="text-gray-600">GPA: 4.0/4.0 | Dean’s List 2019-2026</p>
-            <p class="text-gray-600">Relevant Coursework: Robotics, Optimization Theory, Control Systems, Deep Learning, Dynamics of Mechanical Systems</p>
+            <p class="text-gray-600">Relevant Coursework: Robotics, Optimization Theory, Control Systems, Deep Learning, Dynamics of Mechanical Systems, Embedded Systems</p>
             <!-- <p class="text-gray-600">Senior Thesis: "Optimizing Robot Localization with Least-Squares Methods" <a href="#" class="text-blue-500 hover:text-blue-700">[PDF]</a></p> -->
+            <!-- <p class="text-gray-600">Capstone: Mars Rover Team</p> -->
           </div>
         </div>
       </div>
@@ -226,29 +257,37 @@
       <h2 class="text-3xl font-bold text-center mb-12">Professional Experience</h2>
       <div class="fade-in">
         <div class="space-y-6">
-          <div id="CMR_exp">
-            <h3 class="text-xl font-semibold">Research Assistant</h3>
-            <p class="text-lg">Compliant Mechanisms and Robotics Lab, 2023–Current</p>
-            <ul class="list-disc list-inside text-gray-600">
-              <li>Developed algorithms for autonomous navigation, improving path accuracy by 15%.</li>
-              <li>Collaborated on a multi-robot coordination project, published in IEEE ICRA.</li>
-              <li>Maintained ROS-based systems and conducted hardware experiments.</li>
-            </ul>
-          </div>
           <div id="Sandia_exp">
             <h3 class="text-xl font-semibold">Autonomy Intern</h3>
             <p class="text-lg">Sandia National Lab, Summer 2025</p>
             <ul class="list-disc list-inside text-gray-600">
-              <li>Designed a control system for a robotic arm using MATLAB and Simulink.</li>
-              <li>Optimized mechanical components using SolidWorks, reducing material costs by 10%.</li>
+              <li>Working with the Autonomy NM group</li>
             </ul>
           </div>
           <div id="LLNL_exp">
             <h3 class="text-xl font-semibold">Embedded Systems Intern</h3>
             <p class="text-lg">Lawrence Livermore National Lab, Summer 2024</p>
             <ul class="list-disc list-inside text-gray-600">
-              <li>Designed a control system for a robotic arm using MATLAB and Simulink.</li>
-              <li>Optimized mechanical components using SolidWorks, reducing material costs by 10%.</li>
+              <li>Prototyped an STM32-based remote control to command a fleet of rafts designed for nuclear weapons testing (<a class="text-blue-500 hover:text-blue-700" href="https://str.llnl.gov/past-issues/june-2019/testing-missile-technology-high-seas">LIDSS Program</a>).</li>
+              <li>Utilized FreeRTOS for dyanmic task management, and developed driver for LVGL-based UI.</li>
+              <li>Developed and integrated mechanical, electrical, and software for entire project.</li>
+            </ul>
+          </div>
+          <div id="CMR_exp">
+            <h3 class="text-xl font-semibold">Robotics Research Assistant</h3>
+            <p class="text-lg">Compliant Mechanisms and Robotics Lab, Leadership, 2023–Current</p>
+            <ul class="list-disc list-inside text-gray-600">
+              <li>Recognized as finalists in NASA BIG Idea competition for inflatable structures in lunar applications.</li>
+              <li>Developed a redesign for a soft, inflatable octahedral robot for space applications, included an new radio structure for single-parent-to-multiple-children communication with error-checking.</li>
+              <li>Led a team of 15 students, and paper has been submitted to IEEE: Transactions on Robotics.</li>
+            </ul>
+          </div>
+          <div id="CMR_exp">
+            <h3 class="text-xl font-semibold">World's Smallest Nerf Gun Project</h3>
+            <p class="text-lg">Compliant Mechanisms and Robotics Lab, Summer 2023</p>
+            <ul class="list-disc list-inside text-gray-600">
+              <li>Worked with YouTuber Mark Rober to create <a class="text-blue-500 hover:text-blue-700" href="https://www.youtube.com/watch?v=9c2NqlUWZfo&vl=en">The World's Smallest Nerf Gun</a> (>70M views).</li>
+              <li>Performed 100+ tests to analyze failure modes and provided weekly reports to optimize the design.</li>
             </ul>
           </div>
         </div>
@@ -256,8 +295,31 @@
     </div>
   </section>
 
+  <!-- Blog Section -->
+  <section id="blog" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center mb-12">Blog & Technical Notes</h2>
+      <div class="fade-in">
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-xl font-semibold">Implementing a Kalman Filter for Robot Localization</h3>
+            <p class="text-gray-600 text-sm">April 2025</p>
+            <p class="text-lg text-gray-600">Explored the application of Kalman filters to improve robot localization accuracy in noisy environments. Implemented a Python-based filter using ROS, achieving a 10% reduction in position error. Includes code and simulation results.</p>
+            <a href="assets/files/kalman_filter_report.pdf" class="text-blue-500 hover:text-blue-700">[PDF]</a>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold">Recent Advances in 3D-Printed Microfluidics</h3>
+            <p class="text-gray-600 text-sm">March 2025</p>
+            <p class="text-lg text-gray-600">Summarized recent developments in 3D-printed microfluidics, focusing on quantum dot applications for temperature measurement. Builds on my contribution to Ch. 5 of a Ph.D. dissertation. Includes a literature review and future directions.</p>
+            <a href="assets/files/microfluidics_review.pdf" class="text-blue-500 hover:text-blue-700">[PDF]</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact Section -->
-  <section id="contact" class="py-20 bg-white">
+  <section id="contact" class="py-20 bg-blue-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-bold text-center mb-12">Contact Me</h2>
       <div class="max-w-lg mx-auto fade-in">
@@ -272,7 +334,7 @@
   </section>
 
   <!-- Resume Section -->
-  <section id="resume" class="py-20 bg-blue-50">
+  <section id="resume" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-bold text-center mb-12">Resume</h2>
       <div class="text-center fade-in">
