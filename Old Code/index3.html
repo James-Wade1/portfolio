@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Portfolio</title>
+  <link rel="stylesheet" href="assets\css\main1.css" />
+</head>
+<body>
+  <header>
+    <h1>Your Projects</h1>
+  </header>
+
+  <section id="projects">
+    <!-- Project Thumbnails -->
+    <div class="project" onclick="openModal('project1')">
+      <img src="project1_thumbnail.jpg" alt="Project 1" />
+    </div>
+    <div class="project" onclick="openModal('project2')">
+      <img src="project2_thumbnail.jpg" alt="Project 2" />
+    </div>
+    <!-- Add more projects as needed -->
+  </section>
+
+  <!-- Modal -->
+  <div id="projectModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modalContent">
+        <!-- Content will be injected here dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Your Name</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
