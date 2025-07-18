@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>James Wade</title>
+    <link rel="icon" type="image/png" href="assets/images/logos/Logo_white.dxf.png">
+    <meta name="description" content="PhD Applicant. I’m always seeking opportunities to tackle hard problems.">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;800&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;800&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    'hs': '580px',
+                    'xs': '500px',
+                    'sm': '640px',
+                    'md': '768px',
+                    'lg': '1024px',
+                    'xl': '1280px',
+                    '2xl': '1536px',
+                }
+            }
+        }
+    </script>
+
+</head>
+<body class="bg-[#ffffff] text-[#4a4a4a] min-h-screen flex flex-col">
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <section id="research-banner" class="pt-20">
+        <div class="relative w-full h-[60vh]">
+            <img class="w-full h-full object-cover object-top" src="assets/images/research/researching.jpg" alt="Research Banner">
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="bg-black bg-opacity-30 px-6 py-3 rounded">
+                    <h1 class="text-6xl font-bold text-white" style="text-shadow: 2px 2px  4px rgba(0, 0, 0, 0.4);">Research</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="pt-4 pb-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex-1">
+
+        <section id="current-research" class="py-12 text-left">
+            <h2 class="text-4xl font-bold text-[#404040] mb-6">Current Research</h2>
+
+            <div class="space-y-8">
+                <!-- Sandia -->
+                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6">
+                    <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
+                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="assets/images/logos/sandia.png" alt="Sandia Logo">
+                    </div>
+                    <div class="publication-content text-left w-full xs:w-3/4">
+                        <a target="_blank" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
+                            ROS 2 Autonomy Stack for Multi-Agent Systems | 2025 – present
+                        </a>
+                        <p class="text-base font-normal content-text mt-2 text-sm"><i>AutonomyNM | Sandia National Laboratories</i></p>
+                        <ul class="list-disc pl-5 mt-3 text-base">
+                            <li>Developing a ROS 2-based autonomy stack using SLAM Toolbox, Navigation2, and ROS 2 Control</li>
+                            <li>Leading verification testing and debugging for multi-agent systems in warehouse environments</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Workspace -->
+                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6">
+                    <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
+                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="assets/images/research/workspace.png" alt="Workspace Image">
+                    </div>
+                    <div class="publication-content text-left w-full xs:w-3/4">
+                        <a target="_blank" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
+                            Maximizing Robot Traversal Under Actuator Failure | 2025 – present
+                        </a>
+                        <p class="text-base font-normal content-text mt-2 text-sm"><i>CMR | Brigham Young University</i></p>
+                        <ul class="list-disc pl-5 mt-3 text-base">
+                            <li>Developing algorithms to maximize the workspace of multiply-redundant truss robots under actuator failure</li>
+                            <li>Simulating failure scenarios to validate robustness and ensure continued locomotion in both simulation and hardware</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- MAGICC Lab -->
+                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6">
+                    <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
+                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="assets/images/research/magicc_lab.png" alt="MAGICC Lab Image">
+                    </div>
+                    <div class="publication-content text-left w-full xs:w-3/4">
+                        <a target="_blank" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
+                            Multi-Agent Navigation in GPS-Denied Environments | 2024 – present
+                        </a>
+                        <p class="text-base font-normal content-text mt-2 text-sm"><i>MAGICC Lab | Brigham Young University</i></p>
+                        <ul class="list-disc pl-5 mt-3 text-base">
+                            <li>Investigating factor graph optimization and EKF-based controllers for multi-agent navigation</li>
+                            <li>Simulating and validating system performance using OpenVINS, ROS 2, and empirical flight data</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="past-research" class="py-12 text-left">
+            <h2 class="text-4xl font-bold text-[#404040] mb-6">Past Research</h2>
+
+            <div class="space-y-8">
+                <!-- Inflatable Structure for Moon -->
+                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6">
+                    <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
+                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="assets/images/research/nasa_robot.jpg" alt="NASA Robot Image">
+                    </div>
+                    <div class="publication-content text-left w-full xs:w-3/4">
+                        <a target="_blank" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
+                            Inflatable Structures for the Moon | 2023 – 2025
+                        </a>
+                        <p class="text-base font-normal content-text mt-2 text-sm"><i>CMR | Brigham Young University</i></p>
+                        <ul class="list-disc pl-5 mt-3 text-base">
+                            <li>Established research operations for a new lab, coordinating undergraduate-led development during the first year</li>
+                            <li>Led redesign of a soft, inflatable octahedral robot for lunar deployment, incorporating novel parent-child radio networking with error-checking protocols</li>
+                            <li>Selected as one of six national finalists in the 2024–2025 NASA BIG Idea Challenge on soft robotics for lunar exploration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- LLNL -->
+                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6">
+                    <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
+                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="assets/images/research/lidss_rafts.png" alt="LLNL Image">
+                    </div>
+                    <div class="publication-content text-left w-full xs:w-3/4">
+                        <a target="_blank" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
+                            Remote Control of Rafts for Nuclear Diagnostics | 2024
+                        </a>
+                        <p class="text-base font-normal content-text mt-2 text-sm"><i>LIDSS | Lawrence Livermore National Laboratories</i></p>
+                        <ul class="list-disc pl-5 mt-3 text-base">
+                            <li>Engineered STM32-based remote control system for commanding a fleet of test rafts in nuclear diagnostics applications <a href="https://str.llnl.gov/past-issues/june-2019/testing-missile-technology-high-seas" target="_blank">(LIDSS)</a></li>
+                            <li>Delivered end-to-end mechanical, electrical, and software systems, programming FreeRTOS and managing task scheduling</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Nerf Gun -->
+                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6">
+                    <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
+                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="assets/images/research/nerf_guns.jpg" alt="Nerf Gun Image">
+                    </div>
+                    <div class="publication-content text-left w-full xs:w-3/4">
+                        <a target="_blank" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
+                            World's Smallest Nerf Gun | 2023 – 2024
+                        </a>
+                        <p class="text-base font-normal content-text mt-2 text-sm"><i>Mark Rober & CMR | Brigham Young University</i></p>
+                        <ul class="list-disc pl-5 mt-3 text-base">
+                            <li>Collaborated with Mark Rober to develop the <a href="https://www.youtube.com/watch?v=9c2NqlUWZfo" target="_blank">world’s smallest Nerf gun</a> across five scales (72M+ views)</li>
+                            <li>Conducted 100+ design tests to analyze failure modes and drive mechanical optimization through weekly technical reporting</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- TEMP Lab -->
+                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6">
+                    <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
+                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="assets/images/research/microfluidic_device.png" alt="Microfluidic Device Image">
+                    </div>
+                    <div class="publication-content text-left w-full xs:w-3/4">
+                        <a target="_blank" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
+                            Advancing 3D Printed Microfluidics | 2023 – 2024
+                        </a>
+                        <p class="text-base font-normal content-text mt-2 text-sm"><i>TEMP Lab | Brigham Young University</i></p>
+                        <ul class="list-disc pl-5 mt-3 text-base">
+                            <li>Investigated quantum dots as a method for measuring temperature within microfluidic devices</li>
+                            <li>Calibrated fluorescence output of quantum dots to correlate with temperature in an in-house “lab-on-a-chip” device</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <!-- JavaScript to Load Header and Footer -->
+    <script>
+        async function loadComponent(placeholderId, filePath, callback) {
+            try {
+                const response = await fetch(filePath);
+                if (!response.ok) throw new Error(`Failed to load ${filePath}`);
+                const content = await response.text();
+                const placeholder = document.getElementById(placeholderId);
+                placeholder.innerHTML = content;
+
+                if (callback) callback();
+            } catch (error) {
+                console.error('Error loading component:', error);
+            }
+        }
+
+        // After loading header, attach burger menu listener
+        loadComponent('header-placeholder', 'header.html', () => {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            // Select both desktop and mobile menu links
+            const navLinks = document.querySelectorAll('.navigation a, #mobile-menu a');
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPage) {
+                    link.parentElement.classList.add('navigation__item--active');
+                }
+            });
+
+            // Setup burger menu toggle
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (menuToggle && mobileMenu) {
+                menuToggle.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        });
+
+        loadComponent('footer-placeholder', 'footer.html');
+    </script>
+</body>
+</html>
