@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>James Wade</title>
+    <link rel="icon" type="image/png" href="assets/images/logos/Logo_white.dxf.png">
+    <meta name="description" content="PhD Applicant. I’m always seeking opportunities to tackle hard problems.">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;800&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;800&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    'hs': '580px',
+                    'xs': '500px',
+                    'sm': '640px',
+                    'md': '768px',
+                    'lg': '1024px',
+                    'xl': '1280px',
+                    '2xl': '1536px',
+                }
+            }
+        }
+    </script>
+
+</head>
+<body class="bg-[#ffffff] text-[#4a4a4a] min-h-screen flex flex-col">
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <section id="research-banner" class="pt-20">
+        <div class="relative w-full h-[60vh]">
+            <img class="w-full h-full object-cover object-center" src="assets/images/projects/MiniMarsRover.jpg" alt="Research Banner">
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="bg-black bg-opacity-30 px-6 py-3 rounded text-center max-w-[90%]">
+                    <h1 class="text-6xl font-bold text-white text-center" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);">
+                        Technical Projects
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <!-- Main Content -->
+    <main class="pt-4 pb-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex-1">
+
+        <section id="current-research" class="py-12 text-left">
+            <h2 class="text-4xl font-bold text-[#404040] mb-6">Under Construction</h2>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <!-- JavaScript to Load Header and Footer -->
+    <script>
+        async function loadComponent(placeholderId, filePath, callback) {
+            try {
+                const response = await fetch(filePath);
+                if (!response.ok) throw new Error(`Failed to load ${filePath}`);
+                const content = await response.text();
+                const placeholder = document.getElementById(placeholderId);
+                placeholder.innerHTML = content;
+
+                if (callback) callback();
+            } catch (error) {
+                console.error('Error loading component:', error);
+            }
+        }
+
+        // After loading header, attach burger menu listener
+        loadComponent('header-placeholder', 'header.html', () => {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            // Select both desktop and mobile menu links
+            const navLinks = document.querySelectorAll('.navigation a, #mobile-menu a');
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPage) {
+                    link.parentElement.classList.add('navigation__item--active');
+                }
+            });
+
+            // Setup burger menu toggle
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (menuToggle && mobileMenu) {
+                menuToggle.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        });
+
+        loadComponent('footer-placeholder', 'footer.html');
+    </script>
+</body>
+</html>

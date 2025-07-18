@@ -1,465 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio of James Wade, PhD candidate in Mechanical Engineering, Robotics, and Computer Science">
-  <meta name="keywords" content="James Wade, mechanical engineering, robotics, computer science, PhD portfolio">
-  <meta name="author" content="James Wade">
-  <title>James Wade | Engineering Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* Smooth scroll behavior */
-    html {
-      scroll-behavior: smooth;
-    }
-    /* Fade-in animation for sections */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    /* Project card hover effect */
-    .project-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-    }
-    /* Profile picture container */
-    .profile-pic-container {
-      padding: 16px;
-      background-color: white;
-      border-radius: 9999px;
-    }
-    /* Skill badge styling */
-    .skill-badge {
-      transition: transform 0.2s ease;
-    }
-    .skill-badge:hover {
-      transform: scale(1.05);
-    }
-
-    @media (max-width: 1023px) {
-      #mobile-menu {
-        width: 100%;
-        text-align: center;
-      }
-      #mobile-menu a {
-        font-size: 1rem;
-        padding: 0.75rem 1rem;
-        display: block;
-      }
-    }
-
-  </style>
-</head>
-<body class="bg-blue-50 font-sans text-gray-800">
-  <!-- Navigation -->
-  <nav class="bg-white shadow-md fixed w-full z-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16">
-        <div class="flex-shrink-0 flex items-center">
-          <h1 class="text-2xl font-bold text-blue-500">James Wade | Portfolio</h1>
-        </div>
-        <!-- Desktop Menu -->
-        <div class="hidden lg:flex items-center space-x-.5">
-          <a href="#home" class="text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Home</a>
-          <a href="#about" class="text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">About</a>
-          <a href="#research" class="text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Research</a>
-          <a href="#publications" class="text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Publications</a>
-          <a href="#skills" class="text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Skills</a>
-          <a href="#education" class="text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Education</a>
-          <a href="#experience" class="text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Experience</a>
-          <a href="#contact" class="text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
-          <a href="#blog" class="text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Blog</a>
-          <a href="#resume" class="text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Resume</a>
-        </div>
-        <!-- Mobile Menu Button -->
-        <div class="lg:hidden flex items-center">
-          <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-500 focus:outline-none">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="lg:hidden hidden">
-      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-md">
-        <a href="#home" class="block text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Home</a>
-        <a href="#about" class="block text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">About</a>
-        <a href="#research" class="block text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Research</a>
-        <a href="#publications" class="block text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Publications</a>
-        <a href="#skills" class="block text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Skills</a>
-        <a href="#education" class="block text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Education</a>
-        <a href="#experience" class="block text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Experience</a>
-        <a href="#blog" class="block text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Blog</a>
-        <a href="#contact" class="block text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Contact</a>
-        <a href="#resume" class="block text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Resume</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-400 to-blue-600 text-white">
-    <div class="text-center fade-in">
-      <img src="/assets/images/headshot2.JPG" alt="Profile Picture" class="w-64 h-80 rounded-xl mx-auto mb-4 border-4 border-white">
-      <h1 class="text-5xl font-bold mb-2">James Wade</h1>
-      <p class="text-xl mb-6">PhD Applicant | Mechanical Engineering, Robotics & Computer Science</p>
-      <a href="#research" class="bg-white text-blue-500 px-6 py-3 rounded-full font-semibold hover:bg-blue-100 transition duration-300">Explore My Research</a>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-center mb-12">About Me</h2>
-      <div class="flex flex-col md:flex-row items-center fade-in">
-        <img src="assets/images/AboutMe.jpg" alt="James Wade in research setting" class="w-96 h-64 rounded-lg mb-6 md:mb-0 md:mr-8 object-cover">
-        <div>
-          <p class="text-lg leading-relaxed mb-4">
-            I’m a dedicated engineer applying for <strong>PhD programs</strong> in Mechanical Engineering with a focus on <strong>robotics, computer science, and controls</strong>. My research interests lie at the intersection of optimization, control systems, and autonomous systems, where I aim to develop innovative solutions for real-world challenges. With a <strong>B.S. in Mechanical Engineering</strong> and <strong>minor in Computer Science</strong>, I’ve gained hands-on experience in <strong>robotics labs</strong> and <strong>industry projects</strong> while still maintaining a <strong>4.0 GPA</strong>, fueling my passion for advancing technology through rigorous analysis and creative problem-solving.
-          </p>
-          <p class="text-lg leading-relaxed">
-            Outside the lab, I enjoy tinkering with personal projects, exploring advancements in AI, and sharing knowledge through technical writing. My goal is to contribute to cutting-edge research that pushes the boundaries of autonomous systems.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Research Projects Section -->
-  <section id="research" class="py-20 bg-blue-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-center mb-12">Research Projects</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Project 1 -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden fade-in">
-          <img src="assets/images/truss.jpg" alt="NASA Lunar Robot Project" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2">NASA BIG Idea Lunar Soft Robotic Truss</h3>
-            <p class="text-gray-600 mb-4">Designing a fault-tolerant trajectory tracking algorithm to maintain performance despite motor actuation failures.</p>
-            <button onclick="showModal('project1')" class="text-blue-500 hover:text-blue-700 font-semibold">Learn More</button>
-          </div>
-        </div>
-        <!-- Project 2 -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden fade-in">
-          <img src="assets/images/sandia-logo.png" alt="Sandia Intern" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2">Sandia Autonomy and AI Intern</h3>
-            <p class="text-gray-600 mb-4">An incoming Summer 2025 internship with the prestigious Autonomy NM group.</p>
-            <button onclick="showModal('project2')" class="text-blue-500 hover:text-blue-700 font-semibold">Learn More</button>
-          </div>
-        </div>
-        <!-- Project 3 -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden fade-in">
-          <img src="assets/images/LLNL.jpg" alt="LLNL Intern" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2">STM32-based Remote Controller</h3>
-            <p class="text-gray-600 mb-4">Designed an RC controller for managing a fleet of robotic rafts, involving integrated UI/UX design, embedded system design, and mechanical design.</p>
-            <button onclick="showModal('project3')" class="text-blue-500 hover:text-blue-700 font-semibold">Learn More</button>
-          </div>
-        </div>
-        <!-- Project 4 -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden fade-in">
-          <img src="assets/images/MarkandMe.jpg" alt="Mark Rover Project" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2">World's Smallest Nerf Gun</h3>
-            <p class="text-gray-600 mb-4">Worked with YouTuber Mark Rober to create <a class="text-blue-500 hover:text-blue-700" href="https://www.youtube.com/watch?v=9c2NqlUWZfo&vl=en">The World's Smallest Nerf Gun</a> (>70M views).</p>
-            <button onclick="showModal('project4')" class="text-blue-500 hover:text-blue-700 font-semibold">Learn More</button>
-          </div>
-        </div>
-        <!-- Project 5 -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden fade-in">
-          <img src="assets/images/rocket.jpg" alt="BYU Rocketry" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2">BYU's Experimental High-Power Rocketry Team</h3>
-            <p class="text-gray-600 mb-4">Designed the payload for the first-ever hybrid motor rocket at BYU, as part of BYU Rocketry.</p>
-            <button onclick="showModal('project5')" class="text-blue-500 hover:text-blue-700 font-semibold">Learn More</button>
-          </div>
-        </div>
-        <!-- Project 6 -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden fade-in">
-          <img src="assets/images/MiniMarsRover.jpg" alt="Mini Mars Rover" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2">Mini Mars Rover Line-Follower Competition</h3>
-            <p class="text-gray-600 mb-4">Led my team to a 4th place finish among 25 teams, using only bare metal programming, a PIC24 microcontroller, PD control, and lots of ingenuity.</p>
-            <button onclick="showModal('project6')" class="text-blue-500 hover:text-blue-700 font-semibold">Learn More</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Publications Section -->
-  <section id="publications" class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-center mb-12">Publications & Presentations</h2>
-      <div class="fade-in">
-        <div class="space-y-6">
-          <!-- <div>
-            <p class="text-lg"><strong>J. Wade</strong>, A. Smith (2024). "Enhancing Robot Localization with Least-Squares Optimization." <em>Proc. of IEEE ICRA</em>. <a href="#" class="text-blue-500 hover:text-blue-700">[PDF]</a></p>
-          </div> -->
-          <div>
-            <p class="text-lg"><strong>J. Wade</strong>, C. Paul, et al. (2024). "Untethered and Modular Inflatable Robot for Lunar Applications" Technical Paper presented as finalist in NASA BIG Idea Competition on Inflatable Systems for Lunar Applications , Las Vegas, NV. 
-              <a href="https://bigidea.nianet.org/wp-content/uploads/BYU-Technical-Paper.pdf" class="text-blue-500 hover:text-blue-700">[Paper]</a><a href="https://www.youtube.com/watch?v=MaCtM9sxlHA" class="text-blue-500 hover:text-blue-700">[Video]</a><a href="https://blueskies.nianet.org/wp-content/uploads/2024-Big-Idea_BYU-Presentation.pptx" class="text-blue-500 hover:text-blue-700">[Slides]</a></p>
-          </div>
-          <div>
-            <p class="text-lg"><strong>J. Wade</strong>, C. Paul, et al. (2024). "Untethered and Modular Inflatable Robot for Lunar Applications" Poster presented at the Lunar Surface Innovation Consortium (LSIC), Las Vegas, NV. <a href="assets/files/BYU_LSIC_Poster.pdf" class="text-blue-500 hover:text-blue-700">[Poster]</a></p>
-          </div>
-          <!-- <div>
-            <p class="text-lg"><strong>Wade, J., & Lee, B.</strong> (2022). "Adaptive Control Strategies for Robotic Systems." <em>Journal of Robotics</em>. <a href="#" class="text-blue-500 hover:text-blue-700">[DOI]</a></p>
-          </div> -->
-          <div>
-            <p class="text-lg">D. Sanchez, <strong>J. Wade</strong>, et al., (2024) "Development of Temperature Measurement and Control of 3D Printed Microfluidic Devices Towards Biomolecular Analysis," Ph.D. dissertation, Dept. Mech. Eng., Brigham Young University, Provo, UT, 2024. <a href="https://www.proquest.com/docview/3143979266" class="text-blue-500 hover:text-blue-700">[Online]</a>. Contributed to Ch. 5: "Advancing the Applications of 3D Printed Microfluidics: Utilizing Quantum Dots to Measure Internal Temperature."</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Technical Skills Section -->
-  <section id="skills" class="py-20 bg-blue-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-center mb-12">Technical Skills</h2>
-      <div class="fade-in">
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-          <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold text-center">Python</span>
-          <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold text-center">C++</span>
-          <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold text-center">ROS</span>
-          <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold text-center">MATLAB</span>
-          <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold text-center">SolidWorks</span>
-          <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold text-center">PyTorch</span>
-          <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold text-center">Optimization</span>
-          <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold text-center">Control Systems</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Education Section -->
-  <section id="education" class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-center mb-12">Education</h2>
-      <div class="fade-in">
-        <div class="space-y-6">
-          <div>
-            <h3 class="text-xl font-semibold">B.S. in Mechanical Engineering, Minor in Computer Science</h3>
-            <p class="text-lg">Brigham Young University, 2026</p>
-            <p class="text-gray-600">GPA: 4.0/4.0 | Dean’s List 2019-2026</p>
-            <p class="text-gray-600">Relevant Coursework: Robotics, Optimization Theory, Control Systems, Deep Learning, Dynamics of Mechanical Systems, Embedded Systems</p>
-            <!-- <p class="text-gray-600">Senior Thesis: "Optimizing Robot Localization with Least-Squares Methods" <a href="#" class="text-blue-500 hover:text-blue-700">[PDF]</a></p> -->
-            <!-- <p class="text-gray-600">Capstone: Mars Rover Team</p> -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Professional Experience Section -->
-  <section id="experience" class="py-20 bg-blue-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-center mb-12">Professional Experience</h2>
-      <div class="fade-in">
-        <div class="space-y-6">
-          <div id="Sandia_exp">
-            <h3 class="text-xl font-semibold">Autonomy Intern</h3>
-            <p class="text-lg">Sandia National Lab, Summer 2025</p>
-            <ul class="list-disc list-inside text-gray-600">
-              <li>Working with the Autonomy NM group</li>
-            </ul>
-          </div>
-          <div id="LLNL_exp">
-            <h3 class="text-xl font-semibold">Embedded Systems Intern</h3>
-            <p class="text-lg">Lawrence Livermore National Lab, Summer 2024</p>
-            <ul class="list-disc list-inside text-gray-600">
-              <li>Prototyped an STM32-based remote control to command a fleet of rafts designed for nuclear weapons testing (<a class="text-blue-500 hover:text-blue-700" href="https://str.llnl.gov/past-issues/june-2019/testing-missile-technology-high-seas">LIDSS Program</a>).</li>
-              <li>Utilized FreeRTOS for dyanmic task management, and developed driver for LVGL-based UI.</li>
-              <li>Developed and integrated mechanical, electrical, and software for entire project.</li>
-            </ul>
-          </div>
-          <div id="CMR_exp">
-            <h3 class="text-xl font-semibold">Robotics Research Assistant</h3>
-            <p class="text-lg">Compliant Mechanisms and Robotics Lab, Leadership, 2023–Current</p>
-            <ul class="list-disc list-inside text-gray-600">
-              <li>Recognized as finalists in NASA BIG Idea competition for inflatable structures in lunar applications.</li>
-              <li>Developed a redesign for a soft, inflatable octahedral robot for space applications, included an new radio structure for single-parent-to-multiple-children communication with error-checking.</li>
-              <li>Led a team of 15 students, and paper has been submitted to IEEE: Transactions on Robotics.</li>
-            </ul>
-          </div>
-          <div id="CMR_exp">
-            <h3 class="text-xl font-semibold">World's Smallest Nerf Gun Project</h3>
-            <p class="text-lg">Compliant Mechanisms and Robotics Lab, Summer 2023</p>
-            <ul class="list-disc list-inside text-gray-600">
-              <li>Worked with YouTuber Mark Rober to create <a class="text-blue-500 hover:text-blue-700" href="https://www.youtube.com/watch?v=9c2NqlUWZfo&vl=en">The World's Smallest Nerf Gun</a> (>70M views).</li>
-              <li>Performed 100+ tests to analyze failure modes and provided weekly reports to optimize the design.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Blog Section -->
-  <section id="blog" class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-center mb-12">Blog & Technical Notes</h2>
-      <div class="fade-in">
-        <div class="space-y-6">
-          <div>
-            <h3 class="text-xl font-semibold">Research Proposal for Utah NASA Space Grant Consortium</h3>
-            <p class="text-gray-600 text-sm">May 2025</p>
-            <p class="text-lg text-gray-600">Proposal for further research involving the NASA Truss Robot developed for the BIG Idea competition. Submitted to the Utah NASA Space Grant Consortium. Problem revolves around maximizing of the robot's workspace in the event of motor actuation failure. Methods include PGD (project gradient descent)-style travseral along workspace boundary.</p>
-            <a href="assets/files/Workspace_Paper_Proposal.pdf" class="text-blue-500 hover:text-blue-700">[PDF]</a>
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold">Literature Review of the Role of Robotics in Modern-Day Healthcare</h3>
-            <p class="text-gray-600 text-sm">November 2024</p>
-            <p class="text-lg text-gray-600">Summarized recent developments of robotics in healthcare for a general audience. Included analyzing the current state of medical robotic technology as well as public reception.</p>
-            <a href="assets/files/Literature_Review_Robotics_in_Healthcare.pdf" class="text-blue-500 hover:text-blue-700">[PDF]</a>
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold">ANSYS-Based Design Optimization of Scissor Jack</h3>
-            <p class="text-gray-600 text-sm">April 2024</p>
-            <p class="text-lg text-gray-600">Analyzed and optimized design for a hanging scissor jack mechanism. Design and loading requirements were met, and sufficient search of the design space had to be shown. ANSYS Mechanical was used to perform FEA on the most complex part, verifying that it would meet the loading requirements with optimized geometry.</p>
-            <a href="assets/files/Scissor_Jack_Analysis.pdf" class="text-blue-500 hover:text-blue-700">[PDF]</a>
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold">Reference Manual for PIC24</h3>
-            <p class="text-gray-600 text-sm">April 2024</p>
-            <p class="text-lg text-gray-600">Reference manual for bare metal programming on PIC24 microcontroller. This was distributed among my peers to help in quizzes and in developing their line-following robot.</p>
-            <a href="assets/files/PIC24_Cheatsheet.pdf" class="text-blue-500 hover:text-blue-700">[PDF]</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="py-20 bg-blue-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-center mb-12">Contact Me</h2>
-      <div class="max-w-lg mx-auto fade-in">
-        <p class="text-lg text-center mb-6">Interested in discussing research or collaboration? Reach out!</p>
-        <div class="space-y-4">
-          <p class="text-center"><strong>Email:</strong> note2jwade@gmail.com</p>
-          <p class="text-center"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/james-wade1/" class="text-blue-500 hover:text-blue-700">linkedin.com/in/james-wade1</a></p>
-          <p class="text-center"><strong>GitHub:</strong> <a href="https://github.com/James-Wade1" class="text-blue-500 hover:text-blue-700">github.com/James-Wade1</a></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Resume Section -->
-  <section id="resume" class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-center mb-12">Resume</h2>
-      <div class="text-center fade-in">
-        <p class="text-lg mb-6">Download my academic CV for a detailed overview of my qualifications.</p>
-        <a href="assets/files/James Wade - Resume.pdf" download class="bg-blue-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-600 transition duration-300">Download CV</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Modal for Project Details -->
-  <div id="projectModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
-    <div class="bg-white rounded-lg max-w-2xl w-full p-6">
-      <h3 id="modalTitle" class="text-2xl font-bold mb-4"></h3>
-      <img id="modalImage" src="" alt="Project Image" class="w-full h-64 object-cover mb-4 rounded">
-      <p id="modalDescription" class="text-gray-600 mb-4"></p>
-      <button onclick="closeModal()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Close</button>
-    </div>
-  </div>
-
-  <script>
-    // Smooth scroll for nav links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-        // Close mobile menu after clicking a link
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenu.classList.add('hidden');
-      });
-    });
-
-    // Toggle mobile menu
-    document.getElementById('mobile-menu-button').addEventListener('click', () => {
-      const mobileMenu = document.getElementById('mobile-menu');
-      mobileMenu.classList.toggle('hidden');
-    });
-
-    // Fade-in animation on scroll
-    const fadeIns = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>James Wade</title>
+    <link rel="icon" type="image/png" href="assets/images/logos/Logo_white.dxf.png">
+    <meta name="description" content="PhD Applicant. I’m always seeking opportunities to tackle hard problems.">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;800&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;800&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    'hs': '580px',
+                    'xs': '500px',
+                    'sm': '640px',
+                    'md': '768px',
+                    'lg': '1024px',
+                    'xl': '1280px',
+                    '2xl': '1536px',
+                }
+            }
         }
-      });
-    }, { threshold: 0.1 });
-    fadeIns.forEach(element => observer.observe(element));
+    </script>
+</head>
+<body class="bg-[#ffffff] text-[#4a4a4a] min-h-screen flex flex-col">
+    <!-- Header -->
+    <div id="header-placeholder"></div>
 
-    // Project modal data
-    const projectData = {
-      project1: {
-        title: 'NASA BIG Idea Lunar Soft Robotic Truss',
-        image: 'assets/images/truss.jpg',
-        description: 'Designed a fault-tolerant trajectory tracking algorithm for a soft robotic truss intended for lunar applications. Led algorithm development using Matlab, achieving robust performance despite motor actuation failures. Also designed the radio structure which allows us to efficiently transmit movement commands throughout the entire truss, actuating motors in the process. Recognized as finalists in the NASA BIG Idea Competition 2024. Published as a technical paper and poster at LSIC. Technologies: Python, Controls, Optimization.'
-      },
-      project2: {
-        title: 'Sandia Autonomy and AI Intern',
-        image: 'assets/images/sandia-logo.png',
-        description: 'Accepted for a Summer 2025 internship with Sandia National Laboratories’ Autonomy NM group. Will focus on advancing AI and autonomy for robotics applications, leveraging skills in Python, PyTorch, and control systems. Preparatory work includes studying reinforcement learning for navigation. Technologies: Python, PyTorch, ROS.'
-      },
-      project3: {
-        title: 'STM32-based Remote Controller',
-        image: 'assets/images/LLNL.jpg',
-        description: 'Developed an STM32-based remote controller for a fleet of robotic rafts in the LIDSS Program at Lawrence Livermore National Lab (Summer 2024). Integrated UI/UX with LVGL, embedded systems with FreeRTOS, and mechanical design using SolidWorks. Achieved reliable control for nuclear weapons testing applications. Technologies: C++, FreeRTOS, SolidWorks, LVGL.'
-      },
-      project4: {
-        title: 'World\'s Smallest Nerf Gun',
-        image: 'assets/images/MarkandMe.jpg',
-        description: 'Collaborated with YouTuber Mark Rober to design and test the World’s Smallest Nerf Gun, featured in a video with over 70M views (Summer 2023). Conducted 100+ failure mode tests, optimized design using SolidWorks, and provided weekly reports. Demonstrated precision engineering and teamwork. Technologies: SolidWorks, Python.'
-      },
-      project5: {
-        title: 'BYU\'s Experimental High-Power Rocketry Team',
-        image: 'assets/images/rocket.jpg',
-        description: 'Designed the payload for BYU’s first hybrid motor rocket as part of the Experimental High-Power Rocketry Team. Developed embedded systems for control, ensuring reliable performance under extreme conditions. Enhanced skills in C++ and system integration. Technologies: C++, Embedded Systems.'
-      },
-      project6: {
-        title: 'Mini Mars Rover Line-Follower Competition',
-        image: 'assets/images/MiniMarsRover.jpg',
-        description: 'Led a team to a 4th place finish among 25 teams in a line-follower competition, using a PIC24 microcontroller and bare metal programming. Implemented PD control for precise navigation, achieving high accuracy with limited resources. Demonstrated leadership and ingenuity. Technologies: C, PIC24, Control Systems.'
-      }
-    };
+    <!-- Main Content -->
+    <main class="pt-32 pb-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex-1">
+        <!-- About Section -->
+        <section id="about" class="text-center">
+            <div class="flex justify-center mb-6">
+                <div class="cardrectangle">
+                    <img src="/assets/images/headshot2.JPG" alt="Profile Image" class="w-80 h-80">
+                </div>
+            </div>
+            <h1 class="title3">James Wade</h1>
+            <hr class="hor123">
+            <p class="title2">PhD Applicant, Robotics and Mechanical Engineering</p>
+            <p class="text-xl font-normal content-text">
+              Hi, I’m James Wade, a rising senior in the <a href="#" class="text-[#0d77c4] hover:underline">Mechanical Engineering</a> program at Brigham Young University with a minor in <a href="#" class="text-[#0d77c4] hover:underline">Computer Science</a>. I focus on building intelligent robotics systems that combine real-world reliability with adaptive, modern algorithms.</p>
+            <p class="text-xl font-normal mt-4 content-text">I am currently preparing to pursue a <a href="#" class="text-[#0d77c4] hover:underline">PhD in robotics</a>, with a focus on autonomy, path planning, and controls. My research interests lie at the intersection of <a href="#" class="text-[#0d77c4] hover:underline">optimization, control systems, and autonomous systems</a>, where I aim to develop innovative solutions for real-world challenges.</p>
+        </section>
+    </main>
 
-    // Show modal
-    function showModal(projectId) {
-      const modal = document.getElementById('projectModal');
-      const modalTitle = document.getElementById('modalTitle');
-      const modalImage = document.getElementById('modalImage');
-      const modalDescription = document.getElementById('modalDescription');
-      const data = projectData[projectId];
-      modalTitle.textContent = data.title;
-      modalImage.src = data.image;
-      modalDescription.textContent = data.description;
-      modal.classList.remove('hidden');
-    }
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <!-- JavaScript to Load Header and Footer -->
+    <script>
+        async function loadComponent(placeholderId, filePath, callback) {
+            try {
+                const response = await fetch(filePath);
+                if (!response.ok) throw new Error(`Failed to load ${filePath}`);
+                const content = await response.text();
+                const placeholder = document.getElementById(placeholderId);
+                placeholder.innerHTML = content;
 
-    // Close modal
-    function closeModal() {
-      document.getElementById('projectModal').classList.add('hidden');
-    }
-  </script>
+                if (callback) callback();
+            } catch (error) {
+                console.error('Error loading component:', error);
+            }
+        }
+
+        // After loading header, attach burger menu listener
+        loadComponent('header-placeholder', 'header.html', () => {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            // Select both desktop and mobile menu links
+            const navLinks = document.querySelectorAll('.navigation a, #mobile-menu a');
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPage) {
+                    link.parentElement.classList.add('navigation__item--active');
+                }
+            });
+
+            // Setup burger menu toggle
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (menuToggle && mobileMenu) {
+                menuToggle.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        });
+
+        loadComponent('footer-placeholder', 'footer.html');
+    </script>
+
 </body>
 </html>
