@@ -46,7 +46,7 @@
             <p class="title2">PhD Applicant — Robotics, Controls, and Mechanical Engineering</p>
             <p class="text-xl font-normal content-text">
               <!-- Hi, I’m James Wade, a rising senior in the <a  class="text-[#0d77c4] hover:underline">Mechanical Engineering</a> program at Brigham Young University with a minor in <a  class="text-[#0d77c4] hover:underline">Computer Science</a>. I focus on building intelligent robotics systems that combine real-world reliability with adaptive, modern algorithms. -->
-               As a rising senior in the <a  class="text-[#0d77c4] hover:underline">Mechnaical Engineering</a> program at <a  class="text-[#0d77c4] hover:underline">Brigham Young University</a> with minors in <a  class="text-[#0d77c4] hover:underline">Computer Science</a> and <a  class="text-[#0d77c4] hover:underline">Mathematics</a>, I focus on building intelligent robotic systems that combine real world reliability with adaptive, modern algorithms.
+               As a rising senior in the <a  class="text-[#0d77c4] hover:underline">Mechanical Engineering</a> program at <a  class="text-[#0d77c4] hover:underline">Brigham Young University</a> with minors in <a  class="text-[#0d77c4] hover:underline">Computer Science</a> and <a  class="text-[#0d77c4] hover:underline">Mathematics</a>, I focus on building intelligent robotic systems that combine real world reliability with adaptive, modern algorithms.
             </p>
             <p class="text-xl font-normal mt-4 content-text">I am currently preparing to pursue a <a  class="text-[#0d77c4] hover:underline">PhD in robotics</a>, with a focus on autonomy, path planning, and controls. My research interests lie at the intersection of <a  class="text-[#0d77c4] hover:underline">optimization, control systems, and autonomous systems</a>, where I aim to develop innovative solutions for real-world challenges.</p>
         </section>
@@ -76,8 +76,10 @@
             // Select both desktop and mobile menu links
             const navLinks = document.querySelectorAll('.navigation a, #mobile-menu a');
             navLinks.forEach(link => {
-                const href = link.getAttribute('href');
-                if (href === currentPage) {
+                var href = link.getAttribute('href') || '';
+                const normalizedHref = href.replace(/^\/+/, '');
+                const normalizedPage = currentPage.replace(/^\/+/, '');
+                if (normalizedHref === normalizedPage) {
                     link.parentElement.classList.add('navigation__item--active');
                 }
             });
