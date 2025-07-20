@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;800&family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -33,18 +34,156 @@
         <section class="py-12 text-left">
             <h1 class="text-4xl font-bold text-[#404040] mb-6">Medical Pressure Mat</h1>
             <p class="text-base font-normal content-text mt-2 text-sm"><i>Global Engineering Outreach | Brigham Young University | 2023 – 2024</i></p>
-            <img class="w-full h-auto my-6" src="/assets/images/projects/pressure_mat/pressure_mat_system.jpg" alt="Pressure Mat System">
-            <p class="text-base mb-4">As part of BYU's <a href="https://geo.byu.edu/">Global Engineering Outreach (GEO)</a> program, another student and I created a low-cost alternative </p>
-            <h2 class="text-2xl font-bold text-[#404040] mt-8 mb-4">Technical Details</h2>
-            <ul class="list-disc pl-5 text-base">
-                <li>Designed CAD models for miniature components using SolidWorks.</li>
-                <li>Conducted 100+ tests to analyze failure modes and improve reliability.</li>
-                <li>Collaborated with a team to iterate designs based on weekly technical reports.</li>
-            </ul>
-            <h2 class="text-2xl font-bold text-[#404040] mt-8 mb-4">Media</h2>
-            <p><a href="https://www.youtube.com/watch?v=9c2NqlUWZfo" target="_blank" class="text-[#0d77c4] hover:underline">Watch the YouTube video</a></p>
-            <iframe class="w-full h-96 my-6" src="https://www.youtube.com/embed/9c2NqlUWZfo" frameborder="0" allowfullscreen></iframe>
+            <figure class="my-6">
+                <img class="w-full h-auto" src="/assets/images/projects/pressure_mat/pressure_mat_system.jpg" alt="Low-cost wheelchair pressure mat prototype with GUI display.">
+                <figcaption class="text-sm text-left text-gray-600 italic mt-2">
+                    Figure 1: Completed low-cost pressure mat prototype, integrating hardware, electronics, and software for real-time pressure visualization in wheelchair seating applications.
+                </figcaption>
+            </figure>
+
+            <p class="text-base mb-4">
+                As part of BYU's <a href="https://geo.byu.edu/" class="text-[#0d77c4] hover:underline">
+                    Global Engineering Outreach (GEO)</a> program, a fellow student and I partnered with a non-profit wheelchair clinic in Ecuador to design an affordable medical pressure mat, as shown in Figure 1. These mats are critical for prescribing appropriate seat cushions to high-risk users — such as those at risk of developing pressure sores. 
+                    Commercial systems typically cost between $1,000 and $10,000, far beyond the clinic's budget. Our prototype reduced that cost to just $50 — a 20x to 200x price reduction. We then traveled to Ecuador to test the prototype in-situ and gathered feedback for future improvements.
+            </p>
+            <p>
+                This two-person project was developed alongside a separate three-person effort focused on creating a low-cost wheelchair cushion for the same clinic. Our work has since been continued by subsequent GEO teams as a standalone project, building on the foundation we established.
+            </p>
+
+            <div class="technical-content">
+                <h2 class="text-2xl font-bold text-[#404040] mt-8 mb-4">Technical Details</h2>
+                <h3 class="text-xl font-bold text-[#404040] mt-8 mb-4">Hardware Design</h3>
+                <p class="text-base mb-4">
+                    Our pressure mat design was inspired by the work of Nathan Day and Dr. Marc Killpack on flexible force sensors [<span style="font-weight: bold;">1</span>]. 
+                    We initially experimented with readily available hobbyist force-sensitive resistors (FSRs), such as 
+                    <a href="https://www.sparkfun.com/force-sensitive-resistor-square.html?gad_source=1&gad_campaignid=17479024039&gbraid=0AAAAADsj4EQgETQ4dhVmCAtIUckf4OeVC&gclid=Cj0KCQjwhO3DBhDkARIsANxrhTqz9dfh7tdG8vfa7__1flLvEK7cq2TFBOUdeurM74qOvDhaMh213SQaAqmhEALw_wcB" class="text-[#0d77c4] hover:underline">
+                        these</a>, but quickly realized that their individual size and wiring complexity would make large-scale sensing impractical.
+                    <br><br>
+                    Instead, we adopted a resistive fabric called 
+                    <a class="text-[#0d77c4] hover:underline" href="https://www.digikey.com/en/products/detail/adafruit-industries-llc/1361/7241456?gad_source=1&gad_campaignid=20228387720&gbraid=0AAAAADrbLlgvd43Pgjgp8Pr4rVSD6OAKc&gclid=Cj0KCQjwhO3DBhDkARIsANxrhTpOHGWiXQikMZLMLwJr4WP_nV8rsdNF8xb_efN5Nue8kBjngZJtiOkaArI7EALw_wcB&gclsrc=aw.ds">
+                        Velostat</a>, whose local resistance decreases with applied force. 
+                    By applying a voltage to a known row and measuring the voltage drop at a specific column, we can calculate the instantaneous resistance at that point. 
+                    With proper calibration, this resistance is translated into localized force measurements. 
+                    Scanning across the matrix produces a pressure map at discrete resolution.
+
+                    <br><br>
+                    Figure 2 illustrates the internal construction of the pressure mat. 
+                    A layer of Velostat is sandwiched between two pieces of water-resistant fabric to provide moisture protection. 
+                    Strips of copper tape are applied to the inner surfaces of both fabric layers, arranged in perpendicular rows and columns. 
+                    When assembled, these strips form a grid pattern across the Velostat. 
+                    By applying voltage to a selected row and grounding a specific column, the resistance at their intersection can be measured. 
+                    This principle is demonstrated with a miniature prototype in Figure 3.
+                    <br><br>
+                    Figure 4 shows the two inner layers of our full-scale prototype, each incorporating 16 strips of copper tape, providing a sensing resolution of 256 distinct measurement points.
+
+                </p>
+
+                <figure class="my-6">
+                    <img class="w-full h-auto" src="/assets/images/projects/pressure_mat/New Wiring Diagram.png" alt="Pressure mat internal assembly diagram showing Velostat layer and copper tape grid.">
+                    <figcaption class="text-sm text-left text-gray-600 italic mt-2">
+                        Figure 2: Schematic of the pressure mat’s internal assembly. Velostat sensing layer is sandwiched between two water-resistant fabric layers with copper tape arranged in perpendicular rows and columns.
+                    </figcaption>
+                </figure>
+
+                <figure class="my-6">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <div class="flex-1">
+                            <img class="w-full h-auto" src="/assets/images/projects/pressure_mat/3x3_closed.jpg" alt="Miniature Pressure Mat Prototype Closed">
+                            <p class="text-sm text-center text-gray-600 italic mt-2">(a) Miniature pressure mat prototype, fully assembled.</p>
+                        </div>
+                        <div class="flex-1">
+                            <img class="w-full h-auto" src="/assets/images/projects/pressure_mat/3x3_open.jpg" alt="Miniature Pressure Mat Prototype Open">
+                            <p class="text-sm text-center text-gray-600 italic mt-2">(b) Prototype opened to reveal copper tape grid applied to inner surfaces.</p>
+                        </div>
+                    </div>
+                    <figcaption class="text-sm text-center text-gray-600 italic mt-4">
+                        Figure 3: Miniature prototype of the pressure mat: (a) fully assembled; (b) opened to show the internal copper tape matrix.
+                    </figcaption>
+                </figure>
+
+                <figure class="my-6">
+                    <img class="w-full h-auto" src="/assets/images/projects/pressure_mat/16x16_open.jpg" alt="Full-Scale Pressure Mat Layers">
+                    <figcaption class="text-sm text-left text-gray-600 italic mt-2">
+                        Figure 4: Full-scale prototype showing both inner layers, each with 16 copper tape strips. Their intersections form a 16×16 matrix for 256 distinct sensing locations.
+                    </figcaption>
+                </figure>
+
+                <h3 class="text-xl font-bold text-[#404040] mt-8 mb-4">Electrical Design</h3>
+                <p class="text-base mb-4">
+                    Figure 5 shows the assembled protoboard of our system. Selective voltage application to individual rows and columns was achieved using a demultiplexer-multiplexer (demux-mux) pair. The demultiplexer directs a single input signal to one of many possible outputs, while the multiplexer selects one of many inputs to pass through to a single output channel.
+                    <br><br>
+                    During development, we encountered issues with parasitic voltage draw and unintended current flow through demux channels that were intended to remain inactive. To resolve this, we integrated voltage buffer circuits to electrically isolate the demux outputs from the rest of the system, ensuring accurate voltage control across the sensor matrix.
+                    <br><br>
+                    Once testing the resistance at each location, the Arduino transferred this data to the base station computer running the pressure mat GUI (Graphical User Interface) over serial.
+                </p>
+
+                <figure class="my-6">
+                    <img class="w-full h-auto" src="/assets/images/projects/pressure_mat/Protoboard.jpg" alt="Pressure Mat Electronics Protoboard">
+                    <figcaption class="text-sm text-left text-gray-600 italic mt-2">
+                        Figure 5: Electronics protoboard comprising Arduino microcontroller, demux-mux circuitry, and voltage buffer circuits for controlling the pressure sensing grid.
+                    </figcaption>
+                </figure>
+
+                <h3 class="text-xl font-bold text-[#404040] mt-8 mb-4">Software Design</h3>
+                <p class="text-base mb-4">
+                    After receiving resistance data from the Arduino, the base station's role was to convert these values into estimated forces using a pre-determined calibration curve. Figure 6 shows the first and second versions of the Graphical User Interface (GUI) developed to visualize this data.
+                    <br><br>
+                    Due to project time constraints, my coworker and I were unable to complete the calibration process needed to directly correlate resistance to applied force. This task was passed on to future teams. In the interim, the GUI displayed raw resistance values, which still served as a relative indicator of applied pressure.
+                </p>
+
+
+                <figure class="my-6">
+                    <div class="flex flex-col sm:flex-row gap-4 items-start">
+                        <div class="flex-1 flex flex-col">
+                            <img class="w-full h-auto" src="/assets/images/projects/pressure_mat/gui_16x16_simulated_data.png" alt="Pressure Mapping GUI Version 1">
+                            <p class="text-sm text-center text-gray-600 italic mt-2 flex-grow">(a) Initial pressure mapping GUI prototype.</p>
+                        </div>
+                        <div class="flex-1 flex flex-col">
+                            <img class="w-full h-auto" src="/assets/images/projects/pressure_mat/gui_v2.png" alt="Pressure Mapping GUI Version 2">
+                            <p class="text-sm text-center text-gray-600 italic mt-2 flex-grow">(b) Updated GUI version with improved responsiveness.</p>
+                        </div>
+                    </div>
+                    <figcaption class="text-sm text-center text-gray-600 italic mt-4">
+                        Figure 6: Graphical User Interface (GUI) developed for real-time visualization of pressure data: (a) Version 1 prototype and (b) improved Version 2.
+                    </figcaption>
+                </figure>
+
+            </div>
+
+            <h2 class="text-2xl font-bold text-[#404040] mt-8 mb-4">Performance</h2>
+            <p class="text-base mb-4">
+                The video below shows the pressure mat and accompanying GUI during field testing in Ecuador. This demonstrates the first version of the GUI; a second version was developed later that summer to address timing delays that occurred when the GUI window was enlarged.
+            </p>
+            <video class="w-full h-auto my-6" controls>
+                <source src="/assets/images/projects/pressure_mat/working_prototype.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <h2 class="text-2xl font-bold text-[#404040] mt-8 mb-4">Summary</h2>
+            <p class="text-base mb-4">
+                In summary, my team and I successfully delivered a working prototype of a medical pressure mat at 20x to 200x less the cost — providing invaluable support to patient care at this remote non-profit clinic. This project was an incredible opportunity to directly impact lives, while honing sound product development practices and engineering skills.
+            </p>
+
+            <figure class="my-6 max-w-md mx-auto text-center">
+                <img class="w-full h-auto" src="/assets/images/projects/pressure_mat/team_photo.jpg" alt="Team Photo in Ecuador">
+                <figcaption class="text-sm text-gray-600 italic mt-2">
+                    Figure 7: BYU student team and Ecuadorian clinicians during field deployment of the pressure mat system.
+                </figcaption>
+            </figure>
+
+
+            <h2 class="text-2xl font-bold text-[#404040] mt-8 mb-4">References</h2>
+            <ol class="list-decimal list-inside text-base mb-4" style="list-style-type: none; counter-reset: ref;">
+                <li style="counter-increment: ref; margin-bottom: 0.5em;">
+                    [<span style="font-weight: bold;">1</span>] Nathan Day et al. <i>“Scalable Fabric Tactile Sensor Arrays for Soft Bodies”.</i> 
+                    <a href="https://doi.org/10.1088/1361-6439/aab221" target="_blank" class="text-[#0d77c4] hover:underline">
+                        Journal of Micromechanics and Microengineering</a>, vol. 28, Feb. 2018. DOI: 10.1088/1361-6439/aab221.
+                </li>
+            </ol>
+
         </section>
+
+
     </main>
 
     <div id="footer-placeholder"></div>
