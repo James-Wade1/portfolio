@@ -26,6 +26,7 @@
             }
         }
     </script>
+    <script src="/script.js"></script>
 </head>
 <body class="bg-[#ffffff] text-[#4a4a4a] min-h-screen flex flex-col">
     <div id="header-placeholder"></div>
@@ -199,21 +200,5 @@
 
     <div id="footer-placeholder"></div>
 
-    <script>
-        async function loadComponent(placeholderId, filePath) {
-            try {
-                const response = await fetch(filePath);
-                if (!response.ok) throw new Error(`Failed to load ${filePath}`);
-                const content = await response.text();
-                const placeholder = document.getElementById(placeholderId);
-                placeholder.innerHTML = content;
-            } catch (error) {
-                console.error('Error loading component:', error);
-            }
-        }
-
-        loadComponent('header-placeholder', '../header.html');
-        loadComponent('footer-placeholder', '../footer.html');
-    </script>
 </body>
 </html>
