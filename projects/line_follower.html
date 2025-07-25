@@ -56,7 +56,7 @@
             <p class="text-base mb-4">
                 The entire course had to be completed within 60 seconds, demanding a balance of speed, precision, and autonomy. Our robot earned a perfect score for task completion and placed 4th overall out of 30 teams—edged out of a podium finish by just a few seconds on the clock.
                 <br><br>
-                I served as the team lead, lead programmer, and principal electrical designer on this four-person project.
+                I served as the team lead, lead programmer, and principal electrical designer on this 10-week four-person project.
             </p>
 
             
@@ -87,7 +87,7 @@
                     <li><strong>A two-bar code</strong> indicates the <strong>ball pickup</strong> task: the vehicle must leave the track, pick up a ball, and then return to continue along the track while carrying it.</li>
                     <li><strong>A three-bar code</strong> indicates the <strong>ball drop-off</strong> task: the robot must sense the color of the ball (black or white) and place it into the appropriate bin.</li>
                     <li><strong>A four-bar code</strong> indicates the <strong>canyon navigation</strong> task: the track disappears, and the robot must use its sensors to detect the surrounding walls, stopping and turning as needed.</li>
-                    <li>At any point along the track, the robot must be ready to detect an IR transmitter from the side. When detected, the robot must diverge from the track, press a button, and then return to the path. A point is lost for every second beyond 30 seconds that the button remains unpressed.</li>
+                    <li>At any point along the track, the robot must be ready to detect an IR transmitter from the side. When detected, the robot must diverge from the track, press a button, and then return to the path. One point is deducted for every second the button remains unpressed after 30 seconds.</li>
                     <li>To finish, the robot must return to its starting position and shine a laser toward an overhead IR transmitter suspended at an unknown angle.</li>
                 </ul>
 
@@ -106,9 +106,9 @@
                 <h3 class="text-xl font-bold text-[#404040] mt-8 mb-4">Mechanical Design</h3>
                 
                 <p class="text-base mb-4">
-                    We chose to use a double-decker design for our robot chasis, with plenty of holes for wire management. We chose to laser cut this shape out of particle board wood, knowing that it was an easy material to prototype with. 
+                    We chose to use a double-decker design for our robot chassis, with plenty of holes for wire management. We chose to laser cut this shape out of particleboard wood, knowing that it was an easy material to prototype with. 
                     This design gave us just enough room to squeeze all of the necessary electronics in while still giving it a very organized design. The larger wheelbase also allowed it to turn quicker, vital for the speeds we were hoping to attain.
-                    A casterwheel was used up front to allow differential drive from the back.
+                    A caster wheel was used up front to allow differential drive from the back.
                     <br><br>
                     Plus, we wanted our eventual design to look like a space shuttle for the cool factor, hence the reason for a tapering design from back to front!
                 </p>
@@ -116,26 +116,26 @@
                 <figure class="my-6">
                     <img class="w-full h-auto" src="/assets/images/projects/line_follower/double_decker.png" alt="The double-decker design of our wooden chasis">
                     <figcaption class="text-sm text-left text-gray-600 italic mt-2">
-                        Figure 2: The double-decker design of our wooden chasis using laser-cut particle board.
+                        Figure 2: The double-decker design of our wooden chassis using laser-cut particleboard.
                     </figcaption>
                 </figure>
 
                 <h3 class="text-xl font-bold text-[#404040] mt-8 mb-4">Electrical Design</h3>
                 <p class="text-base mb-4">
-                    An overview of our electrical components, such as the Bill of Materials and a wiring diagram, can be viewed <a href="https://doi.org/10.1088/1361-6439/aab221" target="_blank" class="text-[#0d77c4] hover:underline">here</a>.
+                    An overview of our electrical components, such as the Bill of Materials and a wiring diagram, can be viewed <a href="/assets/files/projects/line_follower/Mechaminds - Milestone 4.pdf" target="_blank" class="text-[#0d77c4] hover:underline">here</a>.
                 </p>
 
                 <h4 class="text-lg font-bold text-[#404040] mt-8 mb-4">Microcontroller</h4>
                 <p class="text-base mb-4">
-                    All teams were required to use a PIC24F16KA301 microcontroller without any built-in breakout board or helpful HAL (hardware abstraction layer) — the purpose of the competition was to develop our bare metal programming skills C/C++.
-                    This microcontroller has 20 pins in total, with only a handful of analog input pins and three pwms pins. Thus, pin management was essential to a well-functioning robot.
+                    All teams were required to use a PIC24F16KA301 microcontroller without any built-in breakout board or helpful HAL (hardware abstraction layer) — the purpose of the competition was to develop our bare metal programming skills in C/C++.
+                    This microcontroller has 20 pins in total, with only a handful of analog input pins and three PWM pins. Thus, pin management was essential to a well-functioning robot.
                 </p>
 
                 <h4 class="text-lg font-bold text-[#404040] mt-8 mb-4">Propulsion</h4>
                 <p class="text-base mb-4">
-                    For propulsion, we chose to use two NEMA 17 stepper motors and two Polulo MP6500 motor drivers. Stepper motors allowed us to run open-loop position and velocity control. This was an important consideration as our PIC24 microcontroller had a limited number of pins, and typically motor encoders would have required more pins than we had our disposal.
+                    For propulsion, we chose to use two NEMA 17 stepper motors and two Polulo MP6500 motor drivers. Stepper motors allowed us to run open-loop position and velocity control. This was an important consideration as our PIC24 microcontroller had a limited number of pins, and typically motor encoders would have required more pins than we had at our disposal.
                     And through the use of microstepping, we were able to achieve fairly accurate position control.
-                    To better interface the motor driver into the system, I designed a custom PCB breakout board for the motor driver, as shown in Figure 3. This faciliated easy switching between microstepping modes and current limit modes through the use of jumpers.
+                    To better interface the motor driver into the system, I designed a custom PCB breakout board for the motor driver, as shown in Figure 3. This facilitated easy switching between microstepping modes and current limit modes through the use of jumpers.
                 </p>
 
                 <figure class="my-6">
@@ -146,7 +146,7 @@
                         </div>
                         <div class="flex-1">
                             <img class="w-full h-auto" src="/assets/images/projects/line_follower/electronics.png" alt="The motor driver and ultrasonic range sensor">
-                            <p class="text-sm text-center text-gray-600 italic mt-2">(b) The motor drievr board and ultrasonic range sensor on the robot</p>
+                            <p class="text-sm text-center text-gray-600 italic mt-2">(b) The motor driver board and ultrasonic range sensor on the robot</p>
                         </div>
                     </div>
                     <figcaption class="text-sm text-center text-gray-600 italic mt-4">
@@ -189,7 +189,7 @@
                 <h4 class="text-lg font-bold text-[#404040] mt-8 mb-4">Wall Detection and Collision Avoidance</h4>
                 <p class="text-base mb-4">
                     For canyon navigation, we used an IR proximity sensor mounted at the front of the vehicle to detect obstacles, as shown in Figure 5a. 
-                    This sensor output a digital high signal when an object was detected within its adjustable detection range, which was configured using 
+                    This sensor outputs a digital high signal when an object is detected within its adjustable detection range, which was configured using 
                     the onboard potentiometer.
                     <br><br>
                     To determine the correct turning direction during the canyon navigation task, an ultrasonic range sensor was installed on the 
@@ -217,27 +217,48 @@
 
                 <h4 class="text-lg font-bold text-[#404040] mt-8 mb-4">Ball Pick Up, Ball Drop Off, and Directing the Laser</h4>
                 <p class="text-base mb-4">
-                    For the ball pick up and drop off, we used a servo motor attached to a funnel-shaped pickup bed for stooring the ball while moving. The bottom of this funnel also had another QRD sensor which would tell us the color of the ball for the drop off task.
+                    For the ball pick-up and drop-off, we used a servo motor attached to a funnel-shaped pickup bed for storing the ball while moving. The bottom of this funnel also had another QRD sensor, which would tell us the color of the ball for the drop-off task.
                     <br><br>
-                    For the laser pointer task at the end of the course, we had a laser pointer and a IR receiver placed next to each other on the pickup bed. This allowed us to use the same servo motor for the laser pointing task as we did for the ball tasks. 
+                    For the laser pointer task at the end of the course, we had a laser pointer and an IR receiver placed next to each other on the pickup bed. This allowed us to use the same servo motor for the laser pointing task as we did for the ball tasks. 
                     The servo would sweep about 70 degrees when trying to detect the IR emitter above the robot, and then return to the spot where it found the highest signal.
-                    <br><br>
-                    This system is shown in Figure 6.
+                    These systems are shown in Figure 6.
                 </p>
 
                 <figure class="my-6">
-                    <img class="w-full h-auto" src="/assets/images/projects/line_follower/pickup_bed.png" alt="The double-decker design of our wooden chasis">
+                    <img class="w-full h-auto" src="/assets/images/projects/line_follower/pickup_bed.png" alt="The pickup bed for storing the ball and directing the laser pointer">
                     <figcaption class="text-sm text-left text-gray-600 italic mt-2">
                         Figure 6: The pickup bed for the ping pong ball and the IR detector/laser pointer pair for the final task
                     </figcaption>
                 </figure>
 
-                <h4 class="text-lg font-bold text-[#404040] mt-8 mb-4">IR Detecton and Button Pushing</h4>
+                <h4 class="text-lg font-bold text-[#404040] mt-8 mb-4">IR Detection and Button Pushing</h4>
                 <p class="text-base mb-4">
-                    This was the best part of our system.
+                    This was the best part of our system. Our team believed that leaving the line to push the button would have cost valuable seconds. So, why leave the line to press the button when you could just shoot it with a projectile?
+                    <br><br>
+                    That is exactly what we did. In Figure 7, you can see the IR receiver, which would detect the IR transmitter placed at the button's location, telling the robot to press the button. Figure 7 also shows the LEGO cannon, which we activated with 
+                    an electrical solenoid. This was very effective in hitting the button, and we never even had to stop the car. This was our best design decision we made, and turned the most feared task into a walk in the park.
                 </p>
+                <figure class="my-6">
+                    <img class="w-full h-auto" src="/assets/images/projects/line_follower/IR_sensor.png" alt="The IR sensor and LEGO cannon pair to hit the button">
+                    <figcaption class="text-sm text-left text-gray-600 italic mt-2">
+                        Figure 7: The LEGO cannon for pushing the button from afar.
+                    </figcaption>
+                </figure>
 
                 <h3 class="text-xl font-bold text-[#404040] mt-8 mb-4">Software Design</h3>
+                <p class="text-base mb-4">
+                    Our software architecture was centered around a Finite State Machine (FSM) with well-defined states such as <strong>Line Following</strong>, <strong>Canyon Navigation</strong>, and <strong>Ball Pickup</strong>. This event-driven structure allowed for responsive and reliable transitions between tasks based on sensor input and system conditions.
+                    <br><br>
+                    For line-following, we implemented a PD (Proportional-Derivative) control loop. This enabled the robot to respond aggressively to sharp turns while minimizing overshoot. After extensive tuning, we achieved smooth, stable behavior. However, we observed that our PD gains became suboptimal at the extremes of the robot’s speed range — particularly causing overcorrection at high speeds and undercorrection at low speeds.
+                    <br><br>
+                    To solve this, we introduced dynamic gain scaling: our software interpolated between experimentally optimized PD gain sets based on the robot’s current speed. We conducted 20 test runs to optimize PD gains for low, medium, and high speeds. This significantly improved performance consistency across a wide range of velocities.
+                    <br><br>
+                    One of the most important lessons I learned during development was the value of <strong>robust safety checks</strong> and <strong>responsive code</strong>. For example, in the button-pushing task, we used the ultrasonic range sensor to verify the presence of the button alongside the IR emitter signal — preventing premature task execution and ensuring we didn’t waste our single “cannon shot.”
+                    <br><br>
+                    Similarly, during transitions back to the line (e.g., after a ball pickup), we used the QR code detection QRD sensor—mounted near the wheels—to detect the line's position and guide our in-place turning behavior. 
+                    <br><br>
+                    Finally, interrupt-driven design was crucial to the robot’s reliability. We used interrupt pins to immediately pause ongoing operations and trigger high-priority actions. This responsiveness was vital for accurate task execution; without it, our robot would have missed key events and lost valuable points.
+                </p>
 
             </div>
 
@@ -258,35 +279,18 @@
 
             <h2 class="text-2xl font-bold text-[#404040] mt-8 mb-4">Summary</h2>
             <p class="text-base mb-4">
-                In summary, my team and I successfully delivered a working prototype of a medical pressure mat at 20x to 200x less the cost — providing invaluable support to patient care at this remote non-profit clinic. This project was an incredible opportunity to directly impact lives, while honing sound product development practices and engineering skills.
+                This project was an intense, rewarding culmination of mechanical design, embedded systems, and controls engineering. From bare-metal programming on the PIC24 to custom PCB development and real-time sensor fusion, every subsystem had to work in harmony under strict time constraints. Leading this effort not only strengthened my technical skills but also reinforced the value of modular design, responsive software, and hands-on iteration. Earning a perfect task score and finishing in the top 5 out of 30 teams was a satisfying result—but more than that, it was an unforgettable learning experience in building a full-stack mechatronic system from the ground up.
             </p>
-
-            <figure class="my-6 max-w-md mx-auto text-center">
-                <img class="w-full h-auto" src="/assets/images/projects/pressure_mat/team_photo.jpg" alt="Team Photo in Ecuador">
-                <figcaption class="text-sm text-gray-600 italic mt-2">
-                    Figure 7: BYU student team and Ecuadorian clinicians during field deployment of the pressure mat system.
-                </figcaption>
-            </figure>
 
             <h2 class="text-2xl font-bold text-[#404040] mt-8 mb-4">Project Source Code</h2>
             <p class="text-base mb-4">
                 You can explore the full project source code and documentation on my GitHub repository:
             </p>
             <p class="mb-8">
-                <a href="https://github.com/James-Wade1/pressure_sensor" target="_blank" class="inline-block bg-[#0d77c4] hover:bg-[#095fa1] text-white font-semibold py-2 px-4 rounded-lg">
+                <a href="https://github.com/James-Wade1/ME330_Code" target="_blank" class="inline-block bg-[#0d77c4] hover:bg-[#095fa1] text-white font-semibold py-2 px-4 rounded-lg">
                     View Code on GitHub
                 </a>
             </p>
-
-
-            <h2 class="text-2xl font-bold text-[#404040] mt-8 mb-4">References</h2>
-            <ol class="list-decimal list-inside text-base mb-4" style="list-style-type: none; counter-reset: ref;">
-                <li style="counter-increment: ref; margin-bottom: 0.5em;">
-                    [<span style="font-weight: bold;">1</span>] Nathan Day et al. <i>“Scalable Fabric Tactile Sensor Arrays for Soft Bodies”.</i> 
-                    <a href="https://doi.org/10.1088/1361-6439/aab221" target="_blank" class="text-[#0d77c4] hover:underline">
-                        Journal of Micromechanics and Microengineering</a>, vol. 28, Feb. 2018. DOI: 10.1088/1361-6439/aab221.
-                </li>
-            </ol>
 
         </section>
 
