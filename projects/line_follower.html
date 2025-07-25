@@ -43,120 +43,218 @@
             </figure>
 
             <p class="text-base mb-4">
-                Our school's Mechatronics line-following competition has the theme of 
-                <br><br>
-                This two-person project was developed alongside a separate three-person effort focused on creating a low-cost wheelchair cushion for the same clinic. Our work has since been continued by subsequent GEO teams as a standalone project, building on the foundation we established.
+                Our school's Mechatronics line-following competition features a classic challenge with a unique twist: along the track, robots must complete a series of tasks that test both precision and adaptability. In addition to following a line, each robot must:        
             </p>
 
+            <ul class="list-disc list-outside mb-8 pl-6">
+                <li><strong>Pick up a ping pong ball</strong> and later deposit it into the correct color-coded bin,</li>
+                <li><strong>Navigate through a canyon</strong> section with no line guidance, using only surrounding walls for localization,</li>
+                <li><strong>Aim and shine a laser at an elevated IR emitter</strong> positioned at an unknown angle,</li>
+                <li><strong>Detect an IR signal</strong> at any point on the course, <strong>leave the line to trigger a switch</strong>, and <strong>return to the line</strong> seamlessly.</li>
+            </ul>
+
+            <p class="text-base mb-4">
+                The entire course had to be completed within 60 seconds, demanding a balance of speed, precision, and autonomy. Our robot earned a perfect score for task completion and placed 4th overall out of 30 teams—edged out of a podium finish by just a few seconds on the clock.
+                <br><br>
+                I served as the team lead, lead programmer, and principal electrical designer on this four-person project.
+            </p>
+
+            
             <div class="technical-content">
                 <h2 class="text-2xl font-bold text-[#404040] mt-8 mb-4">Technical Details</h2>
-
-                <h3 class="text-xl font-bold text-[#404040] mt-8 mb-4">Hardware Design</h3>
                 <p class="text-base mb-4">
-                    Our pressure mat design was inspired by the work of Nathan Day and Dr. Marc Killpack on flexible force sensors [<span style="font-weight: bold;">1</span>]. 
-                    We initially experimented with readily available hobbyist force-sensitive resistors (FSRs), such as 
-                    <a href="https://www.sparkfun.com/force-sensitive-resistor-square.html?gad_source=1&gad_campaignid=17479024039&gbraid=0AAAAADsj4EQgETQ4dhVmCAtIUckf4OeVC&gclid=Cj0KCQjwhO3DBhDkARIsANxrhTqz9dfh7tdG8vfa7__1flLvEK7cq2TFBOUdeurM74qOvDhaMh213SQaAqmhEALw_wcB" class="text-[#0d77c4] hover:underline">
-                        these</a>, but quickly realized that their individual size and wiring complexity would make large-scale sensing impractical.
-                    <br><br>
-                    Instead, we adopted a resistive fabric called 
-                    <a class="text-[#0d77c4] hover:underline" href="https://www.digikey.com/en/products/detail/adafruit-industries-llc/1361/7241456?gad_source=1&gad_campaignid=20228387720&gbraid=0AAAAADrbLlgvd43Pgjgp8Pr4rVSD6OAKc&gclid=Cj0KCQjwhO3DBhDkARIsANxrhTpOHGWiXQikMZLMLwJr4WP_nV8rsdNF8xb_efN5Nue8kBjngZJtiOkaArI7EALw_wcB&gclsrc=aw.ds">
-                        Velostat</a>, whose local resistance decreases with applied force. 
-                    By applying a voltage to a known row and measuring the voltage drop at a specific column, we can calculate the instantaneous resistance at that point. 
-                    With proper calibration, this resistance is translated into localized force measurements. 
-                    Scanning across the matrix produces a pressure map at discrete resolution.
+                    Check out the video below for a complete walkthrough of our innovative line-following robot design. Dive into the sections below to explore the key features and technical details that set our project apart.
+                </p>
+                <div class="relative w-full pb-[56.25%]"> 
+                    <iframe
+                        class="absolute top-0 left-0 w-full h-full"
+                        src="https://www.youtube.com/embed/WJn777cVGDw"
+                        title="Line-Following Robot Overview"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
 
-                    <br><br>
-                    Figure 2 illustrates the internal construction of the pressure mat. 
-                    A layer of Velostat is sandwiched between two pieces of water-resistant fabric to provide moisture protection. 
-                    Strips of copper tape are applied to the inner surfaces of both fabric layers, arranged in perpendicular rows and columns. 
-                    When assembled, these strips form a grid pattern across the Velostat. 
-                    By applying voltage to a selected row and grounding a specific column, the resistance at their intersection can be measured. 
-                    This principle is demonstrated with a miniature prototype in Figure 3.
-                    <br><br>
-                    Figure 4 shows the two inner layers of our full-scale prototype, each incorporating 16 strips of copper tape, providing a sensing resolution of 256 distinct measurement points.
+                <h3 class="text-xl font-bold text-[#404040] mt-8 mb-4">Competition Requirements</h3>
+                <p class="text-base mb-4">
+                    The competition rules and requirements were as follows:
+                </p>
 
+                <ul class="list-disc list-outside mb-8 pl-6">
+                    <li>The robot must complete the track—similar to the one shown in Figure 2—within 60 seconds.</li>
+                    <li>Each task is indicated by a unique number of white bars (serving as "QR codes") adjacent to the track, signaling which task to perform.</li>
+                    <li><strong>A two-bar code</strong> indicates the <strong>ball pickup</strong> task: the vehicle must leave the track, pick up a ball, and then return to continue along the track while carrying it.</li>
+                    <li><strong>A three-bar code</strong> indicates the <strong>ball drop-off</strong> task: the robot must sense the color of the ball (black or white) and place it into the appropriate bin.</li>
+                    <li><strong>A four-bar code</strong> indicates the <strong>canyon navigation</strong> task: the track disappears, and the robot must use its sensors to detect the surrounding walls, stopping and turning as needed.</li>
+                    <li>At any point along the track, the robot must be ready to detect an IR transmitter from the side. When detected, the robot must diverge from the track, press a button, and then return to the path. A point is lost for every second beyond 30 seconds that the button remains unpressed.</li>
+                    <li>To finish, the robot must return to its starting position and shine a laser toward an overhead IR transmitter suspended at an unknown angle.</li>
+                </ul>
+
+                <p class="text-base mb-4">
+                    Figure 2 displays an example of what the course might look like on competition day, though the exact layout is unknown beforehand. All elements mentioned in the task descriptions can be seen, such as the canyon walls, the QR codes, and the IR transmitter suspended at some angle above the starting position.
+                </p>
+
+
+                <figure class="my-6">
+                    <img class="w-full h-auto" src="/assets/images/projects/line_follower/full_course.png" alt="Picture of full course that the robot must follow">
+                    <figcaption class="text-sm text-left text-gray-600 italic mt-2">
+                        Figure 2: An example course. The placement of each task was not known till competition day.
+                    </figcaption>
+                </figure>
+
+                <h3 class="text-xl font-bold text-[#404040] mt-8 mb-4">Mechanical Design</h3>
+                
+                <p class="text-base mb-4">
+                    We chose to use a double-decker design for our robot chasis, with plenty of holes for wire management. We chose to laser cut this shape out of particle board wood, knowing that it was an easy material to prototype with. 
+                    This design gave us just enough room to squeeze all of the necessary electronics in while still giving it a very organized design. The larger wheelbase also allowed it to turn quicker, vital for the speeds we were hoping to attain.
+                    A casterwheel was used up front to allow differential drive from the back.
+                    <br><br>
+                    Plus, we wanted our eventual design to look like a space shuttle for the cool factor, hence the reason for a tapering design from back to front!
                 </p>
 
                 <figure class="my-6">
-                    <img class="w-full h-auto" src="/assets/images/projects/pressure_mat/New Wiring Diagram.png" alt="Pressure mat internal assembly diagram showing Velostat layer and copper tape grid.">
+                    <img class="w-full h-auto" src="/assets/images/projects/line_follower/double_decker.png" alt="The double-decker design of our wooden chasis">
                     <figcaption class="text-sm text-left text-gray-600 italic mt-2">
-                        Figure 2: Schematic of the pressure mat’s internal assembly. Velostat sensing layer is sandwiched between two water-resistant fabric layers with copper tape arranged in perpendicular rows and columns.
-                    </figcaption>
-                </figure>
-
-                <figure class="my-6">
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <div class="flex-1">
-                            <img class="w-full h-auto" src="/assets/images/projects/pressure_mat/3x3_closed.jpg" alt="Miniature Pressure Mat Prototype Closed">
-                            <p class="text-sm text-center text-gray-600 italic mt-2">(a) Miniature pressure mat prototype, fully assembled.</p>
-                        </div>
-                        <div class="flex-1">
-                            <img class="w-full h-auto" src="/assets/images/projects/pressure_mat/3x3_open.jpg" alt="Miniature Pressure Mat Prototype Open">
-                            <p class="text-sm text-center text-gray-600 italic mt-2">(b) Prototype opened to reveal copper tape grid applied to inner surfaces.</p>
-                        </div>
-                    </div>
-                    <figcaption class="text-sm text-center text-gray-600 italic mt-4">
-                        Figure 3: Miniature prototype of the pressure mat: (a) fully assembled; (b) opened to show the internal copper tape matrix.
-                    </figcaption>
-                </figure>
-
-                <figure class="my-6">
-                    <img class="w-full h-auto" src="/assets/images/projects/pressure_mat/16x16_open.jpg" alt="Full-Scale Pressure Mat Layers">
-                    <figcaption class="text-sm text-left text-gray-600 italic mt-2">
-                        Figure 4: Full-scale prototype showing both inner layers, each with 16 copper tape strips. Their intersections form a 16×16 matrix for 256 distinct sensing locations.
+                        Figure 2: The double-decker design of our wooden chasis using laser-cut particle board.
                     </figcaption>
                 </figure>
 
                 <h3 class="text-xl font-bold text-[#404040] mt-8 mb-4">Electrical Design</h3>
                 <p class="text-base mb-4">
-                    Figure 5 shows the assembled protoboard of our system. Selective voltage application to individual rows and columns was achieved using a demultiplexer-multiplexer (demux-mux) pair. The demultiplexer directs a single input signal to one of many possible outputs, while the multiplexer selects one of many inputs to pass through to a single output channel.
-                    <br><br>
-                    During development, we encountered issues with parasitic voltage draw and unintended current flow through demux channels that were intended to remain inactive. To resolve this, we integrated voltage buffer circuits to electrically isolate the demux outputs from the rest of the system, ensuring accurate voltage control across the sensor matrix.
-                    <br><br>
-                    Once testing the resistance at each location, the Arduino transferred this data to the base station computer running the pressure mat GUI (Graphical User Interface) over serial.
+                    An overview of our electrical components, such as the Bill of Materials and a wiring diagram, can be viewed <a href="https://doi.org/10.1088/1361-6439/aab221" target="_blank" class="text-[#0d77c4] hover:underline">here</a>.
                 </p>
 
-                <figure class="my-6">
-                    <img class="w-full h-auto" src="/assets/images/projects/pressure_mat/Protoboard.jpg" alt="Pressure Mat Electronics Protoboard">
-                    <figcaption class="text-sm text-left text-gray-600 italic mt-2">
-                        Figure 5: Electronics protoboard comprising Arduino microcontroller, demux-mux circuitry, and voltage buffer circuits for controlling the pressure sensing grid.
-                    </figcaption>
-                </figure>
-
-                <h3 class="text-xl font-bold text-[#404040] mt-8 mb-4">Software Design</h3>
+                <h4 class="text-lg font-bold text-[#404040] mt-8 mb-4">Microcontroller</h4>
                 <p class="text-base mb-4">
-                    After receiving resistance data from the Arduino, the base station's role was to convert these values into estimated forces using a pre-determined calibration curve. Figure 6 shows the first and second versions of the Graphical User Interface (GUI) developed to visualize this data.
-                    <br><br>
-                    Due to project time constraints, my coworker and I were unable to complete the calibration process needed to directly correlate resistance to applied force. This task was passed on to future teams. In the interim, the GUI displayed raw resistance values, which still served as a relative indicator of applied pressure.
+                    All teams were required to use a PIC24F16KA301 microcontroller without any built-in breakout board or helpful HAL (hardware abstraction layer) — the purpose of the competition was to develop our bare metal programming skills C/C++.
+                    This microcontroller has 20 pins in total, with only a handful of analog input pins and three pwms pins. Thus, pin management was essential to a well-functioning robot.
                 </p>
 
+                <h4 class="text-lg font-bold text-[#404040] mt-8 mb-4">Propulsion</h4>
+                <p class="text-base mb-4">
+                    For propulsion, we chose to use two NEMA 17 stepper motors and two Polulo MP6500 motor drivers. Stepper motors allowed us to run open-loop position and velocity control. This was an important consideration as our PIC24 microcontroller had a limited number of pins, and typically motor encoders would have required more pins than we had our disposal.
+                    And through the use of microstepping, we were able to achieve fairly accurate position control.
+                    To better interface the motor driver into the system, I designed a custom PCB breakout board for the motor driver, as shown in Figure 3. This faciliated easy switching between microstepping modes and current limit modes through the use of jumpers.
+                </p>
 
                 <figure class="my-6">
-                    <div class="flex flex-col sm:flex-row gap-4 items-start">
-                        <div class="flex-1 flex flex-col">
-                            <img class="w-full h-auto" src="/assets/images/projects/pressure_mat/gui_16x16_simulated_data.png" alt="Pressure Mapping GUI Version 1">
-                            <p class="text-sm text-center text-gray-600 italic mt-2 flex-grow">(a) Initial pressure mapping GUI prototype.</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <div class="flex-1">
+                            <img class="w-full h-auto" src="/assets/images/projects/line_follower/pcb.png" alt="PCB for the motor driver">
+                            <p class="text-sm text-center text-gray-600 italic mt-2">(a) The motor driver breakout board</p>
                         </div>
-                        <div class="flex-1 flex flex-col">
-                            <img class="w-full h-auto" src="/assets/images/projects/pressure_mat/gui_v2.png" alt="Pressure Mapping GUI Version 2">
-                            <p class="text-sm text-center text-gray-600 italic mt-2 flex-grow">(b) Updated GUI version with improved responsiveness.</p>
+                        <div class="flex-1">
+                            <img class="w-full h-auto" src="/assets/images/projects/line_follower/electronics.png" alt="The motor driver and ultrasonic range sensor">
+                            <p class="text-sm text-center text-gray-600 italic mt-2">(b) The motor drievr board and ultrasonic range sensor on the robot</p>
                         </div>
                     </div>
                     <figcaption class="text-sm text-center text-gray-600 italic mt-4">
-                        Figure 6: Graphical User Interface (GUI) developed for real-time visualization of pressure data: (a) Version 1 prototype and (b) improved Version 2.
+                        Figure 3: The motor driver breakout board (and the ultrasonic range sensor) in situ on the robot
                     </figcaption>
                 </figure>
+
+                <h4 class="text-lg font-bold text-[#404040] mt-8 mb-4">Line and QR Code Detection</h4>
+                <p class="text-base mb-4">
+                    For line-following, we employed an array of three QRD sensors—each combining an infrared emitter and receiver. 
+                    This setup enabled reliable detection of the white line against the black background. The spacing of the sensors was critical: 
+                    they were positioned far enough apart to avoid all three activating simultaneously, yet close enough for the line to occasionally 
+                    trigger two sensors at once. This configuration allowed our software to infer the robot's precise position relative to the line. 
+                    For example, if both the left and center sensors were active, the robot could determine it was slightly veering off course to the left; 
+                    if only the left sensor was triggered, it indicated the robot was nearly off the line entirely.
+                    <br><br>
+                    In parallel, our QR code reader utilized a single QRD sensor to scan a sequence of white bars adjacent to the track, 
+                    each encoding a specific task for the robot to perform. Figure 4 illustrates the placement of these sensors on the robot. 
+                    To protect the three line-following QRDs, we designed and 3D-printed a custom case that securely housed them 
+                    while allowing unobstructed sensing.
+                </p>
+
+
+                <figure class="my-6">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <div class="flex-1">
+                            <img class="w-full h-auto" src="/assets/images/projects/line_follower/line_sensors.png" alt="Sensors for line following">
+                            <p class="text-sm text-center text-gray-600 italic mt-2">(a) The three line-detection sensors</p>
+                        </div>
+                        <div class="flex-1">
+                            <img class="w-full h-auto" src="/assets/images/projects/line_follower/qr_sensor.png" alt="Sensor for see the QR code">
+                            <p class="text-sm text-center text-gray-600 italic mt-2">(b) The QR code detection sensor</p>
+                        </div>
+                    </div>
+                    <figcaption class="text-sm text-center text-gray-600 italic mt-4">
+                        Figure 4: Miniature prototype of the pressure mat: (a) fully assembled; (b) opened to show the internal copper tape matrix.
+                    </figcaption>
+                </figure>
+
+                <h4 class="text-lg font-bold text-[#404040] mt-8 mb-4">Wall Detection and Collision Avoidance</h4>
+                <p class="text-base mb-4">
+                    For canyon navigation, we used an IR proximity sensor mounted at the front of the vehicle to detect obstacles, as shown in Figure 5a. 
+                    This sensor output a digital high signal when an object was detected within its adjustable detection range, which was configured using 
+                    the onboard potentiometer.
+                    <br><br>
+                    To determine the correct turning direction during the canyon navigation task, an ultrasonic range sensor was installed on the 
+                    right side of the robot, as illustrated in Figure 5b. This sensor also served as a redundancy check for other sensor readings. 
+                    For example, in the button-pushing task, our algorithm cross-verified the presence of both an IR emitter and a physical object 
+                    located approximately 2 feet from the track using the ultrasonic sensor. This multi-sensor validation improved the overall 
+                    reliability and robustness of our system.
+                </p>
+
+                <figure class="my-6">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <div class="flex-1">
+                            <img class="w-full h-auto" src="/assets/images/projects/line_follower/proximity_sensor.png" alt="Sensors for wall detection">
+                            <p class="text-sm text-center text-gray-600 italic mt-2">(a) The IR proximity sensor (blue)</p>
+                        </div>
+                        <div class="flex-1">
+                            <img class="w-full h-auto" src="/assets/images/projects/line_follower/electronics.png" alt="Ultrasonic sensor">
+                            <p class="text-sm text-center text-gray-600 italic mt-2">(b) The ultrasonic sensor (green)</p>
+                        </div>
+                    </div>
+                    <figcaption class="text-sm text-center text-gray-600 italic mt-4">
+                        Figure 5: The wall detection and obstacle avoidance sensors on the robot.
+                    </figcaption>
+                </figure>
+
+                <h4 class="text-lg font-bold text-[#404040] mt-8 mb-4">Ball Pick Up, Ball Drop Off, and Directing the Laser</h4>
+                <p class="text-base mb-4">
+                    For the ball pick up and drop off, we used a servo motor attached to a funnel-shaped pickup bed for stooring the ball while moving. The bottom of this funnel also had another QRD sensor which would tell us the color of the ball for the drop off task.
+                    <br><br>
+                    For the laser pointer task at the end of the course, we had a laser pointer and a IR receiver placed next to each other on the pickup bed. This allowed us to use the same servo motor for the laser pointing task as we did for the ball tasks. 
+                    The servo would sweep about 70 degrees when trying to detect the IR emitter above the robot, and then return to the spot where it found the highest signal.
+                    <br><br>
+                    This system is shown in Figure 6.
+                </p>
+
+                <figure class="my-6">
+                    <img class="w-full h-auto" src="/assets/images/projects/line_follower/pickup_bed.png" alt="The double-decker design of our wooden chasis">
+                    <figcaption class="text-sm text-left text-gray-600 italic mt-2">
+                        Figure 6: The pickup bed for the ping pong ball and the IR detector/laser pointer pair for the final task
+                    </figcaption>
+                </figure>
+
+                <h4 class="text-lg font-bold text-[#404040] mt-8 mb-4">IR Detecton and Button Pushing</h4>
+                <p class="text-base mb-4">
+                    This was the best part of our system.
+                </p>
+
+                <h3 class="text-xl font-bold text-[#404040] mt-8 mb-4">Software Design</h3>
 
             </div>
 
             <h2 class="text-2xl font-bold text-[#404040] mt-8 mb-4">Performance</h2>
             <p class="text-base mb-4">
-                The video below shows the pressure mat and accompanying GUI during field testing in Ecuador. This demonstrates the first version of the GUI; a second version was developed later that summer to address timing delays that occurred when the GUI window was enlarged.
+                This video showcases our winning run at the April 2024 competition, where we achieved a perfect score by successfully completing all tasks and secured 4th place out of 30 teams overall.
             </p>
-            <video class="w-full h-auto my-6" controls>
-                <source src="/assets/images/projects/pressure_mat/working_prototype.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+            <div class="relative w-full pb-[56.25%]"> 
+                    <iframe
+                        class="absolute top-0 left-0 w-full h-full"
+                        src="https://www.youtube.com/embed/WLjQGuFjoqM"
+                        title="Line-Following Robot Overview"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
 
             <h2 class="text-2xl font-bold text-[#404040] mt-8 mb-4">Summary</h2>
             <p class="text-base mb-4">
