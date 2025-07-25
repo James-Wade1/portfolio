@@ -87,7 +87,7 @@
                     <li><strong>A two-bar code</strong> indicates the <strong>ball pickup</strong> task: the vehicle must leave the track, pick up a ball, and then return to continue along the track while carrying it.</li>
                     <li><strong>A three-bar code</strong> indicates the <strong>ball drop-off</strong> task: the robot must sense the color of the ball (black or white) and place it into the appropriate bin.</li>
                     <li><strong>A four-bar code</strong> indicates the <strong>canyon navigation</strong> task: the track disappears, and the robot must use its sensors to detect the surrounding walls, stopping and turning as needed.</li>
-                    <li>At any point along the track, the robot must be ready to detect an IR transmitter from the side. When detected, the robot must diverge from the track, press a button, and then return to the path. A point is lost for every second beyond 30 seconds that the button remains unpressed.</li>
+                    <li>At any point along the track, the robot must be ready to detect an IR transmitter from the side. When detected, the robot must diverge from the track, press a button, and then return to the path. One point is deducted for every second the button remains unpressed after 30 seconds.</li>
                     <li>To finish, the robot must return to its starting position and shine a laser toward an overhead IR transmitter suspended at an unknown angle.</li>
                 </ul>
 
@@ -122,7 +122,7 @@
 
                 <h3 class="text-xl font-bold text-[#404040] mt-8 mb-4">Electrical Design</h3>
                 <p class="text-base mb-4">
-                    An overview of our electrical components, such as the Bill of Materials and a wiring diagram, can be viewed <a href="https://doi.org/10.1088/1361-6439/aab221" target="_blank" class="text-[#0d77c4] hover:underline">here</a>.
+                    An overview of our electrical components, such as the Bill of Materials and a wiring diagram, can be viewed <a href="/assets/files/projects/line_follower/Mechaminds - Milestone 4.pdf" target="_blank" class="text-[#0d77c4] hover:underline">here</a>.
                 </p>
 
                 <h4 class="text-lg font-bold text-[#404040] mt-8 mb-4">Microcontroller</h4>
@@ -225,7 +225,7 @@
                 </p>
 
                 <figure class="my-6">
-                    <img class="w-full h-auto" src="/assets/images/projects/line_follower/pickup_bed.png" alt="The double-decker design of our wooden chasis">
+                    <img class="w-full h-auto" src="/assets/images/projects/line_follower/pickup_bed.png" alt="The pickup bed for storing the ball and directing the laser pointer">
                     <figcaption class="text-sm text-left text-gray-600 italic mt-2">
                         Figure 6: The pickup bed for the ping pong ball and the IR detector/laser pointer pair for the final task
                     </figcaption>
@@ -239,7 +239,7 @@
                     an electrical solenoid. This was very effective in hitting the button, and we never even had to stop the car. This was our best design decision we made, and turned the most feared task into a walk in the park.
                 </p>
                 <figure class="my-6">
-                    <img class="w-full h-auto" src="/assets/images/projects/line_follower/IR_sensor.png" alt="The double-decker design of our wooden chasis">
+                    <img class="w-full h-auto" src="/assets/images/projects/line_follower/IR_sensor.png" alt="The IR sensor and LEGO cannon pair to hit the button">
                     <figcaption class="text-sm text-left text-gray-600 italic mt-2">
                         Figure 7: The LEGO cannon for pushing the button from afar.
                     </figcaption>
@@ -251,7 +251,7 @@
                     <br><br>
                     For line-following, we implemented a PD (Proportional-Derivative) control loop. This enabled the robot to respond aggressively to sharp turns while minimizing overshoot. After extensive tuning, we achieved smooth, stable behavior. However, we observed that our PD gains became suboptimal at the extremes of the robot’s speed range — particularly causing overcorrection at high speeds and undercorrection at low speeds.
                     <br><br>
-                    To solve this, we introduced dynamic gain scaling: our software interpolated between experimentally optimized PD gain sets based on the robot’s current speed. This significantly improved performance consistency across a wide range of velocities.
+                    To solve this, we introduced dynamic gain scaling: our software interpolated between experimentally optimized PD gain sets based on the robot’s current speed. We conducted 20 test runs to optimize PD gains for low, medium, and high speeds. This significantly improved performance consistency across a wide range of velocities.
                     <br><br>
                     One of the most important lessons I learned during development was the value of <strong>robust safety checks</strong> and <strong>responsive code</strong>. For example, in the button-pushing task, we used the ultrasonic range sensor to verify the presence of the button alongside the IR emitter signal — preventing premature task execution and ensuring we didn’t waste our single “cannon shot.”
                     <br><br>
