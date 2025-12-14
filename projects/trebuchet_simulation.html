@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>James Wade</title>
+    <link rel="icon" type="image/png" href="../assets/images/logos/Logo_white.dxf.png">
+    <meta name="description" content="Details of my graduate-level dynamics coursework final project">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;800&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    'hs': '580px',
+                    'xs': '500px',
+                    'sm': '640px',
+                    'md': '768px',
+                    'lg': '1024px',
+                    'xl': '1280px',
+                    '2xl': '1536px',
+                }
+            }
+        }
+    </script>
+    <script src="/script.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-[#ffffff] text-[#4a4a4a] min-h-screen flex flex-col">
+    <div id="header-placeholder"></div>
+
+    <main class="pt-20 pb-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex-1">
+        <section class="py-12 text-left">
+            <h1 class="text-4xl font-bold text-[#404040] mb-6">Trebuchet Simulation with Lagrange Multipliers</h1>
+            <p class="text-base font-normal content-text mt-2 text-sm"><i>Graduate-level Dynamics | Brigham Young University | 2025</i></p>
+            <figure class="my-6">
+                <img class="w-full h-auto" src="/assets/images/projects/trebuchet/phases.png" alt="The three distinct stages of the trebuchet">
+                <figcaption class="text-sm text-left text-gray-600 italic mt-2">
+                    Figure 1: The three phases of the trebuchet motion
+                </figcaption>
+            </figure>
+
+            <p class="text-base mb-4">
+                As part of my graduate dynamics coursework (ME 534) at BYU, I developed a comprehensive simulation of a trebuchet using Lagrangian mechanics and constraint forces. The trebuchet represents an interesting dynamic system that transitions through three distinct phases of motion: sliding, swinging, and flying. Each phase presents unique kinematic constraints that must be properly enforced through Lagrange multipliers.
+                <br><br>
+                The simulation was implemented using SymPy for symbolic derivation of the equations of motion, which allowed for easy parameter adjustments and ensured mathematical accuracy. These symbolic expressions were then converted to NumPy functions for efficient numerical integration using SciPy's solve_ivp. The results were visualized using Matplotlib to create an animated replay of the trebuchet motion.
+            </p>
+
+            <div class="technical-content">
+                <h2 class="text-2xl font-bold text-[#404040] mt-8 mb-4">Theoretical Framework</h2>
+
+                <h3 class="text-xl font-bold text-[#404040] mt-8 mb-4">Euler-Lagrange Equations</h3>
+                <p class="text-base mb-4">
+                    The dynamics of the trebuchet system are derived using the Euler-Lagrange equations with constraints. For a system with generalized coordinates \(\mathbf{q}\) and Lagrangian \(L = T - V\) (kinetic energy minus potential energy), the equations of motion take the form:
+                </p>
+
+                <div class="bg-gray-50 p-4 rounded-lg my-4 overflow-x-auto">
+                    <p class="text-center">
+                        $$\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{\mathbf{q}}}\right) - \frac{\partial L}{\partial \mathbf{q}} = \mathbf{Q} + \mathbf{a}^T\boldsymbol{\lambda}$$
+                    </p>
+                </div>
+
+                <p class="text-base mb-4">
+                    where \(\mathbf{Q}\) represents non-conservative generalized forces, \(\mathbf{a}\) is the constraint coefficient matrix, and \(\boldsymbol{\lambda}\) is the vector of Lagrange multipliers representing constraint forces. This formulation can be rewritten in matrix form as:
+                </p>
+
+                <div class="bg-gray-50 p-4 rounded-lg my-4 overflow-x-auto">
+                    <p class="text-center">
+                        $$\mathbf{M}\ddot{\mathbf{q}} = \mathbf{F} + \mathbf{a}^T\boldsymbol{\lambda}$$
+                    </p>
+                </div>
+
+                <p class="text-base mb-4">
+                    where \(\mathbf{M}\) is the mass matrix and \(\mathbf{F}\) contains all applied and non-conservative forces including gravity and friction.
+                </p>
+
+                <h3 class="text-xl font-bold text-[#404040] mt-8 mb-4">Kinematic Constraints</h3>
+                <p class="text-base mb-4">
+                    The trebuchet system is defined by four generalized coordinates:
+                </p>
+
+                <div class="bg-gray-50 p-4 rounded-lg my-4">
+                    <p class="text-center">
+                        $$\mathbf{x} = \begin{bmatrix} x & y & \theta & \varphi \end{bmatrix}^T$$
+                    </p>
+                </div>
+
+                <p class="text-base mb-4">
+                    where \(x\) and \(y\) represent the horizontal and vertical position of the projectile, \(\theta\) is the angle of the main arm, and \(\varphi\) is the angle of the sling relative to the arm.
+                    <br><br>
+                    The constraints vary by phase. During the <strong>sliding phase</strong>, two constraints enforce that the projectile remains on the ground (\(y = h\)) and attached to the arm at distance \(l\). During the <strong>swinging phase</strong>, only the attachment constraint remains active as the projectile has lifted off the ground. In the <strong>flying phase</strong>, all constraints are released and the projectile follows ballistic motion.
+                </p>
+
+                <h3 class="text-xl font-bold text-[#404040] mt-8 mb-4">Lagrange Multipliers for Constraint Forces</h3>
+                <p class="text-base mb-4">
+                    The Lagrange multipliers \(\boldsymbol{\lambda}\) directly represent the magnitudes of constraint forces. To solve for these forces, we combine the equations of motion with the constraint acceleration equations:
+                </p>
+
+                <div class="bg-gray-50 p-4 rounded-lg my-4 overflow-x-auto">
+                    <p class="text-center">
+                        $$\mathbf{a}\ddot{\mathbf{q}} + \dot{\mathbf{a}}\dot{\mathbf{q}} = \mathbf{0}$$
+                    </p>
+                </div>
+
+                <p class="text-base mb-4">
+                    This system can be written in augmented form:
+                </p>
+
+                <div class="bg-gray-50 p-4 rounded-lg my-4 overflow-x-auto">
+                    <p class="text-center">
+                        $$\begin{bmatrix} \mathbf{M} & \mathbf{a}^T \\ \mathbf{a} & \mathbf{0} \end{bmatrix} \begin{bmatrix} \ddot{\mathbf{q}} \\ \boldsymbol{\lambda} \end{bmatrix} = \begin{bmatrix} \mathbf{F} \\ -\dot{\mathbf{a}}\dot{\mathbf{q}} \end{bmatrix}$$
+                    </p>
+                </div>
+
+                <p class="text-base mb-4">
+                    Solving this linear system yields both the accelerations \(\ddot{\mathbf{q}}\) and the constraint forces \(\boldsymbol{\lambda}\). For the trebuchet, \(\lambda_1\) is related to the tension force in the sling, while \(\lambda_2\) represents the normal force from the ground during the sliding phase.
+                </p>
+
+                <h3 class="text-xl font-bold text-[#404040] mt-8 mb-4">Mass Matrix and Force Vector</h3>
+                <p class="text-base mb-4">
+                    The mass matrix for the trebuchet system, derived from the kinetic energy, is:
+                </p>
+
+                <div class="bg-gray-50 p-4 rounded-lg my-4 overflow-x-auto">
+                    <p class="text-center">
+                        $$\mathbf{M} = \begin{bmatrix}
+                        m_P & 0 & 0 & 0 \\
+                        0 & m_P & 0 & 0 \\
+                        0 & 0 & I_{AO} + d_W^2 m_W & -d_G d_W m_W \sin(\varphi - \theta) \\
+                        0 & 0 & -d_G d_W m_W \sin(\varphi - \theta) & I_{WG} + d_G^2 m_W
+                        \end{bmatrix}$$
+                    </p>
+                </div>
+
+                <p class="text-base mb-4">
+                    The generalized force vector includes gravitational effects, friction, and velocity-dependent terms:
+                </p>
+
+                <div class="bg-gray-50 p-4 rounded-lg my-4 overflow-x-auto">
+                    <p class="text-center">
+                        $$\mathbf{F} = \begin{bmatrix}
+                        -\mu N \\
+                        -g m_P \\
+                        -d_A g m_A \cos(\theta) + d_G d_W m_W \cos(\varphi - \theta)\dot{\varphi}^2 + d_W g m_W \cos(\theta) \\
+                        -d_G d_W m_W \cos(\varphi - \theta)\dot{\theta}^2 - d_G g m_W \sin(\varphi)
+                        \end{bmatrix}$$
+                    </p>
+                </div>
+
+                <h3 class="text-xl font-bold text-[#404040] mt-8 mb-4">Implementation Approach</h3>
+                <p class="text-base mb-4">
+                    The simulation was implemented in Python using a symbolic-to-numeric workflow. First, SymPy was used to symbolically define all position vectors, velocities, the Lagrangian, and constraint equations. This symbolic approach allowed for automatic differentiation and ensured mathematical correctness.
+                    <br><br>
+                    The symbolic expressions for <strong>M</strong>, <strong>F</strong>, <strong>a</strong>, and d<strong>a</strong>/dt were then converted to highly optimized NumPy functions using SymPy's <code>lambdify</code> feature. This combination provided the flexibility of symbolic mathematics during development with the computational efficiency needed for numerical integration.
+                    <br><br>
+                    The system was integrated through time using SciPy's <code>solve_ivp</code> with automatic phase detection. When constraint forces indicated a phase transition (e.g., normal force approaching zero for liftoff, or tension becoming slack for release), the simulation would switch to the appropriate constraint set and continue integration.
+                </p>
+
+            </div>
+
+            <h2 class="text-2xl font-bold text-[#404040] mt-8 mb-4">Results</h2>
+            <p class="text-base mb-4">
+                The simulation was run for three different projectile masses (20 kg, 30 kg, and 40 kg) to analyze how mass affects performance. Figure 2 shows the time evolution of all four state variables for the 30 kg case, clearly showing the oscillatory behavior of the arm and sling angles during the swinging phase.
+            </p>
+
+            <figure class="my-6">
+                <img class="w-full h-auto" src="/assets/images/projects/trebuchet/states_vs_time.png" alt="System states over time for 30kg projectile">
+                <figcaption class="text-sm text-left text-gray-600 italic mt-2">
+                    Figure 2: Time evolution of system states (\(x\), \(y\), \(\theta\), \(\varphi\)) for a 30 kg projectile. The oscillations in \(\theta\) and \(\varphi\) are characteristic of the energy transfer mechanism in the trebuchet.
+                </figcaption>
+            </figure>
+
+            <p class="text-base mb-4">
+                Figure 3 displays the constraint forces throughout the motion. The normal force \(N\) drops to zero at liftoff (around 0.36 seconds), marking the transition from sliding to swinging. The tension force \(T\) reaches a peak during the swing and drops to zero at release (around 1.11 seconds), after which the projectile enters free flight.
+            </p>
+
+            <figure class="my-6">
+                <img class="w-full h-auto" src="/assets/images/projects/trebuchet/constraint_forces.png" alt="Normal and tension constraint forces">
+                <figcaption class="text-sm text-left text-gray-600 italic mt-2">
+                    Figure 3: Constraint forces computed via Lagrange multipliers. \(N\) is the normal force during sliding, and \(T\) is the sling tension. Both forces become zero at their respective phase transitions.
+                </figcaption>
+            </figure>
+
+            <h3 class="text-xl font-bold text-[#404040] mt-8 mb-4">Performance Statistics</h3>
+            <p class="text-base mb-4">
+                Table 1 summarizes the key performance metrics for different projectile masses. As expected, lighter projectiles achieve greater range due to higher release velocities, though the differences in maximum height and flight time are relatively modest.
+            </p>
+
+            <div class="overflow-x-auto my-6">
+                <table class="min-w-full border-collapse border border-gray-300">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="border border-gray-300 px-4 py-2 text-left">m<sub>p</sub> (kg)</th>
+                            <th class="border border-gray-300 px-4 py-2 text-left">Range (m)</th>
+                            <th class="border border-gray-300 px-4 py-2 text-left">Flight time (s)</th>
+                            <th class="border border-gray-300 px-4 py-2 text-left">Max height (m)</th>
+                            <th class="border border-gray-300 px-4 py-2 text-left">Liftoff time (s)</th>
+                            <th class="border border-gray-300 px-4 py-2 text-left">Release time (s)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2">20</td>
+                            <td class="border border-gray-300 px-4 py-2">−494.4</td>
+                            <td class="border border-gray-300 px-4 py-2">10.537</td>
+                            <td class="border border-gray-300 px-4 py-2">118.6</td>
+                            <td class="border border-gray-300 px-4 py-2">0.343</td>
+                            <td class="border border-gray-300 px-4 py-2">1.083</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-4 py-2">30</td>
+                            <td class="border border-gray-300 px-4 py-2">−339.3</td>
+                            <td class="border border-gray-300 px-4 py-2">10.728</td>
+                            <td class="border border-gray-300 px-4 py-2">121.6</td>
+                            <td class="border border-gray-300 px-4 py-2">0.364</td>
+                            <td class="border border-gray-300 px-4 py-2">1.114</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2">40</td>
+                            <td class="border border-gray-300 px-4 py-2">−233.9</td>
+                            <td class="border border-gray-300 px-4 py-2">10.235</td>
+                            <td class="border border-gray-300 px-4 py-2">108.9</td>
+                            <td class="border border-gray-300 px-4 py-2">0.385</td>
+                            <td class="border border-gray-300 px-4 py-2">1.154</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="text-sm text-center text-gray-600 italic mt-2">
+                    Table 1: Flight statistics for projectile masses of 20, 30, and 40 kg. Negative range values indicate the projectile travels in the negative x-direction.
+                </p>
+            </div>
+
+            <h2 class="text-2xl font-bold text-[#404040] mt-8 mb-4">Summary</h2>
+            <p class="text-base mb-4">
+                This project demonstrated the power of Lagrangian mechanics with constraint forces for analyzing complex multi-phase dynamic systems. The symbolic-to-numeric workflow using SymPy and NumPy proved highly effective, enabling rapid parameter studies while maintaining mathematical rigor. The Lagrange multiplier approach elegantly handled the switching constraint topology across the three phases of motion, providing physically meaningful force calculations throughout the simulation. The animated visualization created with Matplotlib provided valuable insight into the energy transfer mechanisms that make the trebuchet an effective launching device.
+            </p>
+
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+</body>
+</html>
