@@ -14,26 +14,40 @@
     <script>
         tailwind.config = {
             theme: {
-                screens: {
-                    'hs': '580px',
-                    'xs': '500px',
-                    'sm': '640px',
-                    'md': '768px',
-                    'lg': '1024px',
-                    'xl': '1280px',
-                    '2xl': '1536px',
+                extend: {
+                    screens: {
+                        'hs': '580px',
+                        'xs': '500px',
+                    }
                 }
             }
         }
     </script>
+    <style>
+        /* Scale MathJax equations on small screens */
+        @media (max-width: 640px) {
+            .MathJax {
+                font-size: 85% !important;
+            }
+        }
+        @media (max-width: 500px) {
+            .MathJax {
+                font-size: 75% !important;
+            }
+        }
+        /* Ensure equation containers can scroll */
+        .overflow-x-auto {
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
     <script src="/script.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
-<body class="bg-[#ffffff] text-[#4a4a4a] min-h-screen flex flex-col">
+<body class="bg-[#ffffff] text-[#4a4a4a] min-h-screen flex flex-col overflow-x-hidden">
     <div id="header-placeholder"></div>
 
-    <main class="pt-20 pb-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex-1">
+    <main class="pt-20 pb-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex-1 w-full">
         <section class="py-12 text-left">
             <h1 class="text-4xl font-bold text-[#404040] mb-6">Trebuchet Simulation with Lagrange Multipliers</h1>
             <p class="text-base font-normal content-text mt-2 text-sm"><i>Graduate-level Dynamics | Brigham Young University | 2025</i></p>
