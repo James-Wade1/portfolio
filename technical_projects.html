@@ -51,76 +51,37 @@
     <main class="pt-4 pb-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex-1">
 
         <section id="technical-projects" class="py-12 text-left">
-            <h2 class="text-4xl font-bold text-[#404040] mb-6">Technical Projects</h2>
+            <h2 class="text-4xl font-bold text-[#404040] mb-6">Featured Projects</h2>
+            <p class="text-base mb-8 text-gray-600">
+                Highlighting my most significant non-research technical work in robotics, mechatronics, and computational mechanics.
+            </p>
 
-            <div class="space-y-8">
-                <!-- Trebuchet -->
-                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6">
+            <!-- Featured Projects Section -->
+            <div class="space-y-8 mb-12">
+                <!-- Line Follower  -->
+                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6 border-l-4 border-[#0d77c4] pl-4">
                     <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
-                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="/assets/images/projects/trebuchet/trebuchet.png" alt="Trebuchet">
+                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="/assets/images/projects/line_follower/line_follower_thumbnail.png" alt="Line Follower">
                     </div>
                     <div class="publication-content text-left w-full xs:w-3/4">
-                        <a href="/projects/trebuchet_simulation.html" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
-                            Trebuchet Simulation with Lagrange Multipliers | 2025
+                        <a href="/projects/line_follower.html" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
+                            Line-Following Robot — BYU Mechatronics Competition | 2024
                         </a>
                         <p class="text-base font-normal content-text mt-2 text-sm">
-                            <i>Graduate-level Dynamics | Brigham Young University</i>
+                            <i>BYU Mechatronics Competition | Brigham Young University</i>
                         </p>
                         <ul class="list-disc pl-5 mt-3 text-base">
-                            <li>Modeled trebuchet dynamics using the method of Lagrange Multipliers, reducing the system to a single equation of motion.</li>
-                            <li>Visualized numerical simulations through matplotlib-based animations for dynamic motion analysis.</li>
-                            <li><a href="/projects/trebuchet_simulation.html" class="text-[#0d77c4] hover:underline">View full project details</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Pipsqueak Engine -->
-                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6">
-                    <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
-                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="/assets/images/projects/pipsqueak/engine_cropped.jpg" alt="Pipsqueak Engine">
-                    </div>
-                    <div class="publication-content text-left w-full xs:w-3/4">
-                        <a href="#" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
-                            Pipsqueak Air Engine | 2025
-                        </a>
-                        <p class="text-base font-normal content-text mt-2 text-sm">
-                            <i>Precise Manual Machining | Brigham Young University</i>
-                        </p>
-                        <ul class="list-disc pl-5 mt-3 text-base">
-                            <li>Designed and manufactured a pipsqueak air engine with sub-thousandths of an inch precision using manual machining</li>
-                            <li>Produced detailed engineering drawings and manufacturing process documentation to support fabrication</li>
-                            <li>Awarded best motor in lab section for running at the lowest PSI</li>
-                            <li>Proposed intelligent redesign assuming non-machining methods for scalable production</li>
-                            <li>In-depth project details coming soon</li>
-                            <!-- <li><a href="/projects/line_follower.html" class="text-[#0d77c4] hover:underline">View full project details</a></li> -->
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- MoveIt2 ROS -->
-                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6">
-                    <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
-                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="/assets/images/projects/moevit_project/moveit_ros_cropped.png" alt="MoveIt2 Simulation">
-                    </div>
-                    <div class="publication-content text-left w-full xs:w-3/4">
-                        <a href="#" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
-                            Robot Manipulator Simulation & MoveIt2 Integration | 2024
-                        </a>
-                        <p class="text-base font-normal content-text mt-2 text-sm">
-                            <i>Manipulator Kinematics and Dynamics | Brigham Young University</i>
-                        </p>
-                        <ul class="list-disc pl-5 mt-3 text-base">
-                            <li>Developed a robot manipulator visualization tool using Denavit-Hartenberg (DH) parameters for accurate kinematic representation</li>
-                            <li>Integrated MoveIt2, a widely-used ROS package, to enhance the visualizer with real-time motion planning capabilities and planning</li>
-                            <li>Implemented a potential-field-based motion planner enabling smooth, collision-free trajectories along the entire robot arm</li>
-                            <li>In-depth project details coming soon</li>
-                            <!-- <li><a href="/projects/line_follower.html" class="text-[#0d77c4] hover:underline">View full project details</a></li> -->
+                            <li>Led a 4-person team to design, build, and program an autonomous line-following robot in under 10 weeks</li>
+                            <li>Integrated laser targeting, ball sorting, canyon navigation, and IR-triggered detours — all completed within 60 seconds</li>
+                            <li>Engineered custom PCB, sensor fusion logic, and bare-metal C code for a PIC24 microcontroller</li>
+                            <li>Awarded perfect task score and placed 4th out of 30 teams in BYU's 2024 Mechatronics Competition</li>
+                            <li><a href="/projects/line_follower.html" class="text-[#0d77c4] hover:underline">View full project details</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Pressure Mat -->
-                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6">
+                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6 border-l-4 border-[#0d77c4] pl-4">
                     <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
                         <img class="publication-image w-full h-auto" style="max-width: 175px;" src="/assets/images/projects/pressure_mat/Protoboard.jpg" alt="Medical Pressure Mat Prototype">
                     </div>
@@ -140,24 +101,73 @@
                     </div>
                 </div>
 
-                <!-- Line Follower  -->
-                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6">
+                <!-- Trebuchet -->
+                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6 border-l-4 border-[#0d77c4] pl-4">
                     <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
-                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="/assets/images/projects/line_follower/line_follower_thumbnail.png" alt="Line Follower">
+                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="/assets/images/projects/trebuchet/trebuchet.png" alt="Trebuchet">
                     </div>
                     <div class="publication-content text-left w-full xs:w-3/4">
-                        <a href="/projects/line_follower.html" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
-                            Line-Following Robot — BYU Mechatronics Competition | 2024
+                        <a href="/projects/trebuchet_simulation.html" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
+                            Trebuchet Simulation with Lagrange Multipliers | 2025
                         </a>
                         <p class="text-base font-normal content-text mt-2 text-sm">
-                            <i>BYU Mechatronics Competition | Brigham Young University</i>
+                            <i>Graduate-level Dynamics | Brigham Young University</i>
                         </p>
                         <ul class="list-disc pl-5 mt-3 text-base">
-                            <li>Led a 4-person team to design, build, and program an autonomous line-following robot in under 10 weeks</li>
-                            <li>Integrated laser targeting, ball sorting, canyon navigation, and IR-triggered detours — all completed within 60 seconds</li>
-                            <li>Engineered custom PCB, sensor fusion logic, and bare-metal C code for a PIC24 microcontroller</li>
-                            <li>Awarded perfect task score and placed 4th out of 30 teams in BYU’s 2024 Mechatronics Competition</li>
-                            <li><a href="/projects/line_follower.html" class="text-[#0d77c4] hover:underline">View full project details</a></li>
+                            <li>Modeled trebuchet dynamics using the method of Lagrange Multipliers, reducing the system to a single equation of motion</li>
+                            <li>Visualized numerical simulations through matplotlib-based animations for dynamic motion analysis</li>
+                            <li><a href="/projects/trebuchet_simulation.html" class="text-[#0d77c4] hover:underline">View full project details</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Projects Section -->
+            <h2 class="text-3xl font-bold text-[#404040] mt-12 mb-6">Additional Projects</h2>
+            <p class="text-base mb-8 text-gray-600">
+                Advanced coursework and hands-on projects in robotics, manufacturing, and mechanical design.
+            </p>
+
+            <div class="space-y-8">
+                <!-- MoveIt2 ROS -->
+                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6">
+                    <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
+                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="/assets/images/projects/moevit_project/moveit_ros_cropped.png" alt="MoveIt2 Simulation">
+                    </div>
+                    <div class="publication-content text-left w-full xs:w-3/4">
+                        <a href="#" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
+                            Robot Manipulator Simulation & MoveIt2 Integration | 2024
+                        </a>
+                        <p class="text-base font-normal content-text mt-2 text-sm">
+                            <i>Manipulator Kinematics and Dynamics | Brigham Young University</i>
+                        </p>
+                        <ul class="list-disc pl-5 mt-3 text-base">
+                            <li>Developed a robot manipulator visualization tool using Denavit-Hartenberg (DH) parameters for accurate kinematic representation</li>
+                            <li>Integrated MoveIt2, a widely-used ROS package, to enhance the visualizer with real-time motion planning capabilities</li>
+                            <li>Implemented a potential-field-based motion planner enabling smooth, collision-free trajectories along the entire robot arm</li>
+                            <li>In-depth project details coming soon</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pipsqueak Engine -->
+                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6">
+                    <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
+                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="/assets/images/projects/pipsqueak/engine_cropped.jpg" alt="Pipsqueak Engine">
+                    </div>
+                    <div class="publication-content text-left w-full xs:w-3/4">
+                        <a href="#" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
+                            Pipsqueak Air Engine | 2025
+                        </a>
+                        <p class="text-base font-normal content-text mt-2 text-sm">
+                            <i>Precision Manual Machining | Brigham Young University</i>
+                        </p>
+                        <ul class="list-disc pl-5 mt-3 text-base">
+                            <li>Designed and manufactured a pipsqueak air engine with sub-thousandths of an inch precision using manual machining</li>
+                            <li>Produced detailed engineering drawings and manufacturing process documentation to support fabrication</li>
+                            <li>Awarded best motor in lab section for running at the lowest PSI</li>
+                            <li>Proposed intelligent redesign assuming non-machining methods for scalable production</li>
+                            <li>In-depth project details coming soon</li>
                         </ul>
                     </div>
                 </div>
@@ -179,7 +189,6 @@
                             <li>Authored an <a href="/assets/files/projects/scissor_jack/Scissor Jack Final Report.pdf" class="text-[#0d77c4] hover:underline">in-depth report</a> validating the optimization approach and results</li>
                             <li>Performed FEA on critical components to verify factors of safety exceeded design requirements</li>
                             <li>In-depth project details coming soon</li>
-                            <!-- <li><a href="/projects/line_follower.html" class="text-[#0d77c4] hover:underline">View full project details</a></li> -->
                         </ul>
                     </div>
                 </div>
@@ -202,12 +211,11 @@
                             <li>Applied MATLAB system identification for parameter estimation</li>
                             <li>Using Inverse PINNs to optimize model parameters from experimental data</li>
                             <li>In-depth project details coming soon</li>
-                            <!-- <li><a href="/projects/line_follower.html" class="text-[#0d77c4] hover:underline">View full project details</a></li> -->
                         </ul>
                     </div>
                 </div>
 
-                <h2 class="text-2xl font-bold text-[#404040] mb-6">More Project Details Coming Soon ...</h2>
+                <p class="text-xl font-semibold text-[#404040] mt-8 mb-6 text-center">More Project Details Coming Soon...</p>
             </div>
         </section>
 
