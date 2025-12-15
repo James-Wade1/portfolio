@@ -15,14 +15,11 @@
     <script>
         tailwind.config = {
             theme: {
-                screens: {
-                    'hs': '580px',
-                    'xs': '500px',
-                    'sm': '640px',
-                    'md': '768px',
-                    'lg': '1024px',
-                    'xl': '1280px',
-                    '2xl': '1536px',
+                extend: {
+                    screens: {
+                        'hs': '580px',
+                        'xs': '500px',
+                    }
                 }
             }
         }
@@ -48,58 +45,106 @@
     <!-- Main Content -->
     <main class="pt-4 pb-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex-1">
 
+        <!-- Quick Links to Publications -->
+        <section id="publications-link" class="py-8 text-center bg-blue-50 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 mb-8 rounded-lg">
+            <p class="text-lg text-gray-700">
+                <i class="fas fa-book mr-2 text-[#0d77c4]"></i>
+                For publications, presentations, and proposals, visit the
+                <a href="/publications.html" class="text-[#0d77c4] hover:underline font-semibold">Publications Page</a>
+            </p>
+        </section>
+
         <section id="current-research" class="py-12 text-left">
             <h2 class="text-4xl font-bold text-[#404040] mb-6">Current Research</h2>
+            <p class="text-base mb-8 text-gray-600">
+                Active research projects in autonomous systems, multi-agent coordination, and robotic resilience.
+            </p>
 
             <div class="space-y-8">
                 <!-- Sandia -->
-                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6">
+                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6 border-l-4 border-[#0d77c4] pl-4">
                     <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
-                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="assets/images/research/sandia_car.jpg" alt="Sandia Logo">
+                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="assets/images/research/sandia_car.jpg" alt="Sandia Autonomous Vehicle">
                     </div>
                     <div class="publication-content text-left w-full xs:w-3/4">
                         <a target="_blank" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
-                            ROS 2 Autonomy Stack for Multi-Agent Systems | 2025 – present
+                            ROS 2 Autonomy Stack for Multi-Agent Systems
                         </a>
                         <p class="text-base font-normal content-text mt-2 text-sm"><i>AutonomyNM | Sandia National Laboratories</i></p>
-                        <ul class="list-disc pl-5 mt-3 text-base">
-                            <li>Developing RAM-Stack, a ROS-based autonomous multi-agent software stack integrating SLAM Toolbox, SwarmSLAM, Navigation2, and ROS 2 Control for coordinated mapping, path planning, and reliable multi-agent navigation</li>
-                            <li>Optimized multi-agent performance by mastering behavior tree theory for Navigation2 debugging and implementing Zenoh-based interface filtering, reducing bandwidth and improving scalability</li>
-                            <li><a href="/assets/files/presentations/Sandia_Conference_Poster.pdf" target="_blank" class="text-[#0d77c4] hover:underline">Check out the poster here</a></li>
+                        <p class="text-sm text-gray-600 mt-1">
+                            <span class="font-semibold">Duration:</span> May 2025 – Present |
+                            <span class="font-semibold">Role:</span> Undergraduate Research Intern
+                        </p>
+                        <p class="text-base mt-3">
+                            Led development of RAM-Stack, an integrated ROS 2 software architecture for coordinated autonomous multi-agent systems in GPS-denied environments.
+                        </p>
+                        <ul class="list-disc pl-5 mt-3 text-base space-y-2">
+                            <li><strong>System Integration:</strong> Unified SLAM Toolbox, SwarmSLAM, Navigation2, and ROS 2 Control into a cohesive autonomy stack</li>
+                            <li><strong>Performance Optimization:</strong> Mastered behavior tree debugging for Navigation2 and implemented Zenoh-based interface filtering to improve multi-agent scalability and reduce communication overhead</li>
+                            <li><strong>Tools & Technologies:</strong> ROS 2 (Humble), Python, C++, Gazebo, SLAM Toolbox, Nav2, Zenoh DDS</li>
+                            <li><strong>Outcome:</strong> Poster presentation to Sandia technical leadership in August 2025 and a recorded three-hour technical presentation for future users of the RAM-Stack</li>
                         </ul>
+                        <div class="buttons mt-4 flex flex-wrap gap-3">
+                            <a href="/assets/files/presentations/Sandia_Conference_Poster.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d77c4] text-white rounded hover:bg-[#0a5a96] transition">
+                                <i class="fas fa-file-pdf"></i> View Poster
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Workspace -->
-                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6">
+                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6 border-l-4 border-[#0d77c4] pl-4">
                     <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
-                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="assets/images/research/workspace.png" alt="Workspace Image">
+                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="assets/images/research/workspace.png" alt="Robot Workspace Visualization">
                     </div>
                     <div class="publication-content text-left w-full xs:w-3/4">
                         <a target="_blank" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
-                            Maximizing Robot Traversal Under Actuator Failure | 2025 – present
+                            Maximizing Robot Traversal Under Actuator Failure
                         </a>
-                        <p class="text-base font-normal content-text mt-2 text-sm"><i>CMR | Brigham Young University</i></p>
-                        <ul class="list-disc pl-5 mt-3 text-base">
-                            <li>Developing algorithms to maximize the workspace of multiply-redundant truss robots under actuator failure</li>
-                            <li>Simulating failure scenarios to validate robustness and ensure continued locomotion in both simulation and hardware</li>
+                        <p class="text-base font-normal content-text mt-2 text-sm"><i>Compliant Mechanisms and Robotics Group (CMR) | Brigham Young University</i></p>
+                        <p class="text-sm text-gray-600 mt-1">
+                            <span class="font-semibold">Duration:</span> May 2025 – Present |
+                            <span class="font-semibold">Role:</span> Undergraduate Researcher |
+                            <span class="font-semibold">Funding:</span> Utah NASA Space Grant ($2,000)
+                        </p>
+                        <p class="text-base mt-3">
+                            Developing fault-tolerant algorithms to maximize workspace and maintain locomotion in multiply-redundant truss robots experiencing actuator failures.
+                        </p>
+                        <ul class="list-disc pl-5 mt-3 text-base space-y-2">
+                            <li><strong>Algorithm Development:</strong> Creating optimization routines to reconfigure robot geometry and maintain maximum reachable workspace under failure conditions</li>
+                            <li><strong>Validation:</strong> Simulating multiple failure scenarios and validating continued locomotion in both simulation and hardware platforms</li>
+                            <li><strong>Tools & Technologies:</strong> Python, discrete-time CBFs, kinematic modeling, embedded control systems</li>
+                            <li><strong>Outcome:</strong> Conference presentation scheduled for April 2026 at Utah NASA Space Grant Symposium. First-author paper in preparation for submission to <i>IEEE Robotics and Automation Letters</i></li>
                         </ul>
+                        <div class="buttons mt-4 flex flex-wrap gap-3">
+                            <a href="/assets/files/proposals/Workspace_Paper_Proposal.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d77c4] text-white rounded hover:bg-[#0a5a96] transition">
+                                <i class="fas fa-file-pdf"></i> View Proposal
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- MAGICC Lab -->
-                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6">
+                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6 border-l-4 border-[#0d77c4] pl-4">
                     <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
-                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="assets/images/research/magicc_lab.png" alt="MAGICC Lab Image">
+                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="assets/images/research/magicc_lab.png" alt="MAGICC Lab Research">
                     </div>
                     <div class="publication-content text-left w-full xs:w-3/4">
                         <a target="_blank" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
-                            Multi-Agent Navigation in GPS-Denied Environments | 2024 – present
+                            Multi-Agent Navigation in GPS-Denied Environments
                         </a>
-                        <p class="text-base font-normal content-text mt-2 text-sm"><i>MAGICC Lab | Brigham Young University</i></p>
-                        <ul class="list-disc pl-5 mt-3 text-base">
-                            <li>Investigating real-time Control Barrier Function formulation using LiDAR scans of environments</li>
-                            <li>Simulating and validating system performance in Gazebo and on hardware platforms</li>
+                        <p class="text-base font-normal content-text mt-2 text-sm"><i>Multi-Agent Intelligent Coordination and Control (MAGICC) Lab | Brigham Young University</i></p>
+                        <p class="text-sm text-gray-600 mt-1">
+                            <span class="font-semibold">Duration:</span> August 2024 – Present |
+                            <span class="font-semibold">Role:</span> Undergraduate Researcher
+                        </p>
+                        <p class="text-base mt-3">
+                            Investigating real-time Control Barrier Function (CBF) formulations for safe multi-agent navigation using LiDAR-based environmental perception.
+                        </p>
+                        <ul class="list-disc pl-5 mt-3 text-base space-y-2">
+                            <li><strong>Novel Approach:</strong> Formulating CBFs directly from LiDAR point clouds for dynamic obstacle avoidance without pre-mapping</li>
+                            <li><strong>Simulation & Hardware:</strong> Validating multi-agent coordination algorithms in Gazebo simulation and deploying on physical robot platforms</li>
+                            <li><strong>Tools & Technologies:</strong> ROS 2, Python, C++, Gazebo, LiDAR sensor processing, control theory</li>
                         </ul>
                     </div>
                 </div>
@@ -109,39 +154,75 @@
 
         <section id="past-research" class="py-12 text-left">
             <h2 class="text-4xl font-bold text-[#404040] mb-6">Past Research</h2>
+            <p class="text-base mb-8 text-gray-600">
+                Completed research projects demonstrating expertise in soft robotics, embedded systems, and microfluidics.
+            </p>
 
-            <div class="space-y-8">
+            <div class="space-y-10">
                 <!-- Inflatable Structure for Moon -->
                 <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6">
                     <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
-                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="assets/images/research/nasa_robot.jpg" alt="NASA Robot Image">
+                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="assets/images/research/nasa_robot.jpg" alt="NASA Inflatable Robot">
                     </div>
                     <div class="publication-content text-left w-full xs:w-3/4">
                         <a target="_blank" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
-                            Inflatable Structures for the Moon | 2023 – 2025
+                            Inflatable Structures for Lunar Applications
                         </a>
-                        <p class="text-base font-normal content-text mt-2 text-sm"><i>CMR | Brigham Young University</i></p>
-                        <ul class="list-disc pl-5 mt-3 text-base">
-                            <li>Established research operations for a new lab, coordinating undergraduate-led development during the first year</li>
-                            <li>Led redesign of a soft, inflatable octahedral robot for lunar deployment, incorporating novel parent-child radio networking with error-checking protocols</li>
-                            <li>Selected as one of six national finalists in the 2024–2025 NASA BIG Idea Challenge on soft robotics for lunar exploration</li>
+                        <p class="text-base font-normal content-text mt-2 text-sm"><i>Compliant Mechanisms and Robotics Group (CMR) | Brigham Young University</i></p>
+                        <p class="text-sm text-gray-600 mt-1">
+                            <span class="font-semibold">Duration:</span> August 2023 – May 2025 |
+                            <span class="font-semibold">Role:</span> Lead Undergraduate Researcher |
+                            <span class="font-semibold">Team:</span> 25+ students |
+                            <span class="font-semibold">Funding:</span> NASA BIG Idea Challenge ($147,000)
+                        </p>
+                        <p class="text-base mt-3">
+                            Led development of an untethered, modular inflatable truss robot for lunar surface operations as part of NASA's Breakthrough, Innovative, and Game-changing (BIG) Idea Challenge.
+                        </p>
+                        <ul class="list-disc pl-5 mt-3 text-base space-y-2">
+                            <li><strong>Team Leadership:</strong> Established research operations for a new lab, coordinating 25+ undergraduate researchers across mechanical, electrical, and software teams. Led grant writing and management efforts at a time with few to no graduate students</li>
+                            <li><strong>System Design:</strong> Led complete redesign of soft, inflatable octahedral robot incorporating novel parent-child radio networking with error-checking protocols</li>
+                            <li><strong>Achievement:</strong> Selected as 1 of 6 national finalists in the 2023-2024 NASA BIG Idea Challenge. Presented technical paper and poster at the BIG Idea Challenge symposium and the November 2025 Lunar Surface Innovation Consortium (LSIC) meeting</li>
+                            <li><strong>Publications:</strong> In preparation for resubmission to IEEE Transactions on Mechatronics</li>
+                            <li><strong>Tools & Technologies:</strong> SolidWorks, Arduino, embedded control, RF communications, inflatable actuator design</li>
                         </ul>
+                        <div class="buttons mt-4 flex flex-wrap gap-3">
+                            <a href="https://bigidea.nianet.org/wp-content/uploads/BYU-Technical-Paper.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d77c4] text-white rounded hover:bg-[#0a5a96] transition">
+                                <i class="fas fa-file-pdf"></i> Technical Paper
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=MaCtM9sxlHA" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d77c4] text-white rounded hover:bg-[#0a5a96] transition">
+                                <i class="fab fa-youtube"></i> Video
+                            </a>
+                            <a href="/assets/files/presentations/BYU_LSIC_Poster.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d77c4] text-white rounded hover:bg-[#0a5a96] transition">
+                                <i class="fas fa-file-pdf"></i> LSIC Poster
+                            </a>
+                            <a href="https://github.com/BYUCMR/NASA_BIG_Idea_Challenge_24" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d77c4] text-white rounded hover:bg-[#0a5a96] transition">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- LLNL -->
                 <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6">
                     <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
-                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="assets/images/research/lidss_rafts.png" alt="LLNL Image">
+                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="assets/images/research/lidss_rafts.png" alt="LIDSS Rafts">
                     </div>
                     <div class="publication-content text-left w-full xs:w-3/4">
                         <a target="_blank" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
-                            Remote Control of Rafts for Nuclear Diagnostics | 2024
+                            Remote Control System for Nuclear Diagnostics
                         </a>
-                        <p class="text-base font-normal content-text mt-2 text-sm"><i>LIDSS | Lawrence Livermore National Laboratories</i></p>
-                        <ul class="list-disc pl-5 mt-3 text-base">
-                            <li>Engineered STM32-based remote control system for commanding a fleet of test rafts in nuclear diagnostics applications <a href="https://str.llnl.gov/past-issues/june-2019/testing-missile-technology-high-seas" target="_blank">(LIDSS)</a></li>
-                            <li>Delivered end-to-end mechanical, electrical, and software systems, programming FreeRTOS and managing task scheduling</li>
+                        <p class="text-base font-normal content-text mt-2 text-sm"><i>LLNL Independent Diagnostic Scoring System (LIDSS) | Lawrence Livermore National Laboratory</i></p>
+                        <p class="text-sm text-gray-600 mt-1">
+                            <span class="font-semibold">Duration:</span> May 2024 - May 2025 |
+                            <span class="font-semibold">Role:</span> Undergraduate Research Intern
+                        </p>
+                        <p class="text-base mt-3">
+                            Engineered embedded control system for autonomous fleet of diagnostic rafts used in <a href="https://str.llnl.gov/past-issues/june-2019/testing-missile-technology-high-seas" target="_blank" class="text-[#0d77c4] hover:underline">nuclear weapons testing applications</a>.
+                        </p>
+                        <ul class="list-disc pl-5 mt-3 text-base space-y-2">
+                            <li><strong>Full-Stack Development:</strong> Delivered end-to-end mechanical, electrical, and software systems for fleet command and control</li>
+                            <li><strong>Real-Time Systems:</strong> Programmed STM32 microcontrollers with FreeRTOS, implementing task scheduling and inter-raft communication protocols</li>
+                            <li><strong>Tools & Technologies:</strong> STM32, FreeRTOS, C/C++, RF communication, embedded systems design</li>
                         </ul>
                     </div>
                 </div>
@@ -153,13 +234,26 @@
                     </div>
                     <div class="publication-content text-left w-full xs:w-3/4">
                         <a target="_blank" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
-                            World's Smallest Nerf Gun | 2023 – 2024
+                            World's Smallest Nerf Gun
                         </a>
-                        <p class="text-base font-normal content-text mt-2 text-sm"><i>Mark Rober & CMR | Brigham Young University</i></p>
-                        <ul class="list-disc pl-5 mt-3 text-base">
-                            <li>Collaborated with Mark Rober to develop the <a href="https://www.youtube.com/watch?v=9c2NqlUWZfo" target="_blank">world’s smallest Nerf gun</a> across five scales (72M+ views)</li>
-                            <li>Conducted 100+ design tests to analyze failure modes and drive mechanical optimization through weekly technical reporting</li>
+                        <p class="text-base font-normal content-text mt-2 text-sm"><i>Mark Rober Collaboration & CMR | Brigham Young University</i></p>
+                        <p class="text-sm text-gray-600 mt-1">
+                            <span class="font-semibold">Duration:</span> June 2023 – August 2023 |
+                            <span class="font-semibold">Role:</span> Undergraduate Researcher |                           <span class="font-semibold">Impact:</span> 72M+ YouTube views
+                        </p>
+                        <p class="text-base mt-3">
+                            Collaborated with YouTuber Mark Rober to engineer the world's smallest functional Nerf guns across five different scales, featured in a <a href="https://www.youtube.com/watch?v=9c2NqlUWZfo" target="_blank" class="text-[#0d77c4] hover:underline">viral video with 72M+ views</a>.
+                        </p>
+                        <ul class="list-disc pl-5 mt-3 text-base space-y-2">
+                            <li><strong>Iterative Design:</strong> Conducted 100+ design iterations and failure mode analysis to optimize mechanical performance at micro-scale</li>
+                            <li><strong>Technical Communication:</strong> Provided weekly technical reports documenting design decisions, test results, and optimization strategies</li>
+                            <li><strong>Tools & Technologies:</strong> SolidWorks, 3D printing, mechanical testing</li>
                         </ul>
+                        <div class="buttons mt-4 flex flex-wrap gap-3">
+                            <a href="https://www.youtube.com/watch?v=9c2NqlUWZfo" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d77c4] text-white rounded hover:bg-[#0a5a96] transition">
+                                <i class="fab fa-youtube"></i> Watch Video (72M views)
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -170,13 +264,27 @@
                     </div>
                     <div class="publication-content text-left w-full xs:w-3/4">
                         <a target="_blank" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
-                            Advancing 3D Printed Microfluidics | 2023 – 2024
+                            Quantum Dot Temperature Sensing in Microfluidic Devices
                         </a>
-                        <p class="text-base font-normal content-text mt-2 text-sm"><i>TEMP Lab | Brigham Young University</i></p>
-                        <ul class="list-disc pl-5 mt-3 text-base">
-                            <li>Investigated quantum dots as a method for measuring temperature within microfluidic devices</li>
-                            <li>Calibrated fluorescence output of quantum dots to correlate with temperature in an in-house “lab-on-a-chip” device</li>
+                        <p class="text-base font-normal content-text mt-2 text-sm"><i>Thermal and Energy Management Processes (TEMP) Lab | Brigham Young University</i></p>
+                        <p class="text-sm text-gray-600 mt-1">
+                            <span class="font-semibold">Duration:</span> March 2023 – August 2023 |
+                            <span class="font-semibold">Role:</span> Undergraduate Researcher
+                        </p>
+                        <p class="text-base mt-3">
+                            Investigated quantum dots as novel temperature sensors for 3D-printed microfluidic "lab-on-a-chip" devices, enabling non-invasive thermal measurements.
+                        </p>
+                        <ul class="list-disc pl-5 mt-3 text-base space-y-2">
+                            <li><strong>Experimental Design:</strong> Calibrated quantum dot fluorescence output to temperature in custom microfluidic channels</li>
+                            <li><strong>Device Fabrication:</strong> Designed and fabricated 3D-printed microfluidic test devices for temperature measurement validation</li>
+                            <li><strong>Publication:</strong> Co-author on paper published in <i>International Journal of Heat and Mass Transfer</i> (2025)</li>
+                            <li><strong>Tools & Technologies:</strong> 3D printing, fluorescence microscopy, microfluidics, thermal analysis</li>
                         </ul>
+                        <div class="buttons mt-4 flex flex-wrap gap-3">
+                            <a href="https://doi.org/10.1016/j.ijheatmasstransfer.2025.127395" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d77c4] text-white rounded hover:bg-[#0a5a96] transition">
+                                <i class="ai ai-doi"></i> View Publication
+                            </a>
+                        </div>
                     </div>
                 </div>
 
