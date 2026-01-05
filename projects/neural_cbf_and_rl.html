@@ -75,17 +75,19 @@
             </figure>
 
             <div class="my-8">
-                <!-- Always show a button option for easy access -->
-                <div class="text-center mb-4">
-                    <a href="/assets/files/projects/neural_cbf_and_rl/Neural_CBFs_and_RL_paper.pdf"
-                    target="_blank"
-                    class="inline-block bg-[#0d77c4] hover:bg-[#095fa1] text-white font-semibold py-3 px-6 rounded-lg">
-                        <i class="fas fa-file-pdf mr-2"></i>Open Report PDF in New Tab
-                    </a>
-                </div>
-
-                <!-- iframe for desktop browsers -->
                 <div id="pdf-viewer-container">
+                    <!-- Mobile fallback -->
+                    <div id="mobile-pdf-message" class="hidden text-center py-8 border border-gray-300 rounded bg-gray-50">
+                        <i class="fas fa-mobile-alt text-4xl text-gray-400 mb-4"></i>
+                        <p class="mb-4 text-gray-600">For the best viewing experience on mobile devices, please open the PDF in a new tab.</p>
+                        <a href="/assets/files/projects/neural_cbf_and_rl/Neural_CBFs_and_RL_paper.pdf"
+                        target="_blank"
+                        class="inline-block bg-[#0d77c4] hover:bg-[#095fa1] text-white font-semibold py-3 px-6 rounded-lg">
+                            <i class="fas fa-file-pdf mr-2"></i>Open PDF
+                        </a>
+                    </div>
+
+                    <!-- Desktop iframe -->
                     <iframe id="pdf-iframe"
                             src="/assets/files/projects/neural_cbf_and_rl/Neural_CBFs_and_RL_paper.pdf"
                             width="100%"
@@ -95,12 +97,13 @@
                 </div>
 
                 <script>
-                    // Detect iOS/iPadOS and hide iframe
-                    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-                                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+                    // Detect any mobile device (iOS, Android, etc.)
+                    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                                    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
-                    if (isIOS) {
+                    if (isMobile) {
                         document.getElementById('pdf-iframe').style.display = 'none';
+                        document.getElementById('mobile-pdf-message').classList.remove('hidden');
                     }
                 </script>
             </div>
