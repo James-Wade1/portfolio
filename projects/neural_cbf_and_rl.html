@@ -75,20 +75,34 @@
             </figure>
 
             <div class="my-8">
-                <div class="block md:hidden">
+                <!-- Always show a button option for easy access -->
+                <div class="text-center mb-4">
                     <a href="/assets/files/projects/neural_cbf_and_rl/Neural_CBFs_and_RL_paper.pdf"
                     target="_blank"
-                    class="block text-center bg-[#0d77c4] hover:bg-[#095fa1] text-white font-semibold py-3 px-6 rounded-lg">
+                    class="inline-block bg-[#0d77c4] hover:bg-[#095fa1] text-white font-semibold py-3 px-6 rounded-lg">
                         <i class="fas fa-file-pdf mr-2"></i>Open PDF in New Tab
                     </a>
                 </div>
 
-                <iframe src="/assets/files/projects/neural_cbf_and_rl/Neural_CBFs_and_RL_paper.pdf"
-                        width="100%"
-                        height="800px"
-                        class="hidden md:block"
-                        style="border: 1px solid #ccc;">
-                </iframe>
+                <!-- iframe for desktop browsers -->
+                <div id="pdf-viewer-container">
+                    <iframe id="pdf-iframe"
+                            src="/assets/files/projects/neural_cbf_and_rl/Neural_CBFs_and_RL_paper.pdf"
+                            width="100%"
+                            height="800px"
+                            style="border: 1px solid #ccc;">
+                    </iframe>
+                </div>
+
+                <script>
+                    // Detect iOS/iPadOS and hide iframe
+                    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+                                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+                    if (isIOS) {
+                        document.getElementById('pdf-iframe').style.display = 'none';
+                    }
+                </script>
             </div>
 
             <h2 class="text-2xl font-bold text-[#404040] mt-8 mb-4">Project Source Code</h2>
