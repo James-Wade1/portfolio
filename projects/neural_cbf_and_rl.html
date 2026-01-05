@@ -75,35 +75,46 @@
             </figure>
 
             <div class="my-8">
-                <div id="pdf-viewer-container">
-                    <!-- Mobile fallback -->
-                    <div id="mobile-pdf-message" class="hidden text-center py-8 border border-gray-300 rounded bg-gray-50">
-                        <i class="fas fa-mobile-alt text-4xl text-gray-400 mb-4"></i>
-                        <p class="mb-4 text-gray-600">For the best viewing experience on mobile devices, please open the PDF in a new tab.</p>
-                        <a href="/assets/files/projects/neural_cbf_and_rl/Neural_CBFs_and_RL_paper.pdf"
-                        target="_blank"
-                        class="inline-block bg-[#0d77c4] hover:bg-[#095fa1] text-white font-semibold py-3 px-6 rounded-lg">
-                            <i class="fas fa-file-pdf mr-2"></i>Open PDF
-                        </a>
-                    </div>
-
-                    <!-- Desktop iframe -->
-                    <iframe id="pdf-iframe"
-                            src="/assets/files/projects/neural_cbf_and_rl/Neural_CBFs_and_RL_paper.pdf"
-                            width="100%"
-                            height="800px"
-                            style="border: 1px solid #ccc;">
-                    </iframe>
+                <!-- Always show the button for everyone -->
+                <div class="text-center mb-4">
+                    <a href="/assets/files/projects/neural_cbf_and_rl/Neural_CBFs_and_RL_paper.pdf"
+                    target="_blank"
+                    class="inline-block bg-[#0d77c4] hover:bg-[#095fa1] text-white font-semibold py-3 px-6 rounded-lg">
+                        <i class="fas fa-file-pdf mr-2"></i>Open Report PDF in New Tab
+                    </a>
                 </div>
 
-                <script>
-                    // Detect any mobile device (iOS, Android, etc.)
-                    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-                                    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+                <!-- PDF viewer for desktop/laptop (hidden by default) -->
+                <iframe id="pdf-iframe"
+                        src="/assets/files/projects/neural_cbf_and_rl/Neural_CBFs_and_RL_paper.pdf"
+                        width="100%"
+                        height="800px"
+                        style="border: 1px solid #ccc; display: none;">
+                </iframe>
 
-                    if (isMobile) {
-                        document.getElementById('pdf-iframe').style.display = 'none';
-                        document.getElementById('mobile-pdf-message').classList.remove('hidden');
+                <script>
+                    // Only show iframe if it's a desktop/laptop computer
+                    function isDesktopComputer() {
+                        // Rule out mobile/tablet user agents
+                        const hasMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                        if (hasMobileUA) return false;
+
+                        // Rule out iPads pretending to be desktop
+                        const isIPad = (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+                        if (isIPad) return false;
+
+                        // Must have a pointer device (mouse/trackpad)
+                        const hasPointer = window.matchMedia('(pointer: fine)').matches;
+
+                        // Must have a reasonably large screen
+                        const hasLargeScreen = window.innerWidth >= 1024;
+
+                        return hasPointer && hasLargeScreen;
+                    }
+
+                    // Show iframe only for desktop/laptop computers
+                    if (isDesktopComputer()) {
+                        document.getElementById('pdf-iframe').style.display = 'block';
                     }
                 </script>
             </div>
