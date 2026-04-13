@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>James Wade</title>
+    <link rel="icon" type="image/png" href="../assets/images/logos/Logo_white.dxf.png">
+    <meta name="description" content="Exploring diffusion models from MNIST image generation to robotic planning and control">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;800&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    screens: {
+                        'hs': '580px',
+                        'xs': '500px',
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+</head>
+<body class="bg-[#ffffff] text-[#4a4a4a] min-h-screen flex flex-col overflow-x-hidden">
+    <script src="/script.js"></script>
+    <div id="header-placeholder"></div>
+
+    <main class="pt-20 pb-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex-1 w-full">
+        <section class="py-12 text-left">
+
+            <h1 class="text-4xl font-bold text-[#404040] mb-4">Exploring Diffusion: From MNIST Generation to Robotic Control</h1>
+            <p class="text-base font-normal content-text mt-2 text-sm mb-8"><i>Graduate-level Deep Learning | Brigham Young University | 2025</i></p>
+
+            <p class="text-base mb-6">
+                This project explores diffusion models across a progression of increasing complexity — starting with simple image generation on MNIST and building up to trajectory-level planning and action-diffusion policy learning for robotics. The four experiments cover Denoising Diffusion Probabilistic Models (DDPM), Denoising Diffusion Implicit Models (DDIM), Diffusion Policy, and Diffuser.
+            </p>
+            <p class="text-base mb-6">
+                <strong>Diffuser</strong> was first introduced by Janner et al. (2022) [3] and <strong>Diffusion Policy</strong> was first introduced by Chi et al. (2025) [4]. The architecture for my recreations of both methods closely follows the original papers, and this project attempts to recreate portions of the results presented in those works. For an in-depth treatment of the theory behind these models, please refer directly to those papers.
+            </p>
+
+            <!-- ===================== DDPM ===================== -->
+            <h2 class="text-2xl font-bold text-[#404040] mt-10 mb-3">1 &mdash; DDPM: Denoising Diffusion Probabilistic Models</h2>
+            <p class="text-base mb-4">
+                The first experiment implements a baseline DDPM [1] trained on MNIST digits. The model learns to reverse a fixed Gaussian noise process over hundreds of timesteps, eventually recovering sharp, recognizable handwritten digits from pure noise. This serves as the foundation for understanding the forward/reverse diffusion process before applying it to more complex domains.
+            </p>
+            <figure class="my-6">
+                <video class="w-full h-auto rounded" controls muted loop playsinline
+                    src="https://github.com/user-attachments/assets/af3f8983-b8fb-44fa-b06c-2ba9c7d80d98">
+                    Your browser does not support the video tag.
+                </video>
+                <figcaption class="text-sm text-left text-gray-600 italic mt-2">
+                    Video 1: DDPM sampling on MNIST — the model progressively denoises random Gaussian noise into recognizable handwritten digits.
+                </figcaption>
+            </figure>
+
+            <!-- ===================== DDIM ===================== -->
+            <h2 class="text-2xl font-bold text-[#404040] mt-10 mb-3">2 &mdash; DDIM: Faster Deterministic Sampling</h2>
+            <p class="text-base mb-4">
+                The second experiment applies Denoising Diffusion Implicit Models (DDIM) [2], which reformulate the reverse process as a non-Markovian deterministic mapping. This enables high-quality generation with far fewer denoising steps than standard DDPM — often achieving comparable results in 10&ndash;50 steps rather than 1000. The video below demonstrates the reduction in required steps while maintaining sample quality.
+            </p>
+            <figure class="my-6">
+                <video class="w-full h-auto rounded" controls muted loop playsinline
+                    src="https://github.com/user-attachments/assets/58d29d2f-6df6-471c-9f1a-5f6644ddfb85">
+                    Your browser does not support the video tag.
+                </video>
+                <figcaption class="text-sm text-left text-gray-600 italic mt-2">
+                    Video 2: DDIM sampling — deterministic generation achieves good sample quality with significantly fewer denoising steps.
+                </figcaption>
+            </figure>
+
+            <!-- ===================== Diffusion Policy ===================== -->
+            <h2 class="text-2xl font-bold text-[#404040] mt-10 mb-3">3 &mdash; Diffusion Policy</h2>
+            <p class="text-base mb-4">
+                Diffusion Policy [4] treats robot action generation as a conditional denoising problem. Given observations of the environment, the model learns to denoise a sequence of actions from Gaussian noise — effectively learning a multi-modal action distribution that can represent complex, contact-rich behaviors. This experiment implements the core action-diffusion policy learning pipeline and evaluates rollout performance, with results summarized in the bar chart below.
+            </p>
+            <figure class="my-6">
+                <video class="w-full h-auto rounded" controls muted loop playsinline
+                    src="https://github.com/user-attachments/assets/22a757cd-00ec-4b24-83f7-9df3f5ceb866">
+                    Your browser does not support the video tag.
+                </video>
+                <figcaption class="text-sm text-left text-gray-600 italic mt-2">
+                    Video 3: Diffusion Policy evaluation rollouts — the learned action-diffusion policy controls the agent based on denoised action sequences conditioned on observations.
+                </figcaption>
+            </figure>
+            <figure class="my-6">
+                <img class="w-full h-auto rounded"
+                    src="https://raw.githubusercontent.com/James-Wade1/diffusion-from-mnist-to-robots/main/diffusion_policy/results/max_reward_bar_chart.png"
+                    alt="Diffusion Policy max reward bar chart">
+                <figcaption class="text-sm text-left text-gray-600 italic mt-2">
+                    Figure 1: Maximum reward achieved per episode during Diffusion Policy evaluation, showing learned policy performance across rollouts.
+                </figcaption>
+            </figure>
+
+            <!-- ===================== Diffuser ===================== -->
+            <h2 class="text-2xl font-bold text-[#404040] mt-10 mb-3">4 &mdash; Diffuser: Trajectory-Level Diffusion Planning</h2>
+            <p class="text-base mb-4">
+                Diffuser [3] applies diffusion at the level of full trajectories rather than individual actions. Rather than learning a policy that maps states to actions, Diffuser learns a distribution over entire trajectory sequences and samples from it at planning time. This unlocks powerful capabilities: the same model can be guided to different behaviors via inpainting (fixing start and end states) or classifier-guided diffusion (steering trajectories away from obstacles at inference time — no retraining required).
+            </p>
+
+            <h3 class="text-xl font-semibold text-[#404040] mt-6 mb-2">Randomly Sampled Trajectories</h3>
+            <p class="text-base mb-4">
+                Even without any goal conditioning, Diffuser generates trajectories that are physically plausible and smooth — demonstrating that the model has learned meaningful structure about what valid motion looks like.
+            </p>
+            <figure class="my-6">
+                <video class="w-full h-auto rounded" controls muted loop playsinline
+                    src="https://github.com/user-attachments/assets/5dc55738-1c92-45de-bd79-1dc6b6f1f3e5">
+                    Your browser does not support the video tag.
+                </video>
+                <figcaption class="text-sm text-left text-gray-600 italic mt-2">
+                    Video 4: Randomly sampled Diffuser trajectories (no obstacle avoidance) — the model generates smooth, coherent motion without any goal conditioning.
+                </figcaption>
+            </figure>
+
+            <h3 class="text-xl font-semibold text-[#404040] mt-6 mb-2">Inpainted Trajectories</h3>
+            <p class="text-base mb-4">
+                By fixing the start and end states of the trajectory during the reverse diffusion process (inpainting), we can guide Diffuser to connect specific configurations. The model fills in the intermediate waypoints while respecting the boundary conditions — without any additional training.
+            </p>
+            <figure class="my-6">
+                <video class="w-full h-auto rounded" controls muted loop playsinline
+                    src="https://github.com/user-attachments/assets/dc2c7067-275e-45b6-a66c-d5bf42b0dede">
+                    Your browser does not support the video tag.
+                </video>
+                <figcaption class="text-sm text-left text-gray-600 italic mt-2">
+                    Video 5: Inpainted Diffuser trajectories — start and end configurations are fixed via inpainting, and the model generates smooth paths between them.
+                </figcaption>
+            </figure>
+
+            <h3 class="text-xl font-semibold text-[#404040] mt-6 mb-2">Obstacle-Averse Trajectories</h3>
+            <p class="text-base mb-4">
+                Using classifier-guided diffusion [6], Diffuser can be steered to avoid obstacles entirely at inference time. A gradient signal from a learned obstacle classifier nudges the denoising process away from collision regions. While this initial result shows some trajectory jerkiness, the original authors of Diffuser demonstrate that further tuning yields high-quality avoidance behavior — confirming that the core mechanism works and that improved results are achievable with additional tuning.
+            </p>
+            <figure class="my-6">
+                <video class="w-full h-auto rounded" controls muted loop playsinline
+                    src="https://github.com/user-attachments/assets/35d4616a-afa9-4aa7-8d00-7ab64653d076">
+                    Your browser does not support the video tag.
+                </video>
+                <figcaption class="text-sm text-left text-gray-600 italic mt-2">
+                    Video 6: Obstacle-averse Diffuser trajectories using classifier-guided diffusion — obstacles are avoided at runtime without retraining the model.
+                </figcaption>
+            </figure>
+
+            <!-- ===================== References ===================== -->
+            <h2 class="text-2xl font-bold text-[#404040] mt-12 mb-4">References</h2>
+
+            <!-- Highlighted callout for Diffuser and Diffusion Policy -->
+            <div class="bg-blue-50 border-l-4 border-[#0d77c4] rounded-r-lg px-5 py-4 mb-6">
+                <p class="text-sm font-semibold text-[#0d77c4] mb-2">Primary Inspirations</p>
+                <p class="text-sm text-[#4a4a4a] mb-2">
+                    The robotics components of this project are direct reimplementations of the following two works. Full credit for the Diffuser and Diffusion Policy architectures, training procedures, and experiment designs belongs to their respective authors:
+                </p>
+                <ul class="list-disc pl-5 text-sm text-[#4a4a4a] space-y-2">
+                    <li>
+                        <strong>Diffuser</strong> — Janner, M., Du, Y., Tenenbaum, J., &amp; Levine, S. (2022). Planning with diffusion for flexible behavior synthesis. <em>arXiv preprint arXiv:2205.09991.</em>
+                    </li>
+                    <li>
+                        <strong>Diffusion Policy</strong> — Chi, C., Xu, Z., Feng, S., Cousineau, E., Du, Y., Burchfiel, B., Tedrake, R., &amp; Song, S. (2025). Diffusion policy: Visuomotor policy learning via action diffusion. <em>The International Journal of Robotics Research, 44</em>(10&ndash;11), 1684&ndash;1704.
+                    </li>
+                </ul>
+            </div>
+
+            <ol class="list-decimal pl-6 text-sm text-[#4a4a4a] space-y-3">
+                <li>
+                    Ho, J., Jain, A., &amp; Abbeel, P. (2020). Denoising diffusion probabilistic models. <em>Advances in Neural Information Processing Systems, 33,</em> 6840&ndash;6851.
+                </li>
+                <li>
+                    Song, J., Meng, C., &amp; Ermon, S. (2020). Denoising diffusion implicit models. <em>arXiv preprint arXiv:2010.02502.</em>
+                </li>
+                <li>
+                    Janner, M., Du, Y., Tenenbaum, J., &amp; Levine, S. (2022). Planning with diffusion for flexible behavior synthesis. <em>arXiv preprint arXiv:2205.09991.</em>
+                </li>
+                <li>
+                    Chi, C., Xu, Z., Feng, S., Cousineau, E., Du, Y., Burchfiel, B., Tedrake, R., &amp; Song, S. (2025). Diffusion policy: Visuomotor policy learning via action diffusion. <em>The International Journal of Robotics Research, 44</em>(10&ndash;11), 1684&ndash;1704.
+                </li>
+                <li>
+                    Perez, E., Strub, F., De Vries, H., Dumoulin, V., &amp; Courville, A. (2018). FiLM: Visual reasoning with a general conditioning layer. In <em>Proceedings of the AAAI Conference on Artificial Intelligence.</em>
+                </li>
+                <li>
+                    Dhariwal, P., &amp; Nichol, A. (2021). Diffusion models beat GANs on image synthesis. <em>Advances in Neural Information Processing Systems, 34,</em> 8780&ndash;8794.
+                </li>
+            </ol>
+
+            <!-- ===================== GitHub Link ===================== -->
+            <h2 class="text-2xl font-bold text-[#404040] mt-10 mb-4">Project Source Code</h2>
+            <p class="text-base mb-4">
+                All four experiments are available as Jupyter notebooks in my GitHub repository:
+            </p>
+            <p class="mb-8">
+                <a href="https://github.com/James-Wade1/diffusion-from-mnist-to-robots" target="_blank"
+                   class="inline-block bg-[#0d77c4] hover:bg-[#095fa1] text-white font-semibold py-2 px-4 rounded-lg">
+                    <i class="fab fa-github mr-2"></i>View Code on GitHub
+                </a>
+            </p>
+
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+</body>
+</html>
