@@ -63,6 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Stagger selected-work cards individually
+    document.querySelectorAll('#selected-work .grid > a').forEach((card, i) => {
+        card.classList.add('reveal');
+        card.style.transitionDelay = `${i * 0.12}s`;
+    });
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -70,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+    }, { threshold: 0.04, rootMargin: '0px 0px 180px 0px' });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 });

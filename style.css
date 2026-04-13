@@ -32,7 +32,7 @@ h2, h3 {
     width: 30%;
     margin: 10px auto 20px auto;
     height: 3px;
-    background-color: #404040;
+    background-color: #0d77c4;
 }
 
 .logo-text {
@@ -71,7 +71,7 @@ h2, h3 {
 }
 
 .publication-content a:not(.buttons a) {
-    color: #145a99;
+    color: #0d77c4;
 }
 
 /* Profile photo */
