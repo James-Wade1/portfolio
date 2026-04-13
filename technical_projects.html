@@ -59,6 +59,34 @@
             <!-- Featured Projects Section -->
             <div class="space-y-8 mb-12">
 
+                <!-- Diffusion: MNIST to Robots -->
+                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6 border-l-4 border-[#0d77c4] pl-4">
+                    <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
+                        <img class="publication-image w-full h-auto" style="max-width: 175px;"
+                            src="https://raw.githubusercontent.com/James-Wade1/diffusion-from-mnist-to-robots/main/diffusion_policy/results/max_reward_bar_chart.png"
+                            alt="Diffusion from MNIST to Robots">
+                    </div>
+                    <div class="publication-content text-left w-full xs:w-3/4">
+                        <a href="/projects/diffusion_mnist_to_robots.html" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
+                            Exploring Diffusion: From MNIST Generation to Robotic Control | 2025
+                        </a>
+                        <p class="text-base font-normal content-text mt-2 text-sm">
+                            <i>Graduate-level Deep Learning | Brigham Young University</i>
+                        </p>
+                        <ul class="list-disc pl-5 mt-3 text-base space-y-2">
+                            <li>Implemented DDPM and DDIM from scratch and applied them to MNIST image generation, demonstrating accelerated sampling with far fewer denoising steps</li>
+                            <li>Reproduced Diffusion Policy [Chi et al., 2025] for action-diffusion policy learning in robotic control tasks</li>
+                            <li>Reproduced Diffuser [Janner et al., 2022] for trajectory-level planning, including inpainting-guided goal conditioning and classifier-guided obstacle avoidance at inference time</li>
+                            <li>Demonstrated how a single diffusion model trained on trajectories can be steered to new behaviors without retraining</li>
+                        </ul>
+                        <div class="buttons mt-4 flex flex-wrap gap-3">
+                            <a href="/projects/diffusion_mnist_to_robots.html" class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d77c4] text-white rounded hover:bg-[#0a5a96] transition">
+                                <i class="fas fa-arrow-right"></i> View Full Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Neural CBF and RL controller  -->
                 <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6 border-l-4 border-[#0d77c4] pl-4">
                     <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
