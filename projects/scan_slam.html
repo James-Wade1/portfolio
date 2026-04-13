@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>James Wade</title>
+    <link rel="icon" type="image/png" href="../assets/images/logos/Logo_white.dxf.png">
+    <meta name="description" content="Scan-SLAM: A ROS 2 SLAM implementation combining correlative scan matching with pose-graph optimization">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;800&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    screens: {
+                        'hs': '580px',
+                        'xs': '500px',
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+</head>
+<body class="bg-[#ffffff] text-[#4a4a4a] min-h-screen flex flex-col overflow-x-hidden">
+    <script src="/script.js"></script>
+    <div id="header-placeholder"></div>
+
+    <main class="pt-20 pb-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex-1 w-full">
+        <section class="py-12 text-left">
+            <h1 class="text-4xl font-bold text-[#404040] mb-6">Scan-SLAM: Correlative Scan Matching and Pose-Graph Optimization in ROS 2</h1>
+            <p class="text-base font-normal content-text mt-2 text-sm"><i>Graduate-level Autonomous Mobile Robots | Brigham Young University | 2025</i></p>
+
+            <figure class="my-6">
+                <img class="w-full h-auto" src="https://raw.githubusercontent.com/James-Wade1/Scan-SLAM/main/results/media/trajectories.png" alt="Scan-SLAM trajectory comparison: estimated vs. ground truth">
+                <figcaption class="text-sm text-left text-gray-600 italic mt-2">
+                    Figure 1: Trajectory comparison between ground truth (green), raw odometry (red), and Scan-SLAM estimate (blue). The SLAM system substantially corrects odometry drift over the full run.
+                </figcaption>
+            </figure>
+
+            <p class="text-base mb-6">
+                Scan-SLAM is an educational ROS 2 (Jazzy) implementation of a complete 2D SLAM pipeline. The system combines a <strong>frontend</strong> based on correlative scan matching with a <strong>backend</strong> based on iterative pose-graph optimization, giving a hands-on implementation of the two core components found in modern lidar SLAM systems.
+            </p>
+
+            <p class="text-base mb-6">
+                The project includes a custom 2D robot simulator for closed-loop testing, visualization tools for trajectory analysis and occupancy grid generation, and Docker support for reproducible builds. All components communicate through custom ROS 2 message types, reflecting a real-world system architecture.
+            </p>
+
+            <h2 class="text-2xl font-bold text-[#404040] mt-10 mb-4">Presentation Video</h2>
+            <p class="text-base mb-4">
+                The video below covers the system design, algorithmic details, and a live demo comparing raw odometry drift against the full SLAM system.
+            </p>
+            <figure class="my-6 relative w-full pb-[56.25%]">
+                <iframe
+                    class="absolute top-0 left-0 w-full h-full"
+                    src="https://www.youtube.com/embed/roFVnoGwXZs"
+                    title="Scan-SLAM Presentation"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+            </figure>
+
+            <h2 class="text-2xl font-bold text-[#404040] mt-10 mb-4">System Architecture</h2>
+            <p class="text-base mb-6">
+                The pipeline is split into four packages: the core SLAM node (<code>scan_slam</code>), custom message definitions (<code>scan_slam_msgs</code>), a Python simulator (<code>scan_slam_sim</code>), and visualization tools (<code>scan_slam_viz</code>).
+            </p>
+
+            <h3 class="text-xl font-semibold text-[#404040] mt-6 mb-3">Frontend — Correlative Scan Matching</h3>
+            <p class="text-base mb-4">
+                The frontend subscribes to <code>/scan</code> (laser range data) and <code>/odom</code> (wheel odometry) topics. When the robot has traveled far enough from the last keyframe — measured by translation and rotation thresholds — a new keyframe is created and matched against the previous one.
+            </p>
+            <p class="text-base mb-4">
+                Scan matching uses a lookup-table-based correlation search over (x, y, θ) space, as described by Olson [1]. An occupancy likelihood table is precomputed from the reference scan, and the new scan is swept through candidate poses to find the maximum-likelihood relative transform. The match is returned with a covariance matrix used downstream by the optimizer.
+            </p>
+            <p class="text-base mb-6">
+                Loop closure detection compares each new keyframe against all prior keyframes. When a candidate pair falls within a proximity threshold, a scan match is attempted. High-confidence matches are added as loop-closure constraints to the pose graph, allowing the system to correct accumulated drift when revisiting known areas.
+            </p>
+
+            <h3 class="text-xl font-semibold text-[#404040] mt-6 mb-3">Backend — Pose-Graph Optimization</h3>
+            <p class="text-base mb-6">
+                The backend maintains a pose graph where nodes represent keyframe poses and edges represent relative transform constraints between them (both sequential odometric constraints and loop-closure constraints). On each update, the optimizer linearizes the nonlinear least-squares problem — using either dense or sparse methods — and iterates until convergence. Corrected keyframe poses are then propagated back to the frontend so the occupancy map reflects the optimized trajectory.
+            </p>
+            <p class="text-base mb-6">
+                The optimization formulation follows the tutorial by Grisetti et al. [2], providing a direct connection between the implementation and the mathematical foundations taught in the course.
+            </p>
+
+            <h3 class="text-xl font-semibold text-[#404040] mt-6 mb-3">Simulator and Visualization</h3>
+            <p class="text-base mb-6">
+                A Python simulator (<code>scan_slam_sim</code>) provides a closed-loop test environment: it publishes synthetic laser scans and odometry with configurable drift, enabling full system testing without physical hardware. The visualization package (<code>scan_slam_viz</code>) generates trajectory comparisons, pose-graph structure plots, occupancy grids, and uncertainty ellipse analysis, all used in the results below.
+            </p>
+
+            <h2 class="text-2xl font-bold text-[#404040] mt-10 mb-4">Results</h2>
+
+            <figure class="my-6">
+                <img class="w-full h-auto" src="https://raw.githubusercontent.com/James-Wade1/Scan-SLAM/main/results/media/pose_graph.png" alt="Scan-SLAM pose graph visualization">
+                <figcaption class="text-sm text-left text-gray-600 italic mt-2">
+                    Figure 2: Pose-graph structure showing keyframe nodes and constraints. Sequential edges form the chain of relative motions; loop-closure edges (shown distinctly) tie distant keyframes together and drive drift correction.
+                </figcaption>
+            </figure>
+
+            <figure class="my-6">
+                <img class="w-full h-auto" src="https://raw.githubusercontent.com/James-Wade1/Scan-SLAM/main/results/media/occupancy_grid.png" alt="Occupancy grid map built by Scan-SLAM">
+                <figcaption class="text-sm text-left text-gray-600 italic mt-2">
+                    Figure 3: Occupancy grid map constructed from the optimized trajectory. Walls and obstacles are clearly delineated, demonstrating the benefit of loop-closure correction over raw odometry.
+                </figcaption>
+            </figure>
+
+            <figure class="my-6">
+                <img class="w-full h-auto" src="https://raw.githubusercontent.com/James-Wade1/Scan-SLAM/main/results/media/pose_analysis.png" alt="Pose uncertainty analysis">
+                <figcaption class="text-sm text-left text-gray-600 italic mt-2">
+                    Figure 4: Pose uncertainty analysis showing covariance ellipses at each keyframe. Uncertainty grows along the odometric chain and collapses after loop closures, consistent with expected SLAM behavior.
+                </figcaption>
+            </figure>
+
+            <h2 class="text-2xl font-bold text-[#404040] mt-10 mb-4">Technical Report</h2>
+            <div class="my-8">
+                <div class="text-center mb-4">
+                    <a href="/assets/files/projects/scan_slam/Scan_SLAM.pdf"
+                    target="_blank"
+                    class="inline-block bg-[#0d77c4] hover:bg-[#095fa1] text-white font-semibold py-3 px-6 rounded-lg">
+                        <i class="fas fa-file-pdf mr-2"></i>Open Report PDF in New Tab
+                    </a>
+                </div>
+
+                <iframe id="pdf-iframe"
+                        src="/assets/files/projects/scan_slam/Scan_SLAM.pdf"
+                        width="100%"
+                        height="800px"
+                        style="border: 1px solid #ccc; display: none;">
+                </iframe>
+
+                <script>
+                    function isDesktopComputer() {
+                        const hasMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                        if (hasMobileUA) return false;
+
+                        const isIPad = (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+                        if (isIPad) return false;
+
+                        const hasPointer = window.matchMedia('(pointer: fine)').matches;
+                        const hasLargeScreen = window.innerWidth >= 1024;
+
+                        return hasPointer && hasLargeScreen;
+                    }
+
+                    if (isDesktopComputer()) {
+                        document.getElementById('pdf-iframe').style.display = 'block';
+                    }
+                </script>
+            </div>
+
+            <h2 class="text-2xl font-bold text-[#404040] mt-10 mb-4">References</h2>
+            <ol class="list-decimal pl-6 text-base space-y-2 mb-8">
+                <li>
+                    E. B. Olson, "Real-time correlative scan matching," in <em>Proc. IEEE Int. Conf. Robotics and Automation (ICRA)</em>, Kobe, Japan, 2009, pp. 4387–4393.
+                </li>
+                <li>
+                    G. Grisetti, R. Kummerle, C. Stachniss, and W. Burgard, "A tutorial on graph-based SLAM," <em>IEEE Intelligent Transportation Systems Magazine</em>, vol. 2, no. 4, pp. 31–43, 2010.
+                </li>
+            </ol>
+
+            <h2 class="text-2xl font-bold text-[#404040] mt-8 mb-4">Project Source Code</h2>
+            <p class="text-base mb-4">
+                Full source code, Docker setup, and analysis scripts are available on GitHub:
+            </p>
+            <p class="mb-8">
+                <a href="https://github.com/James-Wade1/Scan-SLAM" target="_blank" class="inline-block bg-[#0d77c4] hover:bg-[#095fa1] text-white font-semibold py-2 px-4 rounded-lg">
+                    View Code on GitHub
+                </a>
+            </p>
+
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+</body>
+</html>

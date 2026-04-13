@@ -59,6 +59,34 @@
             <!-- Featured Projects Section -->
             <div class="space-y-8 mb-12">
 
+                <!-- Scan-SLAM -->
+                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6 border-l-4 border-[#0d77c4] pl-4">
+                    <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
+                        <img class="publication-image w-full h-auto" style="max-width: 175px;"
+                            src="https://raw.githubusercontent.com/James-Wade1/Scan-SLAM/main/results/media/trajectories.png"
+                            alt="Scan-SLAM trajectory comparison">
+                    </div>
+                    <div class="publication-content text-left w-full xs:w-3/4">
+                        <a href="/projects/scan_slam.html" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
+                            Scan-SLAM: Correlative Scan Matching and Pose-Graph Optimization in ROS 2 | 2025
+                        </a>
+                        <p class="text-base font-normal content-text mt-2 text-sm">
+                            <i>Graduate-level Autonomous Mobile Robots | Brigham Young University</i>
+                        </p>
+                        <ul class="list-disc pl-5 mt-3 text-base space-y-2">
+                            <li>Implemented a full 2D SLAM pipeline in ROS 2 (Jazzy) with a C++ frontend for correlative scan matching and a backend for iterative pose-graph optimization</li>
+                            <li>Built keyframe management with loop-closure detection to correct odometry drift when revisiting known areas</li>
+                            <li>Developed a Python simulator for closed-loop testing and visualization tools for trajectory, occupancy grid, and uncertainty analysis</li>
+                            <li>Grounded the implementation in two foundational papers: Olson 2009 (scan matching) and Grisetti et al. 2010 (graph-based SLAM)</li>
+                        </ul>
+                        <div class="buttons mt-4 flex flex-wrap gap-3">
+                            <a href="/projects/scan_slam.html" class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d77c4] text-white rounded hover:bg-[#0a5a96] transition">
+                                <i class="fas fa-arrow-right"></i> View Full Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Diffusion: MNIST to Robots -->
                 <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6 border-l-4 border-[#0d77c4] pl-4">
                     <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
