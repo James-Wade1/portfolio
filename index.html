@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>James Wade</title>
     <link rel="icon" type="image/png" href="assets/images/logos/Logo_white.dxf.png">
     <meta name="description" content="PhD Applicant. I'm always seeking opportunities to tackle hard problems.">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;800&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;800&family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -27,45 +28,34 @@
             }
         }
     </script>
-    <script src="/script.js"></script>
+    <script src="/script.js" defer></script>
 </head>
-<body class="bg-[#ffffff] text-[#4a4a4a] min-h-screen flex flex-col">
+<body class="home-page bg-[#ffffff] text-[#4a4a4a] min-h-screen flex flex-col">
     <!-- Header -->
     <div id="header-placeholder"></div>
 
     <!-- Main Content -->
-    <main class="pt-32 pb-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex-1">
+    <main id="main-content" class="pt-32 pb-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex-1">
 
         <!-- About Section -->
-        <section id="about" class="text-center">
-            <div class="flex justify-center mb-6">
-                <div class="cardrectangle">
-                    <img src="/assets/images/headshot2.JPG" alt="Profile Image" class="w-80 h-80 profile-photo">
+        <section id="about" class="hero">
+            <div class="hero-copy">
+                <p class="fellowship"><span aria-hidden="true"></span><strong>NSF Graduate Research Fellow</strong></p>
+                <h1 class="title3">James Wade</h1>
+                <p class="title2">MS Student — Robotics, Controls, and Optimization</p>
+                <div class="hero-biography">
+                    <p class="content-text">As an incoming Master's student in the <strong>Robotics</strong> program at the <strong>University of Michigan</strong>, I focus on building intelligent robotic systems that combine real world reliability with adaptive, modern algorithms. My research interests lie at the intersection of <strong>optimization, control systems, and autonomous systems</strong>, where I aim to develop innovative solutions for real-world challenges.</p>
+                    <p class="content-text">In April 2026, I graduated Summa Cum Laude from the <strong>Mechanical Engineering</strong> program at <strong>Brigham Young University</strong> with minors in <strong>Computer Science</strong> and <strong>Mathematics</strong></p>
+                </div>
+                <div class="hero-actions">
+                    <a href="/assets/files/CVs/CV - James Wade.pdf" target="_blank" class="button button-primary"><i class="fas fa-file-pdf" aria-hidden="true"></i> View CV <span aria-hidden="true">↗</span></a>
+                    <a href="/research.html" class="button button-outline">Research <span aria-hidden="true">↗</span></a>
+                    <a href="/publications.html" class="button button-text">Publications <span aria-hidden="true">↗</span></a>
                 </div>
             </div>
-            <h1 class="title3">James Wade</h1>
-            <hr class="hor123">
-            <p class="title2"><strong>NSF Graduate Research Fellow</strong></p>
-            <p class="title2">MS Student — Robotics, Controls, and Optimization</p>
-            <p class="text-xl font-normal content-text">
-                As an incoming Master's student in the <strong>Robotics</strong> program at the <strong>University of Michigan</strong>, I focus on building intelligent robotic systems that combine real world reliability with adaptive, modern algorithms. My research interests lie at the intersection of <strong>optimization, control systems, and autonomous systems</strong>, where I aim to develop innovative solutions for real-world challenges.</p>
-            </p>
-            <p class="text-xl font-normal mt-4 content-text">In April 2026, I graduated Summa Cum Laude from the <strong>Mechanical Engineering</strong> program at <strong>Brigham Young University</strong> with minors in <strong>Computer Science</strong> and <strong>Mathematics</strong></p>
-
-            <!-- CTA Buttons -->
-            <div class="flex flex-wrap justify-center gap-3 mt-10">
-                <a href="/assets/files/CVs/CV - James Wade.pdf" target="_blank"
-                   class="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0d77c4] text-white font-medium rounded hover:bg-[#0a5a96] transition-colors duration-200">
-                    <i class="fas fa-file-pdf"></i> View CV
-                </a>
-                <a href="/research.html"
-                   class="inline-flex items-center gap-2 px-5 py-2.5 bg-[#29425c] text-white font-medium rounded hover:bg-[#1e3248] transition-colors duration-200">
-                    <i class="fas fa-flask"></i> Research
-                </a>
-                <a href="/publications.html"
-                   class="inline-flex items-center gap-2 px-5 py-2.5 border-2 border-[#0d77c4] text-[#0d77c4] font-medium rounded hover:bg-[#0d77c4] hover:text-white transition-colors duration-200">
-                    <i class="fas fa-book"></i> Publications
-                </a>
+            <div class="hero-portrait">
+                <div class="portrait-grid" aria-hidden="true"></div>
+                <div class="portrait-frame"><img src="/assets/images/headshot2.JPG" alt="Profile Image" class="profile-photo" width="1667" height="2105" fetchpriority="high"></div>
             </div>
         </section>
 
@@ -92,24 +82,6 @@
                     <p class="text-4xl font-bold text-[#0d77c4]">>$275k</p>
                     <p class="text-sm text-gray-500 mt-1.5 leading-snug">Funding<br>Secured</p>
                 </div>
-            </div>
-        </section>
-
-        <!-- Research Interests -->
-        <section id="interests" class="mt-16">
-            <h2 class="text-2xl font-bold text-[#404040] mb-5">Research Interests</h2>
-            <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Robotics</span>
-                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Controls</span>
-                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Control Barrier Functions</span>
-                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Multi-Agent Systems</span>
-                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Path Planning</span>
-                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Nonlinear Optimization</span>
-                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Autonomous Navigation</span>
-                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">SLAM</span>
-                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Fault-Tolerant Robotics</span>
-                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">ROS 2</span>
-                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Embedded Systems</span>
             </div>
         </section>
 
@@ -160,6 +132,25 @@
                     </div>
                 </a>
 
+            </div>
+        </section>
+
+
+        <!-- Research Interests -->
+        <section id="interests" class="mt-16">
+            <h2 class="text-2xl font-bold text-[#404040] mb-5">Research Interests</h2>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Robotics</span>
+                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Controls</span>
+                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Control Barrier Functions</span>
+                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Multi-Agent Systems</span>
+                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Path Planning</span>
+                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Nonlinear Optimization</span>
+                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Autonomous Navigation</span>
+                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">SLAM</span>
+                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Fault-Tolerant Robotics</span>
+                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">ROS 2</span>
+                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Embedded Systems</span>
             </div>
         </section>
 

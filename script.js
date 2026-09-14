@@ -1,82 +1,100 @@
 async function loadComponent(placeholderId, filePath, callback) {
+    const placeholder = document.getElementById(placeholderId);
+    if (!placeholder) return;
     try {
         const response = await fetch(filePath);
         if (!response.ok) throw new Error(`Failed to load ${filePath}`);
-        const content = await response.text();
-        const placeholder = document.getElementById(placeholderId);
-        placeholder.innerHTML = content;
-
+        placeholder.innerHTML = await response.text();
         if (callback) callback();
     } catch (error) {
         console.error('Error loading component:', error);
     }
 }
 
-// After loading header, attach burger menu listener + scroll effect
-loadComponent('header-placeholder', '/header.html', () => {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    // Select both desktop and mobile menu links
-    const navLinks = document.querySelectorAll('.navigation a, #mobile-menu a');
-    navLinks.forEach(link => {
-        var href = link.getAttribute('href') || '';
-        const normalizedHref = href.replace(/^\/+/, '');
-        const normalizedPage = currentPage.replace(/^\/+/, '');
-        if (normalizedHref === normalizedPage) {
-            link.parentElement.classList.add('navigation__item--active');
-        }
-    });
-
-    // Setup burger menu toggle
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (menuToggle && mobileMenu) {
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-    }
-
-    // Header scroll shadow
-    const headerEl = document.querySelector('#header-content header');
-    if (headerEl) {
-        const onScroll = () => headerEl.classList.toggle('header-scrolled', window.scrollY > 8);
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
-    }
-});
-
-loadComponent('footer-placeholder', '/footer.html');
-
-// Scroll reveal — runs after DOM is parsed
-document.addEventListener('DOMContentLoaded', () => {
-    // Apply reveal to top-level sections and individual publication entries
-    document.querySelectorAll('main > section, main section').forEach(el => {
-        el.classList.add('reveal');
-    });
-    document.querySelectorAll('.publication-entry').forEach(el => {
-        el.classList.add('reveal');
-    });
-
-    // Stagger publication entries within their containers
-    document.querySelectorAll('.space-y-8, .space-y-10').forEach(container => {
-        container.querySelectorAll('.publication-entry').forEach((entry, i) => {
-            entry.style.transitionDelay = `${i * 0.09}s`;
-        });
-    });
-
-    // Stagger selected-work cards individually
-    document.querySelectorAll('#selected-work .grid > a').forEach((card, i) => {
-        card.classList.add('reveal');
-        card.style.transitionDelay = `${i * 0.12}s`;
-    });
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
+function initializePortfolio() {
+    loadComponent('header-placeholder', '/header.html', () => {
+        const path = window.location.pathname;
+        const currentPage = path.startsWith('/projects/') ? '/technical_projects.html'
+            : path.startsWith('/misc/') ? '/publications.html'
+            : path === '/' ? '/index.html' : path;
+        document.querySelectorAll('.navigation a, #mobile-menu a').forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('is-active');
+                link.setAttribute('aria-current', 'page');
             }
         });
-    }, { threshold: 0.04, rootMargin: '0px 0px 180px 0px' });
+        const toggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('mobile-menu');
+        const setMenuOpen = open => {
+            menu.hidden = !open;
+            toggle.setAttribute('aria-expanded', String(open));
+        };
+        toggle.addEventListener('click', () => setMenuOpen(menu.hidden));
+        menu.addEventListener('click', event => {
+            if (event.target.closest('a')) setMenuOpen(false);
+        });
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && !menu.hidden) {
+                setMenuOpen(false);
+                toggle.focus();
+            }
+        });
+        document.addEventListener('click', event => {
+            if (!event.target.closest('.site-header')) setMenuOpen(false);
+        });
+        window.matchMedia('(min-width: 800px)').addEventListener('change', event => {
+            if (event.matches) setMenuOpen(false);
+        });
+        const header = document.querySelector('.site-header');
+        const onScroll = () => header.classList.toggle('header-scrolled', window.scrollY > 12);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    });
+    loadComponent('footer-placeholder', '/footer.html');
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-});
+    // Reuse existing headings to make long pages easier to browse.
+    const main = document.querySelector('main');
+    if (main && !document.body.classList.contains('home-page')) {
+        const headings = [...main.querySelectorAll('h2')];
+        if (headings.length > 1) {
+            const nav = document.createElement('nav');
+            nav.className = 'section-navigation';
+            nav.setAttribute('aria-label', 'On this page');
+            headings.forEach((heading, index) => {
+                if (!heading.id) heading.id = `section-${index + 1}`;
+                const link = document.createElement('a');
+                link.href = `#${heading.id}`;
+                link.textContent = heading.textContent;
+                nav.append(link);
+            });
+            main.prepend(nav);
+        }
+    }
+    document.querySelectorAll('a[target="_blank"]').forEach(link => {
+        link.rel = 'noopener noreferrer';
+    });
+    document.querySelectorAll('main img:not(.profile-photo)').forEach(img => {
+        img.loading = 'lazy';
+        img.decoding = 'async';
+    });
+    // Content is visible by default; motion is a progressive enhancement.
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.04 });
+        document.querySelectorAll('#selected-work .grid > a, #interests').forEach(element => {
+            element.classList.add('reveal');
+            observer.observe(element);
+        });
+    }
+}
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializePortfolio, { once: true });
+} else {
+    initializePortfolio();
+}

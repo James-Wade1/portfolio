@@ -1,39 +1,28 @@
 <div id="header-content">
-    <header class="fixed top-0 w-full bg-[#d4dce6] z-10 h-20 transition-shadow duration-300">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
-            <!-- Logo -->
-            <div class="flex items-center h-full">
-                <a href="/index.html">
-                    <img src="/assets/images/logos/Logo.dxf.svg" alt="James Wade" class="h-12 object-contain">
-                </a>
-            </div>
-
-            <!-- Navigation (Desktop) -->
-            <nav class="navigation hidden hs:flex">
-                <ul class="flex space-x-0.5">
-                    <li><a href="/index.html" class="hover:text-[#0d77c4] px-3 py-1 text-sm font-medium">About</a></li>
-                    <li><a href="/publications.html" class="hover:text-[#0d77c4] px-3 py-1 text-sm font-medium">Publications</a></li>
-                    <li><a href="/research.html" class="hover:text-[#0d77c4] px-3 py-1 text-sm font-medium">Research</a></li>
-                    <li><a href="/assets/files/CVs/CV - James Wade.pdf" class="hover:text-[#0d77c4] px-3 py-1 text-sm font-medium">CV</a></li>
-                    <li><a href="/technical_projects.html" class="hover:text-[#0d77c4] px-3 py-1 text-sm font-medium">Technical Projects</a></li>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="/index.html" aria-label="James Wade home">
+                <img src="/assets/images/logos/Logo.dxf.svg" alt="" width="44" height="44">
+                <span>James Wade</span>
+            </a>
+            <nav class="navigation" aria-label="Main navigation">
+                <ul>
+                    <li><a href="/index.html">About</a></li>
+                    <li><a href="/research.html">Research</a></li>
+                    <li><a href="/publications.html">Publications</a></li>
+                    <li><a href="/technical_projects.html">Technical Projects</a></li>
+                    <li><a class="nav-cv" href="/assets/files/CVs/CV - James Wade.pdf">CV <span aria-hidden="true">↗</span></a></li>
                 </ul>
             </nav>
-
-            <!-- Burger Menu Button -->
-            <button class="hs:hidden text-[#4a4a4a] focus:outline-none" id="menu-toggle" aria-label="Toggle navigation menu">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
+            <button id="menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
         </div>
-
-        <!-- Dropdown Menu for Mobile -->
-        <div id="mobile-menu" class="hidden hs:hidden bg-[#d4dce6] w-full absolute top-20 left-0 shadow-md">
-            <ul class="flex flex-col items-center space-y-2 py-4">
-                <li><a href="/index.html" class="hover:text-[#0d77c4] px-3 py-1 text-sm font-medium">About</a></li>
-                <li><a href="/publications.html" class="hover:text-[#0d77c4] px-3 py-1 text-sm font-medium">Publications</a></li>
-                <li><a href="/research.html" class="hover:text-[#0d77c4] px-3 py-1 text-sm font-medium">Research</a></li>
-                <li><a href="/assets/files/CVs/CV - James Wade.pdf" class="hover:text-[#0d77c4] px-3 py-1 text-sm font-medium">CV</a></li>
-                <li><a href="/technical_projects.html" class="hover:text-[#0d77c4] px-3 py-1 text-sm font-medium">Technical Projects</a></li>
-            </ul>
-        </div>
+        <nav id="mobile-menu" aria-label="Mobile navigation" hidden>
+            <a href="/index.html">About</a>
+            <a href="/research.html">Research</a>
+            <a href="/publications.html">Publications</a>
+            <a href="/technical_projects.html">Technical Projects</a>
+            <a href="/assets/files/CVs/CV - James Wade.pdf">CV <span aria-hidden="true">↗</span></a>
+        </nav>
     </header>
 </div>
