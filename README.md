@@ -4,11 +4,14 @@ Code for Engineering Portfolio Website
 
 ## Styles
 
-`assets/css/utilities.css` is generated and committed, so hosting needs no build step.
+`style.css` contains generated Tailwind utilities followed by the custom design rules.
+It is committed and served directly, so hosting needs no build step or separate utility stylesheet.
+
 After changing utility classes, rebuild with Tailwind CSS 3.4.17:
 
 ```sh
-npx --yes tailwindcss@3.4.17 -c tailwind.config.js -i tools/utilities.css -o assets/css/utilities.css --minify
+sh tools/build-styles.sh
 ```
 
-`style.css` supplies the shared design and loads after the generated utilities.
+Edit custom rules below `/* END GENERATED UTILITIES */` in `style.css`.
+The build preserves those rules.
