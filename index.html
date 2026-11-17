@@ -11,23 +11,8 @@
     <meta name="description" content="James Wade is an NSF Graduate Research Fellow and Robotics M.S. student at the University of Michigan, researching reliable robot learning, world models, and control.">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                screens: {
-                    'hs': '580px',
-                    'xs': '500px',
-                    'sm': '640px',
-                    'md': '768px',
-                    'lg': '1024px',
-                    'xl': '1280px',
-                    '2xl': '1536px',
-                }
-            }
-        }
-    </script>
     <script src="/script.js" defer></script>
 </head>
 <body class="home-page bg-[#ffffff] text-[#4a4a4a] min-h-screen flex flex-col">
@@ -43,15 +28,15 @@
                 <p class="fellowship"><span aria-hidden="true"></span><strong>NSF Graduate Research Fellow</strong></p>
                 <h1 class="title3">James Wade</h1>
                 <p class="title2">Robotics M.S. Student · University of Michigan</p>
-                <div class="hero-biography">
-                    <p class="content-text">I build robots that can adapt when the world changes. As an <strong>NSF Graduate Research Fellow</strong> and Robotics M.S. student at the <strong>University of Michigan</strong>, I study how learning and model-based control can make robotic manipulation more reliable.</p>
-                    <p class="content-text">In the <strong>Autonomous Robotic Manipulation (ARM) Lab</strong>, I investigate how generative world models adapt to new physical conditions and how robots can recognize when those models are wrong. My earlier work spans fault-tolerant soft robots, multi-robot autonomy at Sandia, and embedded systems at Lawrence Livermore.</p>
-                    <p class="content-text">I graduated from <strong>Brigham Young University</strong> in 2026, ranked <strong>1st in a mechanical engineering class of 485</strong>, with a 4.0 GPA and minors in Computer Science and Mathematics.</p>
-                </div>
+                <p class="hero-summary">I build robots that can adapt when the world changes. At Michigan’s <strong>Autonomous Robotic Manipulation (ARM) Lab</strong>, I study reliable world models, robot learning, and manipulation.</p>
                 <div class="hero-actions">
                     <a href="/assets/files/CVs/CV - James Wade.pdf" target="_blank" class="button button-primary"><i class="fas fa-file-pdf" aria-hidden="true"></i> View CV <span aria-hidden="true">↗</span></a>
                     <a href="/research.html" class="button button-outline">Research <span aria-hidden="true">↗</span></a>
                     <a href="/publications.html" class="button button-text">Publications <span aria-hidden="true">↗</span></a>
+                </div>
+                <div class="hero-biography">
+                    <p class="content-text">My current research asks how generative world models can adapt to unfamiliar physics and how robots can recognize when those models are wrong. Earlier work spans fault-tolerant soft robots, multi-robot autonomy at Sandia, and embedded systems at Lawrence Livermore.</p>
+                    <p class="content-text">I graduated from <strong>Brigham Young University</strong> in 2026, ranked <strong>1st in a mechanical engineering class of 485</strong>, with a 4.0 GPA and minors in Computer Science and Mathematics.</p>
                 </div>
             </div>
             <div class="hero-portrait">
@@ -64,9 +49,9 @@
         <section id="stats" class="mt-16 py-10 border-t border-b border-gray-200">
             <div class="grid grid-cols-2 sm:grid-cols-5 gap-6 text-center">
                 <div><p class="text-4xl font-bold text-[#0d77c4]">NSF</p><p class="text-sm text-gray-500 mt-1.5 leading-snug">Graduate Research<br>Fellow</p></div>
-                <div><p class="text-4xl font-bold text-[#0d77c4]">Top 6</p><p class="text-sm text-gray-500 mt-1.5 leading-snug">NASA BIG Idea<br>National Finalist</p></div>
-                <div><p class="text-4xl font-bold text-[#0d77c4]">&gt;$275K</p><p class="text-sm text-gray-500 mt-1.5 leading-snug">Research Funding<br>Secured</p></div>
-                <div><p class="text-2xl font-bold text-[#0d77c4]">Mark Rober</p><p class="text-sm text-gray-500 mt-1.5 leading-snug">World’s Smallest Nerf Gun<br>Collaboration</p></div>
+                <div><a href="/research.html#lunar-robot"><p class="text-4xl font-bold text-[#0d77c4]">Top 6</p><p class="text-sm text-gray-500 mt-1.5 leading-snug">NASA BIG Idea<br>National Finalist</p></a></div>
+                <div><p class="text-4xl font-bold text-[#0d77c4]">&gt;$275K</p><p class="text-sm text-gray-500 mt-1.5 leading-snug">Research Funding Secured<br>Including NSF GRFP</p></div>
+                <div><a href="/research.html#nerf-collaboration"><p class="text-2xl font-bold text-[#0d77c4]">Mark Rober</p><p class="text-sm text-gray-500 mt-1.5 leading-snug">World’s Smallest Nerf Gun<br>Collaboration</p></a></div>
                 <div><p class="text-4xl font-bold text-[#0d77c4]">2</p><p class="text-sm text-gray-500 mt-1.5 leading-snug">National Lab<br>Internships</p></div>
             </div>
         </section>
@@ -81,15 +66,15 @@
 
                 <a href="/research.html#arm-lab" class="group block rounded-lg overflow-hidden border border-gray-200 hover:border-[#0d77c4] hover:shadow-lg transition-all duration-300">
                     <div class="h-40 overflow-hidden bg-gray-100"><img src="assets/images/research/plume_disk_flick.png" alt="Simulated robot arm interacting with colored disks" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
-                    <div class="p-4"><p class="text-xs font-semibold text-[#0d77c4] uppercase tracking-wide mb-1">Michigan · ARM Lab</p><h3 class="text-sm font-semibold text-[#404040] leading-snug">Making Robot World Models More Reliable</h3><p class="text-xs text-gray-500 mt-2">Adaptation · Error Estimation · Manipulation</p></div>
+                    <div class="p-4"><p class="text-xs font-semibold text-[#0d77c4] uppercase tracking-wide mb-1">Michigan · ARM Lab</p><h3 class="text-sm font-semibold text-[#404040] leading-snug">Making Robot World Models More Reliable</h3><p class="text-xs text-gray-500 mt-2">Benchmarking world-model adaptation and developing error estimators for unfamiliar physics.</p></div>
                 </a>
                 <a href="/research.html#fault-tolerant-control" class="group block rounded-lg overflow-hidden border border-gray-200 hover:border-[#0d77c4] hover:shadow-lg transition-all duration-300">
                     <div class="h-40 overflow-hidden bg-gray-100"><img src="assets/images/research/workspace.png" alt="Workspace of an inflatable truss robot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
-                    <div class="p-4"><p class="text-xs font-semibold text-[#0d77c4] uppercase tracking-wide mb-1">IEEE RA-L · 2026</p><h3 class="text-sm font-semibold text-[#404040] leading-snug">Keeping Soft Robots Moving After Motor Failure</h3><p class="text-xs text-gray-500 mt-2">Fault-Tolerant Control · Soft Robotics</p></div>
+                    <div class="p-4"><p class="text-xs font-semibold text-[#0d77c4] uppercase tracking-wide mb-1">IEEE RA-L · 2026</p><h3 class="text-sm font-semibold text-[#404040] leading-snug">Keeping Soft Robots Moving After Motor Failure</h3><p class="text-xs text-gray-500 mt-2">Retained over 62% of nominal workspace after motor failure; reduced tracking RMSE by over 22%.</p></div>
                 </a>
                 <a href="/research.html#sandia" class="group block rounded-lg overflow-hidden border border-gray-200 hover:border-[#0d77c4] hover:shadow-lg transition-all duration-300">
                     <div class="h-40 overflow-hidden bg-gray-100"><img src="assets/images/research/sandia_car.jpg" alt="Sandia autonomous vehicle" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
-                    <div class="p-4"><p class="text-xs font-semibold text-[#0d77c4] uppercase tracking-wide mb-1">Sandia National Laboratories</p><h3 class="text-sm font-semibold text-[#404040] leading-snug">A Shared Autonomy Stack for Robot Teams</h3><p class="text-xs text-gray-500 mt-2">ROS 2 · Distributed SLAM · Hardware & Simulation</p></div>
+                    <div class="p-4"><p class="text-xs font-semibold text-[#0d77c4] uppercase tracking-wide mb-1">Sandia National Laboratories</p><h3 class="text-sm font-semibold text-[#404040] leading-snug">A Shared Autonomy Stack for Robot Teams</h3><p class="text-xs text-gray-500 mt-2">Built a modular ROS 2 stack spanning physical robots, Gazebo, and Isaac Sim.</p></div>
                 </a>
 
             </div>
@@ -103,14 +88,8 @@
                 <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Generative World Models</span>
                 <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Robot Learning</span>
                 <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Control Barrier Functions</span>
-                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Multi-Agent Systems</span>
                 <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Robotic Manipulation</span>
-                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Nonlinear Optimization</span>
-                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Autonomous Navigation</span>
                 <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Model-Based Control</span>
-                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Fault-Tolerant Robotics</span>
-                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">ROS 2</span>
-                <span class="px-3 py-1.5 bg-[#eef4fb] text-[#0d77c4] text-sm font-medium rounded-full border border-[#c5daf0]">Legged Robotics</span>
             </div>
         </section>
 
