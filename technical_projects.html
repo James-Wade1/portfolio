@@ -6,9 +6,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>James Wade</title>
+    <title>Technical Projects | James Wade</title>
     <link rel="icon" type="image/png" href="assets/images/logos/Logo_white.dxf.png">
-    <meta name="description" content="PhD Applicant. I’m always seeking opportunities to tackle hard problems.">
+    <meta name="description" content="Robotics projects by James Wade: diffusion-based control, reinforcement learning, SLAM, embedded systems, and dynamics.">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     <link rel="stylesheet" href="style.css">
@@ -54,11 +54,38 @@
         <section id="technical-projects" class="py-12 text-left">
             <h2 class="text-4xl font-bold text-[#404040] mb-6">Featured Projects</h2>
             <p class="text-base mb-8 text-gray-600">
-                Highlighting my most significant non-research technical work in robotics, mechatronics, and computational mechanics.
+                Selected projects in robot learning, autonomous navigation, and hardware design. Each connects an implemented system with experiments, demonstrations, or field use.
             </p>
 
             <!-- Featured Projects Section -->
             <div class="space-y-8 mb-12">
+
+                <!-- Diffusion: MNIST to Robots -->
+                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6 border-l-4 border-[#0d77c4] pl-4">
+                    <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
+                        <img class="publication-image w-full h-auto" style="max-width: 175px;"
+                            src="assets/images/projects/diffusion_policy/pusht.png"
+                            alt="Push-T simulation showing a pusher moving a T-shaped block toward a green target">
+                    </div>
+                    <div class="publication-content text-left w-full xs:w-3/4">
+                        <a href="/projects/diffusion_mnist_to_robots.html" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
+                            Diffusion Models for Robotic Control | 2026
+                        </a>
+                        <p class="text-base font-normal content-text mt-2 text-sm">
+                            <i>Graduate-level Deep Learning | Brigham Young University</i>
+                        </p>
+                        <ul class="list-disc pl-5 mt-3 text-base space-y-2">
+                            <li>Implemented DDPM and DDIM from scratch, then extended diffusion models to robotic actions and trajectories.</li>
+                            <li>Reimplemented Diffusion Policy and Diffuser for action generation and trajectory planning.</li>
+                            <li>Conditioned trajectories on goals and obstacles at inference time without retraining.</li>
+                        </ul>
+                        <div class="buttons mt-4 flex flex-wrap gap-3">
+                            <a href="/projects/diffusion_mnist_to_robots.html" class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d77c4] text-white rounded hover:bg-[#0a5a96] transition">
+                                <i class="fas fa-arrow-right"></i> View Full Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Scan-SLAM -->
                 <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6 border-l-4 border-[#0d77c4] pl-4">
@@ -69,47 +96,18 @@
                     </div>
                     <div class="publication-content text-left w-full xs:w-3/4">
                         <a href="/projects/scan_slam.html" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
-                            Scan-SLAM: Correlative Scan Matching and Pose-Graph Optimization in ROS 2 | 2026
+                            Scan-SLAM: Mapping and Localization in ROS 2 | 2026
                         </a>
                         <p class="text-base font-normal content-text mt-2 text-sm">
                             <i>Graduate-level Autonomous Mobile Robots | Brigham Young University</i>
                         </p>
                         <ul class="list-disc pl-5 mt-3 text-base space-y-2">
-                            <li>Implemented a full 2D SLAM pipeline in ROS 2 (Jazzy) with a C++ frontend for correlative scan matching and a backend for iterative pose-graph optimization</li>
-                            <li>Built keyframe management with loop-closure detection to correct odometry drift when revisiting known areas</li>
-                            <li>Developed a Python simulator for closed-loop testing and visualization tools for trajectory, occupancy grid, and uncertainty analysis</li>
-                            <li>Grounded the implementation in two foundational papers: Olson 2009 (scan matching) and Grisetti et al. 2010 (graph-based SLAM)</li>
+                            <li>Built a 2D SLAM pipeline with C++ scan matching and pose-graph optimization in ROS 2.</li>
+                            <li>Added keyframes and loop closures to correct accumulated odometry drift.</li>
+                            <li>Created a Python simulator and visualization tools to evaluate trajectories, maps, and uncertainty.</li>
                         </ul>
                         <div class="buttons mt-4 flex flex-wrap gap-3">
                             <a href="/projects/scan_slam.html" class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d77c4] text-white rounded hover:bg-[#0a5a96] transition">
-                                <i class="fas fa-arrow-right"></i> View Full Details
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Diffusion: MNIST to Robots -->
-                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6 border-l-4 border-[#0d77c4] pl-4">
-                    <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
-                        <img class="publication-image w-full h-auto" style="max-width: 175px;"
-                            src="https://raw.githubusercontent.com/James-Wade1/diffusion-from-mnist-to-robots/main/diffusion_policy/results/max_reward_bar_chart.png"
-                            alt="Diffusion from MNIST to Robots">
-                    </div>
-                    <div class="publication-content text-left w-full xs:w-3/4">
-                        <a href="/projects/diffusion_mnist_to_robots.html" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
-                            Exploring Diffusion: From MNIST Generation to Robotic Control | 2026
-                        </a>
-                        <p class="text-base font-normal content-text mt-2 text-sm">
-                            <i>Graduate-level Deep Learning | Brigham Young University</i>
-                        </p>
-                        <ul class="list-disc pl-5 mt-3 text-base space-y-2">
-                            <li>Implemented DDPM and DDIM from scratch and applied them to MNIST image generation, demonstrating accelerated sampling with far fewer denoising steps</li>
-                            <li>Reproduced Diffusion Policy [Chi et al., 2025] for action-diffusion policy learning in robotic control tasks</li>
-                            <li>Reproduced Diffuser [Janner et al., 2022] for trajectory-level planning, including inpainting-guided goal conditioning and classifier-guided obstacle avoidance at inference time</li>
-                            <li>Demonstrated how a single diffusion model trained on trajectories can be steered to new behaviors without retraining</li>
-                        </ul>
-                        <div class="buttons mt-4 flex flex-wrap gap-3">
-                            <a href="/projects/diffusion_mnist_to_robots.html" class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d77c4] text-white rounded hover:bg-[#0a5a96] transition">
                                 <i class="fas fa-arrow-right"></i> View Full Details
                             </a>
                         </div>
@@ -123,16 +121,15 @@
                     </div>
                     <div class="publication-content text-left w-full xs:w-3/4">
                         <a href="/projects/neural_cbf_and_rl.html" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
-                            Learning Control Barrier Functions and Navigational Controller for a 2D Single Integrator System | 2025
+                            Learning Safe Navigation with Neural CBFs and RL | 2025
                         </a>
                         <p class="text-base font-normal content-text mt-2 text-sm">
                             <i>Graduate-level Deep Learning | Brigham Young University</i>
                         </p>
                         <ul class="list-disc pl-5 mt-3 text-base space-y-2">
-                            <li>Trained ResNet architectures to learn analytical control barrier functions in randomly generated environments with circular obstacles</li>
-                            <li>Developed PPO-based navigational controller to traverse agent from current location to goal in 2D space</li>
-                            <li>Evaluated performance across training loss, vector field visualizations, and generalization to unseen environments</li>
-                            <li>Demonstrated effectiveness of learned CBFs and controllers in ensuring safe navigation, and learned theory and implementation behind RL-based control</li>
+                            <li>Trained ResNet models to approximate control barrier functions in environments with circular obstacles.</li>
+                            <li>Developed a PPO navigation policy for a 2D single-integrator system.</li>
+                            <li>Evaluated learned safety functions and navigation behavior in unseen environments.</li>
                         </ul>
                         <div class="buttons mt-4 flex flex-wrap gap-3">
                             <a href="/projects/neural_cbf_and_rl.html" class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d77c4] text-white rounded hover:bg-[#0a5a96] transition">
@@ -149,16 +146,15 @@
                     </div>
                     <div class="publication-content text-left w-full xs:w-3/4">
                         <a href="/projects/line_follower.html" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
-                            Line-Following Robot — BYU Mechatronics Competition | 2024
+                            Autonomous Competition Robot | 2024
                         </a>
                         <p class="text-base font-normal content-text mt-2 text-sm">
                             <i>BYU Mechatronics Competition | Brigham Young University</i>
                         </p>
                         <ul class="list-disc pl-5 mt-3 text-base space-y-2">
-                            <li>Led a 4-person team to design, build, and program an autonomous line-following robot in under 10 weeks</li>
-                            <li>Integrated laser targeting, ball sorting, canyon navigation, and IR-triggered detours — all completed within 60 seconds</li>
-                            <li>Engineered custom PCB, sensor fusion logic, and bare-metal C code for a PIC24 microcontroller</li>
-                            <li>Awarded perfect task score and placed 4th out of 30 teams in BYU's 2024 Mechatronics Competition</li>
+                            <li>Led a four-person team to build an autonomous robot in under 10 weeks.</li>
+                            <li>Integrated a custom PCB, sensors, and bare-metal C firmware for navigation, targeting, and ball sorting.</li>
+                            <li>Earned a perfect task score and placed 4th of 30 teams in BYU’s mechatronics competition.</li>
                         </ul>
                         <div class="buttons mt-4 flex flex-wrap gap-3">
                             <a href="/projects/line_follower.html" class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d77c4] text-white rounded hover:bg-[#0a5a96] transition">
@@ -175,15 +171,15 @@
                     </div>
                     <div class="publication-content text-left w-full xs:w-3/4">
                         <a href="/projects/pressure_mat.html" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
-                            Medical Pressure Mat | 2023 – 2024
+                            Low-Cost Medical Pressure Mat | 2023–2024
                         </a>
                         <p class="text-base font-normal content-text mt-2 text-sm">
                             <i>Global Engineering Outreach | Brigham Young University</i>
                         </p>
                         <ul class="list-disc pl-5 mt-3 text-base space-y-2">
-                            <li>Developed a low-cost, Arduino-based medical pressure mat for at-risk wheelchair patients in Ecuador</li>
-                            <li>Led full-cycle product development from concept to in-field prototype delivery within eight months</li>
-                            <li>Delivered a solution costing 1/100th of commercial systems, enabling access for underserved clinics</li>
+                            <li>Developed an Arduino-based pressure mat for a nonprofit wheelchair clinic in Ecuador.</li>
+                            <li>Led development from concept to on-site prototype delivery in eight months.</li>
+                            <li>Built a $50 prototype, compared with commercial systems costing $1,000–$10,000.</li>
                         </ul>
                         <div class="buttons mt-4 flex flex-wrap gap-3">
                             <a href="/projects/pressure_mat.html" class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d77c4] text-white rounded hover:bg-[#0a5a96] transition">
@@ -200,14 +196,15 @@
                     </div>
                     <div class="publication-content text-left w-full xs:w-3/4">
                         <a href="/projects/trebuchet_simulation.html" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
-                            Trebuchet Simulation with Lagrange Multipliers | 2025
+                            Trebuchet Dynamics and Simulation | 2025
                         </a>
                         <p class="text-base font-normal content-text mt-2 text-sm">
                             <i>Graduate-level Dynamics | Brigham Young University</i>
                         </p>
                         <ul class="list-disc pl-5 mt-3 text-base space-y-2">
-                            <li>Modeled trebuchet dynamics using the method of Lagrange Multipliers, reducing the system to a single equation of motion</li>
-                            <li>Visualized numerical simulations through matplotlib-based animations for dynamic motion analysis</li>
+                            <li>Derived constrained Euler–Lagrange dynamics for a trebuchet using Lagrange multipliers.</li>
+                            <li>Built a hybrid simulator spanning ground sliding, pendulum swing, and ballistic flight.</li>
+                            <li>Visualized motion and constraint forces with numerical simulations and animations.</li>
                         </ul>
                         <div class="buttons mt-4 flex flex-wrap gap-3">
                             <a href="/projects/trebuchet_simulation.html" class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d77c4] text-white rounded hover:bg-[#0a5a96] transition">
@@ -231,22 +228,16 @@
                         <img class="publication-image w-full h-auto" style="max-width: 175px;" src="/assets/images/projects/moevit_project/moveit_ros_cropped.png" alt="MoveIt2 Simulation">
                     </div>
                     <div class="publication-content text-left w-full xs:w-3/4">
-                        <a href="#" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
-                            Robot Manipulator Simulation & MoveIt2 Integration | 2024
-                        </a>
+                        <h3 class="text-[#0d77c4] hover:underline text-2xl font-semibold">
+                            Robot Manipulation and Motion Planning | 2024
+                        </h3>
                         <p class="text-base font-normal content-text mt-2 text-sm">
                             <i>Manipulator Kinematics and Dynamics | Brigham Young University</i>
                         </p>
                         <ul class="list-disc pl-5 mt-3 text-base space-y-2">
-                            <li>Developed a robot manipulator visualization tool using Denavit-Hartenberg (DH) parameters for accurate kinematic representation</li>
-                            <li>Integrated MoveIt2, a widely-used ROS package, to enhance the visualizer with real-time motion planning capabilities</li>
-                            <li>Implemented a potential-field-based motion planner enabling smooth, collision-free trajectories along the entire robot arm</li>
+                            <li>Built a manipulator visualizer using Denavit–Hartenberg kinematics.</li>
+                            <li>Integrated MoveIt2 and implemented a potential-field planner for collision-free arm motion.</li>
                         </ul>
-                        <div class="buttons mt-4 flex flex-wrap gap-3">
-                            <span class="inline-flex items-center gap-2 px-4 py-2 bg-gray-400 text-white rounded cursor-not-allowed">
-                                <i class="fas fa-clock"></i> Full Details Coming Soon
-                            </span>
-                        </div>
                     </div>
                 </div>
 
@@ -256,23 +247,16 @@
                         <img class="publication-image w-full h-auto" style="max-width: 175px;" src="/assets/images/projects/pipsqueak/engine_cropped.jpg" alt="Pipsqueak Engine">
                     </div>
                     <div class="publication-content text-left w-full xs:w-3/4">
-                        <a href="#" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
-                            Pipsqueak Air Engine | 2025
-                        </a>
+                        <h3 class="text-[#0d77c4] hover:underline text-2xl font-semibold">
+                            Precision-Machined Air Engine | 2025
+                        </h3>
                         <p class="text-base font-normal content-text mt-2 text-sm">
                             <i>Precision Manual Machining | Brigham Young University</i>
                         </p>
                         <ul class="list-disc pl-5 mt-3 text-base space-y-2">
-                            <li>Designed and manufactured a pipsqueak air engine with sub-thousandths of an inch precision using manual machining</li>
-                            <li>Produced detailed engineering drawings and manufacturing process documentation to support fabrication</li>
-                            <li>Awarded best motor in lab section for running at the lowest PSI</li>
-                            <li>Proposed intelligent redesign assuming non-machining methods for scalable production</li>
+                            <li>Manufactured an air engine to sub-thousandth-inch precision using manual machining.</li>
+                            <li>Produced engineering drawings and process documentation; earned best motor in the lab section for operating at the lowest pressure.</li>
                         </ul>
-                        <div class="buttons mt-4 flex flex-wrap gap-3">
-                            <span class="inline-flex items-center gap-2 px-4 py-2 bg-gray-400 text-white rounded cursor-not-allowed">
-                                <i class="fas fa-clock"></i> Full Details Coming Soon
-                            </span>
-                        </div>
                     </div>
                 </div>
 
@@ -282,24 +266,20 @@
                         <img class="publication-image w-full h-auto" style="max-width: 175px;" src="/assets/images/projects/scissor_jack/scissor_jack_render.png" alt="Render of scissor jack">
                     </div>
                     <div class="publication-content text-left w-full xs:w-3/4">
-                        <a href="#" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
-                            Car Jack Design, Optimization, and Analysis via FEA | 2024
-                        </a>
+                        <h3 class="text-[#0d77c4] hover:underline text-2xl font-semibold">
+                            Scissor Jack Design and FEA | 2024
+                        </h3>
                         <p class="text-base font-normal content-text mt-2 text-sm">
                             <i>FEA Optimization and Mechanical Design | Brigham Young University</i>
                         </p>
                         <ul class="list-disc pl-5 mt-3 text-base space-y-2">
-                            <li>Led analytical and numerical optimization of scissor jack design using engineering equations and FEA software</li>
-                            <li>Authored an in-depth report validating the optimization approach and results</li>
-                            <li>Performed FEA on critical components to verify factors of safety exceeded design requirements</li>
+                            <li>Led analytical and numerical optimization of a scissor jack.</li>
+                            <li>Used finite element analysis to verify safety factors and documented the design in a technical report.</li>
                         </ul>
                         <div class="buttons mt-4 flex flex-wrap gap-3">
                             <a href="/assets/files/projects/scissor_jack/Scissor Jack Final Report.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d77c4] text-white rounded hover:bg-[#0a5a96] transition">
                                 <i class="fas fa-file-pdf"></i> View Technical Report
                             </a>
-                            <span class="inline-flex items-center gap-2 px-4 py-2 bg-gray-400 text-white rounded cursor-not-allowed">
-                                <i class="fas fa-clock"></i> Full Details Coming Soon
-                            </span>
                         </div>
                     </div>
                 </div>
@@ -310,27 +290,18 @@
                         <img class="publication-image w-full h-auto" style="max-width: 175px;" src="/assets/images/projects/dc_motor/dc_motor_cropped.jpg" alt="DC Motor">
                     </div>
                     <div class="publication-content text-left w-full xs:w-3/4">
-                        <a href="#" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
-                            Custom DC Motor Design, Modeling & System Identification using MATLAB | 2023
-                        </a>
+                        <h3 class="text-[#0d77c4] hover:underline text-2xl font-semibold">
+                            DC Motor Design and System Identification | 2023
+                        </h3>
                         <p class="text-base font-normal content-text mt-2 text-sm">
                             <i>System Identification and Dynamic Modeling Project | Brigham Young University</i>
                         </p>
                         <ul class="list-disc pl-5 mt-3 text-base space-y-2">
-                            <li>Developed a classroom demo model over 30+ hours and three iterations</li>
-                            <li>Integrated motor theory with empirical data to calibrate the system model</li>
-                            <li>Applied MATLAB system identification for parameter estimation</li>
-                            <li>Using Inverse PINNs to optimize model parameters from experimental data</li>
+                            <li>Built and refined a demonstration motor across three design iterations.</li>
+                            <li>Combined experimental measurements and MATLAB system identification to estimate model parameters.</li>
                         </ul>
-                        <div class="buttons mt-4 flex flex-wrap gap-3">
-                            <span class="inline-flex items-center gap-2 px-4 py-2 bg-gray-400 text-white rounded cursor-not-allowed">
-                                <i class="fas fa-clock"></i> Full Details Coming Soon
-                            </span>
-                        </div>
                     </div>
                 </div>
-
-                <p class="text-xl font-semibold text-[#404040] mt-8 mb-6 text-center">More Project Details Coming Soon...</p>
             </div>
         </section>
 

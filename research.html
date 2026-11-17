@@ -6,9 +6,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>James Wade</title>
+    <title>Research | James Wade</title>
     <link rel="icon" type="image/png" href="assets/images/logos/Logo_white.dxf.png">
-    <meta name="description" content="PhD Applicant. I’m always seeking opportunities to tackle hard problems.">
+    <meta name="description" content="Robot world models and manipulation research at Michigan’s ARM Lab, plus fault-tolerant control and multi-robot autonomy.">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     <link rel="stylesheet" href="style.css">
@@ -58,12 +58,72 @@
         <section id="current-research" class="py-12 text-left">
             <h2 class="text-4xl font-bold text-[#404040] mb-6">Current Research</h2>
             <p class="text-base mb-8 text-gray-600">
-                Active research projects in autonomous systems, multi-agent coordination, and robotic resilience.
+                How can robots adapt to unfamiliar physics and know when their predictions are unreliable? My current work connects generative world models, robot learning, and manipulation.
             </p>
 
             <div class="space-y-8">
+                <article id="arm-lab" class="border-l-4 border-[#0d77c4] pl-4">
+                    <p class="text-sm font-semibold text-[#0d77c4] uppercase tracking-wide mb-2">University of Michigan · ARM Lab</p>
+                    <h3 class="text-2xl font-semibold text-[#404040]">Reliable and Adaptive World Models for Manipulation</h3>
+                    <p class="text-base mt-2">Autonomous Robotic Manipulation (ARM) Lab</p>
+                    <p class="text-sm text-gray-600 mt-1">September 2026 – Present · Graduate Research Assistant</p>
+                    <figure class="my-5 max-w-md mx-auto">
+                        <img src="assets/images/research/plume_disk_flick.png" alt="A simulated robot arm interacting with blue and green disks on a tabletop" class="w-full h-auto rounded-lg" loading="lazy" width="2824" height="2118">
+                        <figcaption class="text-sm text-gray-500 mt-2">Disk manipulation in simulation: a setting for studying world-model reliability and adaptation.</figcaption>
+                    </figure>
+                    <p class="text-base mt-3">A robot can plan with a learned model of the world. What happens when the physics change? I study how generative world models can adapt to new physical conditions and how to identify model errors before they lead to poor decisions.</p>
+                    <ul class="list-disc pl-5 mt-3 text-base space-y-2">
+                        <li><strong>Self-supervised adaptation:</strong> Ran fine-tuning experiments that adapt a world model using its own estimates instead of ground-truth rewards.</li>
+                        <li><strong>Comparative evaluation:</strong> Benchmarked adaptation against offline reinforcement learning and imitation-learning baselines.</li>
+                        <li><strong>Reliability at planning time:</strong> Developing learned estimators of world-model error and studying their ability to detect out-of-distribution dynamics compared with likelihood-based signals.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section id="past-research" class="py-12 text-left">
+            <h2 class="text-4xl font-bold text-[#404040] mb-6">Past Research</h2>
+            <p class="text-base mb-8 text-gray-600">
+                From control algorithms to deployed autonomy stacks, my previous work connects mathematical models with working robotic systems.
+            </p>
+
+            <div class="space-y-10">
+                <!-- Workspace -->
+                <div id="fault-tolerant-control" class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6 border-l-4 border-[#0d77c4] pl-4">
+                    <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
+                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="assets/images/research/workspace.png" alt="Robot Workspace Visualization">
+                    </div>
+                    <div class="publication-content text-left w-full xs:w-3/4">
+                        <a target="_blank" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
+                            Fault-Tolerant, Rigidity-Preserving Control of Inflatable Truss Robots
+                        </a>
+                        <p class="text-base font-normal content-text mt-2 text-sm"><i>Compliant Mechanisms and Robotics Group (CMR) | Brigham Young University</i></p>
+                        <p class="text-sm text-gray-600 mt-1">
+                            <span class="font-semibold">Duration:</span> August 2023 – August 2026 |
+                            <span class="font-semibold">Role:</span> Undergraduate Researcher |
+                            <span class="font-semibold">Funding:</span> Utah NASA Space Grant ($2,000)
+                        </p>
+                        <p class="text-base mt-3">
+                            Developed control methods that keep inflatable truss robots structurally rigid and mobile after actuator failures, preserving over 62% of nominal workspace and reducing tracking RMSE by over 22%.
+                        </p>
+                        <ul class="list-disc pl-5 mt-3 text-base space-y-2">
+                            <li><strong>Algorithm Development:</strong> Formulated discrete-time control barrier function constraints on rigidity singular values to preserve structural rigidity under actuator failures</li>
+                            <li><strong>Validation:</strong> Developed failure-aware kinematics, state estimation, and encoder-feedback control</li>
+                            <li><strong>Tools & Technologies:</strong> Python, discrete-time CBFs, kinematic modeling, embedded control systems</li>
+                            <li><strong>Outcome:</strong> First-author paper accepted to <i>IEEE Robotics and Automation Letters</i> (2026). <a href="https://ieeexplore.ieee.org/document/11689883" class="text-[#0d77c4] hover:underline">Read the paper →</a></li>
+                        </ul>
+                        <div class="buttons mt-4 flex flex-wrap gap-3">
+                            <a href="https://ieeexplore.ieee.org/document/11689883" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d77c4] text-white rounded hover:bg-[#0a5a96] transition"><i class="fas fa-book-open" aria-hidden="true"></i> Published Paper</a>
+                            <a href="/assets/files/proposals/Workspace_Paper_Proposal.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d77c4] text-white rounded hover:bg-[#0a5a96] transition">
+                                <i class="fas fa-file-pdf"></i> View Proposal
+                            </a>
+                            <a class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d77c4] text-white rounded hover:bg-[#0a5a96] transition" href="https://arxiv.org/abs/2605.20561" target="_blank"><i class="ai ai-arxiv mr-1"></i>arXiv</a>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Sandia -->
-                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6 border-l-4 border-[#0d77c4] pl-4">
+                <div id="sandia" class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6 border-l-4 border-[#0d77c4] pl-4">
                     <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
                         <img class="publication-image w-full h-auto" style="max-width: 175px;" src="assets/images/research/sandia_car.jpg" alt="Sandia Autonomous Vehicle">
                     </div>
@@ -73,55 +133,22 @@
                         </a>
                         <p class="text-base font-normal content-text mt-2 text-sm"><i>AutonomyNM | Sandia National Laboratories</i></p>
                         <p class="text-sm text-gray-600 mt-1">
-                            <span class="font-semibold">Duration:</span> May 2025 – Present |
-                            <span class="font-semibold">Role:</span> Undergraduate Research Intern
+                            <span class="font-semibold">Duration:</span> May 2025 – August 2026 |
+                            <span class="font-semibold">Role:</span> Autonomy Intern
                         </p>
                         <p class="text-base mt-3">
-                            Led development of RAM-Stack, an integrated ROS 2 software architecture for coordinated autonomous multi-agent systems in GPS-denied environments.
+                            Developed RAM-Stack, a modular ROS 2 multi-robot autonomy framework supporting hardware, Gazebo, and Isaac Sim backends for distributed mapping and navigation.
                         </p>
                         <ul class="list-disc pl-5 mt-3 text-base space-y-2">
                             <li><strong>System Integration:</strong> Unified SLAM Toolbox, SwarmSLAM, Navigation2, and ROS 2 Control into a cohesive autonomy stack</li>
-                            <li><strong>Performance Optimization:</strong> Mastered behavior tree debugging for Navigation2 and implemented Zenoh-based interface filtering to improve multi-agent scalability and reduce communication overhead</li>
-                            <li><strong>Tools & Technologies:</strong> ROS 2 (Humble), Python, C++, Gazebo, SLAM Toolbox, Nav2, Zenoh DDS</li>
+                            <li><strong>Performance Optimization:</strong> Refined Navigation2 behavior trees and implemented Zenoh filtering and discovery servers to improve multi-agent scalability and reduce communication overhead</li>
+                            <li><strong>Tools & Technologies:</strong> ROS 2, Python, C++, Gazebo, SLAM Toolbox, Nav2, Zenoh DDS</li>
                             <li><strong>Outcome:</strong> Poster presentation to Sandia technical leadership in August 2025 and a recorded three-hour technical presentation for future users of the RAM-Stack</li>
                         </ul>
                         <div class="buttons mt-4 flex flex-wrap gap-3">
                             <a href="/assets/files/presentations/Sandia_Conference_Poster.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d77c4] text-white rounded hover:bg-[#0a5a96] transition">
                                 <i class="fas fa-file-pdf"></i> View Poster
                             </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Workspace -->
-                <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6 border-l-4 border-[#0d77c4] pl-4">
-                    <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
-                        <img class="publication-image w-full h-auto" style="max-width: 175px;" src="assets/images/research/workspace.png" alt="Robot Workspace Visualization">
-                    </div>
-                    <div class="publication-content text-left w-full xs:w-3/4">
-                        <a target="_blank" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
-                            Maximizing Robot Traversal Under Actuator Failure
-                        </a>
-                        <p class="text-base font-normal content-text mt-2 text-sm"><i>Compliant Mechanisms and Robotics Group (CMR) | Brigham Young University</i></p>
-                        <p class="text-sm text-gray-600 mt-1">
-                            <span class="font-semibold">Duration:</span> May 2025 – Present |
-                            <span class="font-semibold">Role:</span> Undergraduate Researcher |
-                            <span class="font-semibold">Funding:</span> Utah NASA Space Grant ($2,000)
-                        </p>
-                        <p class="text-base mt-3">
-                            Developing fault-tolerant algorithms to maximize workspace and maintain locomotion in multiply-redundant truss robots experiencing actuator failures.
-                        </p>
-                        <ul class="list-disc pl-5 mt-3 text-base space-y-2">
-                            <li><strong>Algorithm Development:</strong> Creating optimization routines to reconfigure robot geometry and maintain maximum reachable workspace under failure conditions</li>
-                            <li><strong>Validation:</strong> Simulating multiple failure scenarios and validating continued locomotion in both simulation and hardware platforms</li>
-                            <li><strong>Tools & Technologies:</strong> Python, discrete-time CBFs, kinematic modeling, embedded control systems</li>
-                            <li><strong>Outcome:</strong> Conference presentation scheduled for April 2026 at Utah NASA Space Grant Symposium. First-author paper in preparation for submission to <i>IEEE Robotics and Automation Letters</i></li>
-                        </ul>
-                        <div class="buttons mt-4 flex flex-wrap gap-3">
-                            <a href="/assets/files/proposals/Workspace_Paper_Proposal.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d77c4] text-white rounded hover:bg-[#0a5a96] transition">
-                                <i class="fas fa-file-pdf"></i> View Proposal
-                            </a>
-                            <a class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d77c4] text-white rounded hover:bg-[#0a5a96] transition" href="https://arxiv.org/abs/2605.20561" target="_blank"><i class="ai ai-arxiv mr-1"></i>arXiv</a>
                         </div>
                     </div>
                 </div>
@@ -133,34 +160,24 @@
                     </div>
                     <div class="publication-content text-left w-full xs:w-3/4">
                         <a target="_blank" class="text-[#0d77c4] hover:underline text-2xl font-semibold">
-                            Multi-Agent Navigation in GPS-Denied Environments
+                            LiDAR-Based Safe Control for Quadrupedal Robots
                         </a>
                         <p class="text-base font-normal content-text mt-2 text-sm"><i>Multi-Agent Intelligent Coordination and Control (MAGICC) Lab | Brigham Young University</i></p>
                         <p class="text-sm text-gray-600 mt-1">
-                            <span class="font-semibold">Duration:</span> August 2024 – Present |
+                            <span class="font-semibold">Duration:</span> August 2024 – April 2026 |
                             <span class="font-semibold">Role:</span> Undergraduate Researcher
                         </p>
                         <p class="text-base mt-3">
-                            Investigating real-time Control Barrier Function (CBF) formulations for safe multi-agent navigation using LiDAR-based environmental perception.
+                            Developed a discrete-time control barrier function framework for quadrupedal robots using LiDAR-based environmental constraints.
                         </p>
                         <ul class="list-disc pl-5 mt-3 text-base space-y-2">
-                            <li><strong>Novel Approach:</strong> Formulating CBFs directly from LiDAR point clouds for dynamic obstacle avoidance without pre-mapping</li>
-                            <li><strong>Simulation & Hardware:</strong> Validating multi-agent coordination algorithms in Gazebo simulation and deploying on physical robot platforms</li>
+                            <li><strong>Novel Approach:</strong> Formulated environmental safety constraints from LiDAR measurements</li>
+                            <li><strong>Simulation & Hardware:</strong> Investigated conformal prediction for probabilistic safety guarantees near safe-region boundaries</li>
                             <li><strong>Tools & Technologies:</strong> ROS 2, Python, C++, Gazebo, LiDAR sensor processing, control theory</li>
                         </ul>
                     </div>
                 </div>
 
-            </div>
-        </section>
-
-        <section id="past-research" class="py-12 text-left">
-            <h2 class="text-4xl font-bold text-[#404040] mb-6">Past Research</h2>
-            <p class="text-base mb-8 text-gray-600">
-                Completed research projects demonstrating expertise in soft robotics, embedded systems, and microfluidics.
-            </p>
-
-            <div class="space-y-10">
                 <!-- Inflatable Structure for Moon -->
                 <div class="publication-entry flex flex-col xs:flex-row items-center xs:items-start gap-6">
                     <div class="publication-image-container w-full xs:w-1/4 flex justify-center">
@@ -175,7 +192,7 @@
                             <span class="font-semibold">Duration:</span> August 2023 – May 2025 |
                             <span class="font-semibold">Role:</span> Lead Undergraduate Researcher |
                             <span class="font-semibold">Team:</span> 25+ students |
-                            <span class="font-semibold">Funding:</span> NASA BIG Idea Challenge ($147,000)
+                            <span class="font-semibold">Funding:</span> NASA BIG Idea Challenge ($140,000)
                         </p>
                         <p class="text-base mt-3">
                             Led development of an untethered, modular inflatable truss robot for lunar surface operations as part of NASA's Breakthrough, Innovative, and Game-changing (BIG) Idea Challenge.
@@ -183,7 +200,7 @@
                         <ul class="list-disc pl-5 mt-3 text-base space-y-2">
                             <li><strong>Team Leadership:</strong> Established research operations for a new lab, coordinating 25+ undergraduate researchers across mechanical, electrical, and software teams. Led grant writing and management efforts at a time with few to no graduate students</li>
                             <li><strong>System Design:</strong> Led complete redesign of soft, inflatable octahedral robot incorporating novel parent-child radio networking with error-checking protocols</li>
-                            <li><strong>Achievement:</strong> Selected as 1 of 6 national finalists in the 2023-2024 NASA BIG Idea Challenge. Presented technical paper and poster at the BIG Idea Challenge symposium and the November 2025 Lunar Surface Innovation Consortium (LSIC) meeting</li>
+                            <li><strong>Achievement:</strong> Selected as 1 of 6 national finalists in the 2023-2024 NASA BIG Idea Challenge. Presented technical paper and poster at the BIG Idea Challenge symposium and the November 2024 Lunar Surface Innovation Consortium (LSIC) meeting</li>
                             <li><strong>Publications:</strong> In preparation for resubmission to IEEE Transactions on Mechatronics</li>
                             <li><strong>Tools & Technologies:</strong> SolidWorks, Arduino, embedded control, RF communications, inflatable actuator design</li>
                         </ul>
@@ -215,11 +232,11 @@
                         </a>
                         <p class="text-base font-normal content-text mt-2 text-sm"><i>LLNL Independent Diagnostic Scoring System (LIDSS) | Lawrence Livermore National Laboratory</i></p>
                         <p class="text-sm text-gray-600 mt-1">
-                            <span class="font-semibold">Duration:</span> May 2024 - May 2025 |
+                            <span class="font-semibold">Duration:</span> May 2024 – August 2024 |
                             <span class="font-semibold">Role:</span> Undergraduate Research Intern
                         </p>
                         <p class="text-base mt-3">
-                            Engineered embedded control system for autonomous fleet of diagnostic rafts used in <a href="https://str.llnl.gov/past-issues/june-2019/testing-missile-technology-high-seas" target="_blank" class="text-[#0d77c4] hover:underline">nuclear weapons testing applications</a>.
+                            Independently designed and built a handheld controller to teleoperate autonomous marine rafts, integrating mechanical design, electronics, STM32 firmware, and an LVGL-based interface.
                         </p>
                         <ul class="list-disc pl-5 mt-3 text-base space-y-2">
                             <li><strong>Full-Stack Development:</strong> Delivered end-to-end mechanical, electrical, and software systems for fleet command and control</li>

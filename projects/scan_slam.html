@@ -6,9 +6,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>James Wade</title>
+    <title>Scan-SLAM: Mapping and Localization in ROS 2 | James Wade</title>
     <link rel="icon" type="image/png" href="../assets/images/logos/Logo_white.dxf.png">
-    <meta name="description" content="Scan-SLAM: A ROS 2 SLAM implementation combining correlative scan matching with pose-graph optimization">
+    <meta name="description" content="A 2D ROS 2 SLAM pipeline with correlative scan matching, loop closures, pose-graph optimization, and a custom simulator.">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
@@ -33,7 +33,7 @@
 
     <main id="main-content" class="pt-20 pb-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex-1 w-full">
         <section class="py-12 text-left">
-            <h1 class="text-4xl font-bold text-[#404040] mb-6">Scan-SLAM: Correlative Scan Matching and Pose-Graph Optimization in ROS 2</h1>
+            <h1 class="text-4xl font-bold text-[#404040] mb-6">Scan-SLAM: Mapping and Localization in ROS 2</h1>
             <p class="text-base font-normal content-text mt-2 text-sm"><i>Graduate-level Autonomous Mobile Robots | Brigham Young University | 2026</i></p>
 
             <figure class="my-6">
@@ -71,9 +71,9 @@
                 The pipeline is split into four packages: the core SLAM node (<code>scan_slam</code>), custom message definitions (<code>scan_slam_msgs</code>), a Python simulator (<code>scan_slam_sim</code>), and visualization tools (<code>scan_slam_viz</code>).
             </p>
 
-            <h3 class="text-xl font-semibold text-[#404040] mt-6 mb-3">Frontend — Correlative Scan Matching</h3>
+            <h3 class="text-xl font-semibold text-[#404040] mt-6 mb-3">Frontend - Correlative Scan Matching</h3>
             <p class="text-base mb-4">
-                The frontend subscribes to <code>/scan</code> (laser range data) and <code>/odom</code> (wheel odometry) topics. When the robot has traveled far enough from the last keyframe — measured by translation and rotation thresholds — a new keyframe is created and matched against the previous one.
+                The frontend subscribes to <code>/scan</code> (laser range data) and <code>/odom</code> (wheel odometry) topics. When the robot has traveled far enough from the last keyframe - measured by translation and rotation thresholds - a new keyframe is created and matched against the previous one.
             </p>
             <p class="text-base mb-4">
                 Scan matching uses a lookup-table-based correlation search over (x, y, θ) space, as described by Olson [1]. An occupancy likelihood table is precomputed from the reference scan, and the new scan is swept through candidate poses to find the maximum-likelihood relative transform. The match is returned with a covariance matrix used downstream by the optimizer.
@@ -82,9 +82,9 @@
                 Loop closure detection compares each new keyframe against all prior keyframes. When a candidate pair falls within a proximity threshold, a scan match is attempted. High-confidence matches are added as loop-closure constraints to the pose graph, allowing the system to correct accumulated drift when revisiting known areas.
             </p>
 
-            <h3 class="text-xl font-semibold text-[#404040] mt-6 mb-3">Backend — Pose-Graph Optimization</h3>
+            <h3 class="text-xl font-semibold text-[#404040] mt-6 mb-3">Backend - Pose-Graph Optimization</h3>
             <p class="text-base mb-6">
-                The backend maintains a pose graph where nodes represent keyframe poses and edges represent relative transform constraints between them (both sequential odometric constraints and loop-closure constraints). On each update, the optimizer linearizes the nonlinear least-squares problem — using either dense or sparse methods — and iterates until convergence. Corrected keyframe poses are then propagated back to the frontend so the occupancy map reflects the optimized trajectory.
+                The backend maintains a pose graph where nodes represent keyframe poses and edges represent relative transform constraints between them (both sequential odometric constraints and loop-closure constraints). On each update, the optimizer linearizes the nonlinear least-squares problem - using either dense or sparse methods - and iterates until convergence. Corrected keyframe poses are then propagated back to the frontend so the occupancy map reflects the optimized trajectory.
             </p>
             <p class="text-base mb-6">
                 The optimization formulation follows the tutorial by Grisetti et al. [2], providing a direct connection between the implementation and the mathematical foundations taught in the course.

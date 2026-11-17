@@ -6,9 +6,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>James Wade</title>
+    <title>Diffusion Models for Robotic Control | James Wade</title>
     <link rel="icon" type="image/png" href="../assets/images/logos/Logo_white.dxf.png">
-    <meta name="description" content="Exploring diffusion models from MNIST image generation to robotic planning and control">
+    <meta name="description" content="Implementing diffusion models from image generation to robotic action generation and trajectory planning.">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
@@ -34,18 +34,18 @@
     <main id="main-content" class="pt-20 pb-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex-1 w-full">
         <section class="py-12 text-left">
 
-            <h1 class="text-4xl font-bold text-[#404040] mb-4">Exploring Diffusion: From MNIST Generation to Robotic Control</h1>
+            <h1 class="text-4xl font-bold text-[#404040] mb-4">Diffusion Models for Robotic Control</h1>
             <p class="text-base font-normal content-text mt-2 text-sm mb-8"><i>Graduate-level Deep Learning | Brigham Young University | 2026</i></p>
 
             <p class="text-base mb-6">
-                This project explores diffusion models across a progression of increasing complexity — starting with simple image generation on MNIST and building up to trajectory-level planning and action-diffusion policy learning for robotics. The four experiments cover Denoising Diffusion Probabilistic Models (DDPM), Denoising Diffusion Implicit Models (DDIM), Diffusion Policy, and Diffuser.
+                This project explores diffusion models across a progression of increasing complexity - starting with simple image generation on MNIST and building up to trajectory-level planning and action-diffusion policy learning for robotics. The four experiments cover Denoising Diffusion Probabilistic Models (DDPM), Denoising Diffusion Implicit Models (DDIM), Diffusion Policy, and Diffuser.
             </p>
             <p class="text-base mb-6">
-                <strong>Diffuser</strong> was first introduced by Janner et al. (2022) [3] and <strong>Diffusion Policy</strong> was first introduced by Chi et al. (2025) [4]. The architecture for my recreations of both methods closely follows the original papers, and this project attempts to recreate portions of the results presented in those works. For an in-depth treatment of the theory behind these models, please refer directly to those papers.
+                <strong>Diffuser</strong> was first introduced by Janner et al. (2022) [3] and <strong>Diffusion Policy</strong> was first introduced by Chi et al. at <a href="https://diffusion-policy.cs.columbia.edu/" class="text-[#0d77c4] hover:underline" target="_blank" rel="noopener noreferrer">Robotics: Science and Systems (RSS) in 2023</a>. Reference [4] cites the extended journal version. The architecture for my recreations of both methods closely follows the original papers, and this project attempts to recreate portions of the results presented in those works. For an in-depth treatment of the theory behind these models, please refer directly to those papers.
             </p>
 
             <!-- ===================== DDPM ===================== -->
-            <h2 class="text-2xl font-bold text-[#404040] mt-10 mb-3">1 &mdash; DDPM: Denoising Diffusion Probabilistic Models</h2>
+            <h2 class="text-2xl font-bold text-[#404040] mt-10 mb-3">1 - DDPM: Denoising Diffusion Probabilistic Models</h2>
             <p class="text-base mb-4">
                 The first experiment implements a baseline DDPM [1] trained on MNIST digits. The model learns to reverse a fixed Gaussian noise process over hundreds of timesteps, eventually recovering sharp, recognizable handwritten digits from pure noise. This serves as the foundation for understanding the forward/reverse diffusion process before applying it to more complex domains.
             </p>
@@ -55,14 +55,14 @@
                     Your browser does not support the video tag.
                 </video>
                 <figcaption class="text-sm text-left text-gray-600 italic mt-2">
-                    Video 1: DDPM sampling on MNIST — the model progressively denoises random Gaussian noise into recognizable handwritten digits.
+                    Video 1: DDPM sampling on MNIST - the model progressively denoises random Gaussian noise into recognizable handwritten digits.
                 </figcaption>
             </figure>
 
             <!-- ===================== DDIM ===================== -->
-            <h2 class="text-2xl font-bold text-[#404040] mt-10 mb-3">2 &mdash; DDIM: Faster Deterministic Sampling</h2>
+            <h2 class="text-2xl font-bold text-[#404040] mt-10 mb-3">2 - DDIM: Faster Deterministic Sampling</h2>
             <p class="text-base mb-4">
-                The second experiment applies Denoising Diffusion Implicit Models (DDIM) [2], which reformulate the reverse process as a non-Markovian deterministic mapping. This enables high-quality generation with far fewer denoising steps than standard DDPM — often achieving comparable results in 10&ndash;50 steps rather than 1000. The video below demonstrates the reduction in required steps while maintaining sample quality.
+                The second experiment applies Denoising Diffusion Implicit Models (DDIM) [2], which reformulate the reverse process as a non-Markovian deterministic mapping. This enables high-quality generation with far fewer denoising steps than standard DDPM - often achieving comparable results in 10&ndash;50 steps rather than 1000. The video below demonstrates the reduction in required steps while maintaining sample quality.
             </p>
             <figure class="my-6">
                 <video class="w-full h-auto rounded" controls muted loop playsinline
@@ -70,14 +70,14 @@
                     Your browser does not support the video tag.
                 </video>
                 <figcaption class="text-sm text-left text-gray-600 italic mt-2">
-                    Video 2: DDIM sampling — deterministic generation achieves good sample quality with significantly fewer denoising steps.
+                    Video 2: DDIM sampling - deterministic generation achieves good sample quality with significantly fewer denoising steps.
                 </figcaption>
             </figure>
 
             <!-- ===================== Diffusion Policy ===================== -->
-            <h2 class="text-2xl font-bold text-[#404040] mt-10 mb-3">3 &mdash; Diffusion Policy</h2>
+            <h2 class="text-2xl font-bold text-[#404040] mt-10 mb-3">3 - Diffusion Policy</h2>
             <p class="text-base mb-4">
-                Diffusion Policy [4] treats robot action generation as a conditional denoising problem. Given observations of the environment, the model learns to denoise a sequence of actions from Gaussian noise — effectively learning a multi-modal action distribution that can represent complex, contact-rich behaviors. This experiment implements the core action-diffusion policy learning pipeline and evaluates rollout performance, with results summarized in the bar chart below.
+                Diffusion Policy [4] treats robot action generation as a conditional denoising problem. Given observations of the environment, the model learns to denoise a sequence of actions from Gaussian noise - effectively learning a multi-modal action distribution that can represent complex, contact-rich behaviors. This experiment implements the core action-diffusion policy learning pipeline and evaluates rollout performance, with results summarized in the bar chart below.
             </p>
             <figure class="my-6">
                 <video class="w-full h-auto rounded" controls muted loop playsinline
@@ -85,7 +85,7 @@
                     Your browser does not support the video tag.
                 </video>
                 <figcaption class="text-sm text-left text-gray-600 italic mt-2">
-                    Video 3: Diffusion Policy evaluation rollouts — the learned action-diffusion policy controls the agent based on denoised action sequences conditioned on observations.
+                    Video 3: Diffusion Policy evaluation rollouts - the learned action-diffusion policy controls the agent based on denoised action sequences conditioned on observations.
                 </figcaption>
             </figure>
             <figure class="my-6">
@@ -98,14 +98,14 @@
             </figure>
 
             <!-- ===================== Diffuser ===================== -->
-            <h2 class="text-2xl font-bold text-[#404040] mt-10 mb-3">4 &mdash; Diffuser: Trajectory-Level Diffusion Planning</h2>
+            <h2 class="text-2xl font-bold text-[#404040] mt-10 mb-3">4 - Diffuser: Trajectory-Level Diffusion Planning</h2>
             <p class="text-base mb-4">
-                Diffuser [3] applies diffusion at the level of full trajectories rather than individual actions. Rather than learning a policy that maps states to actions, Diffuser learns a distribution over entire trajectory sequences and samples from it at planning time. This unlocks powerful capabilities: the same model can be guided to different behaviors via inpainting (fixing start and end states) or classifier-guided diffusion (steering trajectories away from obstacles at inference time — no retraining required).
+                Diffuser [3] applies diffusion at the level of full trajectories rather than individual actions. Rather than learning a policy that maps states to actions, Diffuser learns a distribution over entire trajectory sequences and samples from it at planning time. This unlocks powerful capabilities: the same model can be guided to different behaviors via inpainting (fixing start and end states) or classifier-guided diffusion (steering trajectories away from obstacles at inference time - no retraining required).
             </p>
 
             <h3 class="text-xl font-semibold text-[#404040] mt-6 mb-2">Randomly Sampled Trajectories</h3>
             <p class="text-base mb-4">
-                Even without any goal conditioning, Diffuser generates trajectories that are physically plausible and smooth — demonstrating that the model has learned meaningful structure about what valid motion looks like.
+                Even without any goal conditioning, Diffuser generates trajectories that are physically plausible and smooth - demonstrating that the model has learned meaningful structure about what valid motion looks like.
             </p>
             <figure class="my-6">
                 <video class="w-full h-auto rounded" controls muted loop playsinline
@@ -113,13 +113,13 @@
                     Your browser does not support the video tag.
                 </video>
                 <figcaption class="text-sm text-left text-gray-600 italic mt-2">
-                    Video 4: Randomly sampled Diffuser trajectories (no obstacle avoidance) — the model generates smooth, coherent motion without any goal conditioning.
+                    Video 4: Randomly sampled Diffuser trajectories (no obstacle avoidance) - the model generates smooth, coherent motion without any goal conditioning.
                 </figcaption>
             </figure>
 
             <h3 class="text-xl font-semibold text-[#404040] mt-6 mb-2">Inpainted Trajectories</h3>
             <p class="text-base mb-4">
-                By fixing the start and end states of the trajectory during the reverse diffusion process (inpainting), we can guide Diffuser to connect specific configurations. The model fills in the intermediate waypoints while respecting the boundary conditions — without any additional training.
+                By fixing the start and end states of the trajectory during the reverse diffusion process (inpainting), we can guide Diffuser to connect specific configurations. The model fills in the intermediate waypoints while respecting the boundary conditions - without any additional training.
             </p>
             <figure class="my-6">
                 <video class="w-full h-auto rounded" controls muted loop playsinline
@@ -127,13 +127,13 @@
                     Your browser does not support the video tag.
                 </video>
                 <figcaption class="text-sm text-left text-gray-600 italic mt-2">
-                    Video 5: Inpainted Diffuser trajectories — start and end configurations are fixed via inpainting, and the model generates smooth paths between them.
+                    Video 5: Inpainted Diffuser trajectories - start and end configurations are fixed via inpainting, and the model generates smooth paths between them.
                 </figcaption>
             </figure>
 
             <h3 class="text-xl font-semibold text-[#404040] mt-6 mb-2">Obstacle-Averse Trajectories</h3>
             <p class="text-base mb-4">
-                Using classifier-guided diffusion [6], Diffuser can be steered to avoid obstacles entirely at inference time. A gradient signal from a learned obstacle classifier nudges the denoising process away from collision regions. While this initial result shows some trajectory jerkiness, the original authors of Diffuser demonstrate that further tuning yields high-quality avoidance behavior — confirming that the core mechanism works and that improved results are achievable with additional tuning.
+                Using classifier-guided diffusion [6], Diffuser can be steered to avoid obstacles entirely at inference time. A gradient signal from a learned obstacle classifier nudges the denoising process away from collision regions. While this initial result shows some trajectory jerkiness, the original authors of Diffuser demonstrate that further tuning yields high-quality avoidance behavior - confirming that the core mechanism works and that improved results are achievable with additional tuning.
             </p>
             <figure class="my-6">
                 <video class="w-full h-auto rounded" controls muted loop playsinline
@@ -141,7 +141,7 @@
                     Your browser does not support the video tag.
                 </video>
                 <figcaption class="text-sm text-left text-gray-600 italic mt-2">
-                    Video 6: Obstacle-averse Diffuser trajectories using classifier-guided diffusion — obstacles are avoided at runtime without retraining the model.
+                    Video 6: Obstacle-averse Diffuser trajectories using classifier-guided diffusion - obstacles are avoided at runtime without retraining the model.
                 </figcaption>
             </figure>
 
@@ -156,10 +156,10 @@
                 </p>
                 <ul class="list-disc pl-5 text-sm text-[#4a4a4a] space-y-2">
                     <li>
-                        <strong>Diffuser</strong> — Janner, M., Du, Y., Tenenbaum, J., &amp; Levine, S. (2022). Planning with diffusion for flexible behavior synthesis. <em>arXiv preprint arXiv:2205.09991.</em>
+                        <strong>Diffuser</strong> - Janner, M., Du, Y., Tenenbaum, J., &amp; Levine, S. (2022). Planning with diffusion for flexible behavior synthesis. <em>arXiv preprint arXiv:2205.09991.</em>
                     </li>
                     <li>
-                        <strong>Diffusion Policy</strong> — Chi, C., Xu, Z., Feng, S., Cousineau, E., Du, Y., Burchfiel, B., Tedrake, R., &amp; Song, S. (2025). Diffusion policy: Visuomotor policy learning via action diffusion. <em>The International Journal of Robotics Research, 44</em>(10&ndash;11), 1684&ndash;1704.
+                        <strong>Diffusion Policy</strong> - Chi, C., Xu, Z., Feng, S., Cousineau, E., Du, Y., Burchfiel, B., Tedrake, R., &amp; Song, S. (2025). Diffusion policy: Visuomotor policy learning via action diffusion. <em>The International Journal of Robotics Research, 44</em>(10&ndash;11), 1684&ndash;1704.
                     </li>
                 </ul>
             </div>

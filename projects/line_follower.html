@@ -6,9 +6,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>James Wade</title>
+    <title>Autonomous Competition Robot | James Wade</title>
     <link rel="icon" type="image/png" href="../assets/images/logos/Logo_white.dxf.png">
-    <meta name="description" content="Details of my collaboration with Mark Rober to build the world’s smallest Nerf gun.">
+    <meta name="description" content="Custom electronics, embedded control, and autonomous navigation for a robot that placed 4th of 30 teams in BYU’s mechatronics competition.">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
@@ -35,7 +35,7 @@
 
     <main id="main-content" class="pt-20 pb-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex-1">
         <section class="py-12 text-left">
-            <h1 class="text-4xl font-bold text-[#404040] mb-6">Line-Follower Robot — Top 5 Finisher</h1>
+            <h1 class="text-4xl font-bold text-[#404040] mb-6">Autonomous Competition Robot</h1>
             <p class="text-base font-normal content-text mt-2 text-sm"><i>BYU Mechatronics Competition | Brigham Young University | 2024</i></p>
             <figure class="my-6">
                 <img class="w-full h-auto" src="/assets/images/projects/line_follower/line_follower_banner.png" alt="Line Follower Side View">
@@ -45,7 +45,7 @@
             </figure>
 
             <p class="text-base mb-4">
-                Our school's Mechatronics line-following competition features a classic challenge with a unique twist: along the track, robots must complete a series of tasks that test both precision and adaptability. In addition to following a line, each robot must:        
+                Our school's Mechatronics line-following competition features a classic challenge with a unique twist: along the track, robots must complete a series of tasks that test both precision and adaptability. In addition to following a line, each robot must:
             </p>
 
             <ul class="list-disc list-outside mb-8 pl-6">
@@ -56,18 +56,18 @@
             </ul>
 
             <p class="text-base mb-4">
-                The entire course had to be completed within 60 seconds, demanding a balance of speed, precision, and autonomy. Our robot earned a perfect score for task completion and placed 4th overall out of 30 teams—edged out of a podium finish by just a few seconds on the clock.
+                The entire course had to be completed within 60 seconds, demanding a balance of speed, precision, and autonomy. Our robot earned a perfect score for task completion and placed 4th overall out of 30 teams - edged out of a podium finish by just a few seconds on the clock.
                 <br><br>
                 I served as the team lead, lead programmer, and principal electrical designer on this 10-week four-person project.
             </p>
 
-            
+
             <div class="technical-content">
                 <h2 class="text-2xl font-bold text-[#404040] mt-8 mb-4">Technical Details</h2>
                 <p class="text-base mb-4">
                     Check out the video below for a complete walkthrough of our innovative line-following robot design. Dive into the sections below to explore the key features and technical details that set our project apart.
                 </p>
-                <div class="relative w-full pb-[56.25%]"> 
+                <div class="relative w-full pb-[56.25%]">
                     <iframe
                         class="absolute top-0 left-0 w-full h-full"
                         src="https://www.youtube.com/embed/WJn777cVGDw"
@@ -84,7 +84,7 @@
                 </p>
 
                 <ul class="list-disc list-outside mb-8 pl-6">
-                    <li>The robot must complete the track—similar to the one shown in Figure 2—within 60 seconds.</li>
+                    <li>The robot must complete the track - similar to the one shown in Figure 2 - within 60 seconds.</li>
                     <li>Each task is indicated by a unique number of white bars (serving as "QR codes") adjacent to the track, signaling which task to perform.</li>
                     <li><strong>A two-bar code</strong> indicates the <strong>ball pickup</strong> task: the vehicle must leave the track, pick up a ball, and then return to continue along the track while carrying it.</li>
                     <li><strong>A three-bar code</strong> indicates the <strong>ball drop-off</strong> task: the robot must sense the color of the ball (black or white) and place it into the appropriate bin.</li>
@@ -106,9 +106,9 @@
                 </figure>
 
                 <h3 class="text-xl font-bold text-[#404040] mt-8 mb-4">Mechanical Design</h3>
-                
+
                 <p class="text-base mb-4">
-                    We chose to use a double-decker design for our robot chassis, with plenty of holes for wire management. We chose to laser cut this shape out of particleboard wood, knowing that it was an easy material to prototype with. 
+                    We chose to use a double-decker design for our robot chassis, with plenty of holes for wire management. We chose to laser cut this shape out of particleboard wood, knowing that it was an easy material to prototype with.
                     This design gave us just enough room to squeeze all of the necessary electronics in while still giving it a very organized design. The larger wheelbase also allowed it to turn quicker, vital for the speeds we were hoping to attain.
                     A caster wheel was used up front to allow differential drive from the back.
                     <br><br>
@@ -129,7 +129,7 @@
 
                 <h4 class="text-lg font-bold text-[#404040] mt-8 mb-4">Microcontroller</h4>
                 <p class="text-base mb-4">
-                    All teams were required to use a PIC24F16KA301 microcontroller without any built-in breakout board or helpful HAL (hardware abstraction layer) — the purpose of the competition was to develop our bare metal programming skills in C/C++.
+                    All teams were required to use a PIC24F16KA301 microcontroller without any built-in breakout board or helpful HAL (hardware abstraction layer) - the purpose of the competition was to develop our bare metal programming skills in C/C++.
                     This microcontroller has 20 pins in total, with only a handful of analog input pins and three PWM pins. Thus, pin management was essential to a well-functioning robot.
                 </p>
 
@@ -158,16 +158,16 @@
 
                 <h4 class="text-lg font-bold text-[#404040] mt-8 mb-4">Line and QR Code Detection</h4>
                 <p class="text-base mb-4">
-                    For line-following, we employed an array of three QRD sensors—each combining an infrared emitter and receiver. 
-                    This setup enabled reliable detection of the white line against the black background. The spacing of the sensors was critical: 
-                    they were positioned far enough apart to avoid all three activating simultaneously, yet close enough for the line to occasionally 
-                    trigger two sensors at once. This configuration allowed our software to infer the robot's precise position relative to the line. 
-                    For example, if both the left and center sensors were active, the robot could determine it was slightly veering off course to the left; 
+                    For line-following, we employed an array of three QRD sensors - each combining an infrared emitter and receiver.
+                    This setup enabled reliable detection of the white line against the black background. The spacing of the sensors was critical:
+                    they were positioned far enough apart to avoid all three activating simultaneously, yet close enough for the line to occasionally
+                    trigger two sensors at once. This configuration allowed our software to infer the robot's precise position relative to the line.
+                    For example, if both the left and center sensors were active, the robot could determine it was slightly veering off course to the left;
                     if only the left sensor was triggered, it indicated the robot was nearly off the line entirely.
                     <br><br>
-                    In parallel, our QR code reader utilized a single QRD sensor to scan a sequence of white bars adjacent to the track, 
-                    each encoding a specific task for the robot to perform. Figure 4 illustrates the placement of these sensors on the robot. 
-                    To protect the three line-following QRDs, we designed and 3D-printed a custom case that securely housed them 
+                    In parallel, our QR code reader utilized a single QRD sensor to scan a sequence of white bars adjacent to the track,
+                    each encoding a specific task for the robot to perform. Figure 4 illustrates the placement of these sensors on the robot.
+                    To protect the three line-following QRDs, we designed and 3D-printed a custom case that securely housed them
                     while allowing unobstructed sensing.
                 </p>
 
@@ -190,14 +190,14 @@
 
                 <h4 class="text-lg font-bold text-[#404040] mt-8 mb-4">Wall Detection and Collision Avoidance</h4>
                 <p class="text-base mb-4">
-                    For canyon navigation, we used an IR proximity sensor mounted at the front of the vehicle to detect obstacles, as shown in Figure 5a. 
-                    This sensor outputs a digital high signal when an object is detected within its adjustable detection range, which was configured using 
+                    For canyon navigation, we used an IR proximity sensor mounted at the front of the vehicle to detect obstacles, as shown in Figure 5a.
+                    This sensor outputs a digital high signal when an object is detected within its adjustable detection range, which was configured using
                     the onboard potentiometer.
                     <br><br>
-                    To determine the correct turning direction during the canyon navigation task, an ultrasonic range sensor was installed on the 
-                    right side of the robot, as illustrated in Figure 5b. This sensor also served as a redundancy check for other sensor readings. 
-                    For example, in the button-pushing task, our algorithm cross-verified the presence of both an IR emitter and a physical object 
-                    located approximately 2 feet from the track using the ultrasonic sensor. This multi-sensor validation improved the overall 
+                    To determine the correct turning direction during the canyon navigation task, an ultrasonic range sensor was installed on the
+                    right side of the robot, as illustrated in Figure 5b. This sensor also served as a redundancy check for other sensor readings.
+                    For example, in the button-pushing task, our algorithm cross-verified the presence of both an IR emitter and a physical object
+                    located approximately 2 feet from the track using the ultrasonic sensor. This multi-sensor validation improved the overall
                     reliability and robustness of our system.
                 </p>
 
@@ -221,7 +221,7 @@
                 <p class="text-base mb-4">
                     For the ball pick-up and drop-off, we used a servo motor attached to a funnel-shaped pickup bed for storing the ball while moving. The bottom of this funnel also had another QRD sensor, which would tell us the color of the ball for the drop-off task.
                     <br><br>
-                    For the laser pointer task at the end of the course, we had a laser pointer and an IR receiver placed next to each other on the pickup bed. This allowed us to use the same servo motor for the laser pointing task as we did for the ball tasks. 
+                    For the laser pointer task at the end of the course, we had a laser pointer and an IR receiver placed next to each other on the pickup bed. This allowed us to use the same servo motor for the laser pointing task as we did for the ball tasks.
                     The servo would sweep about 70 degrees when trying to detect the IR emitter above the robot, and then return to the spot where it found the highest signal.
                     These systems are shown in Figure 6.
                 </p>
@@ -237,7 +237,7 @@
                 <p class="text-base mb-4">
                     This was the best part of our system. Our team believed that leaving the line to push the button would have cost valuable seconds. So, why leave the line to press the button when you could just shoot it with a projectile?
                     <br><br>
-                    That is exactly what we did. In Figure 7, you can see the IR receiver, which would detect the IR transmitter placed at the button's location, telling the robot to press the button. Figure 7 also shows the LEGO cannon, which we activated with 
+                    That is exactly what we did. In Figure 7, you can see the IR receiver, which would detect the IR transmitter placed at the button's location, telling the robot to press the button. Figure 7 also shows the LEGO cannon, which we activated with
                     an electrical solenoid. This was very effective in hitting the button, and we never even had to stop the car. This was our best design decision we made, and turned the most feared task into a walk in the park.
                 </p>
                 <figure class="my-6">
@@ -251,13 +251,13 @@
                 <p class="text-base mb-4">
                     Our software architecture was centered around a Finite State Machine (FSM) with well-defined states such as <strong>Line Following</strong>, <strong>Canyon Navigation</strong>, and <strong>Ball Pickup</strong>. This event-driven structure allowed for responsive and reliable transitions between tasks based on sensor input and system conditions.
                     <br><br>
-                    For line-following, we implemented a PD (Proportional-Derivative) control loop. This enabled the robot to respond aggressively to sharp turns while minimizing overshoot. After extensive tuning, we achieved smooth, stable behavior. However, we observed that our PD gains became suboptimal at the extremes of the robot’s speed range — particularly causing overcorrection at high speeds and undercorrection at low speeds.
+                    For line-following, we implemented a PD (Proportional-Derivative) control loop. This enabled the robot to respond aggressively to sharp turns while minimizing overshoot. After extensive tuning, we achieved smooth, stable behavior. However, we observed that our PD gains became suboptimal at the extremes of the robot’s speed range - particularly causing overcorrection at high speeds and undercorrection at low speeds.
                     <br><br>
                     To solve this, we introduced dynamic gain scaling: our software interpolated between experimentally optimized PD gain sets based on the robot’s current speed. We conducted 20 test runs to optimize PD gains for low, medium, and high speeds. This significantly improved performance consistency across a wide range of velocities.
                     <br><br>
-                    One of the most important lessons I learned during development was the value of <strong>robust safety checks</strong> and <strong>responsive code</strong>. For example, in the button-pushing task, we used the ultrasonic range sensor to verify the presence of the button alongside the IR emitter signal — preventing premature task execution and ensuring we didn’t waste our single “cannon shot.”
+                    One of the most important lessons I learned during development was the value of <strong>robust safety checks</strong> and <strong>responsive code</strong>. For example, in the button-pushing task, we used the ultrasonic range sensor to verify the presence of the button alongside the IR emitter signal - preventing premature task execution and ensuring we didn’t waste our single “cannon shot.”
                     <br><br>
-                    Similarly, during transitions back to the line (e.g., after a ball pickup), we used the QR code detection QRD sensor—mounted near the wheels—to detect the line's position and guide our in-place turning behavior. 
+                    Similarly, during transitions back to the line (e.g., after a ball pickup), we used the QR code detection QRD sensor - mounted near the wheels - to detect the line's position and guide our in-place turning behavior.
                     <br><br>
                     Finally, interrupt-driven design was crucial to the robot’s reliability. We used interrupt pins to immediately pause ongoing operations and trigger high-priority actions. This responsiveness was vital for accurate task execution; without it, our robot would have missed key events and lost valuable points.
                 </p>
@@ -268,7 +268,7 @@
             <p class="text-base mb-4">
                 This video showcases our winning run at the April 2024 competition, where we achieved a perfect score by successfully completing all tasks and secured 4th place out of 30 teams overall.
             </p>
-            <div class="relative w-full pb-[56.25%]"> 
+            <div class="relative w-full pb-[56.25%]">
                     <iframe
                         class="absolute top-0 left-0 w-full h-full"
                         src="https://www.youtube.com/embed/WLjQGuFjoqM"
@@ -281,7 +281,7 @@
 
             <h2 class="text-2xl font-bold text-[#404040] mt-8 mb-4">Summary</h2>
             <p class="text-base mb-4">
-                This project was an intense, rewarding culmination of mechanical design, embedded systems, and controls engineering. From bare-metal programming on the PIC24 to custom PCB development and real-time sensor fusion, every subsystem had to work in harmony under strict time constraints. Leading this effort not only strengthened my technical skills but also reinforced the value of modular design, responsive software, and hands-on iteration. Earning a perfect task score and finishing in the top 5 out of 30 teams was a satisfying result—but more than that, it was an unforgettable learning experience in building a full-stack mechatronic system from the ground up.
+                This project was an intense, rewarding culmination of mechanical design, embedded systems, and controls engineering. From bare-metal programming on the PIC24 to custom PCB development and real-time sensor fusion, every subsystem had to work in harmony under strict time constraints. Leading this effort not only strengthened my technical skills but also reinforced the value of modular design, responsive software, and hands-on iteration. Earning a perfect task score and finishing in the top 5 out of 30 teams was a satisfying result - but more than that, it was an unforgettable learning experience in building a full-stack mechatronic system from the ground up.
             </p>
 
             <h2 class="text-2xl font-bold text-[#404040] mt-8 mb-4">Project Source Code</h2>
